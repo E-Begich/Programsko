@@ -1,4 +1,4 @@
-const { noBoolOperatorAliases } = require('sequelize/lib/utils/deprecations');
+const { operatorAliases } = require('sequelize/lib/utils/deprecations');
 const dbConfig = require('../config/dbConfig.js');
 const {Sequelize, Datatypes} = require('sequelize');
 

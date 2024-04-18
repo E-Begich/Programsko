@@ -1,3 +1,4 @@
+//podaci za spajanje na bazu
 module.exports = {
     HOST: 'student.veleri.hr',
     USER: 'ebegic1',

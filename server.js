@@ -1,3 +1,4 @@
+//datoteka za spajanje na server
 const express = require('express')
 const cors = require('cors')
 const app = express()
