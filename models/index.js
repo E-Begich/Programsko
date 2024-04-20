@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
     dbConfig.PASSWORD, {
         host: dbConfig.HOST,
         dialect: dbConfig.dialect,
-        peratorsAliases: false,
+        operatorsAliases: false,
 
         pool: {
             max: dbConfig.pool.max,
@@ -28,3 +28,16 @@ sequelize.authenticate()
 })
 
 const db = {}
+
+db.Sequelize = Sequelize
+db.sequelize = sequelize
+
+//Sada tu dohvaćamo podatke iz tablica i nakon toga u mapi models radimo datoteke sa nazivima navedenim ovdje
+db.klijent_profil = require('./klijent_profilModel.js')(sequelize, Datatypes)
+db.vozilo = require('./voziloModel.js')(sequelize, Datatypes)
+db.zahtjev = require('./zahtjevModel.js')(sequelize, Datatypes)
+db.korisnik = require('./korisnikModel.js')(sequelize, Datatypes)
+db.zaposlenik = require('./zaposlenikModel.js')(sequelize, Datatypes)
+db.ugovor = require('./UgovorModel.js')(sequelize, Datatypes)
+db.pracenje = require('./pracenjeModel.js')(sequelize, Datatypes)
+db.racun = require('./racunModel.js')(sequelize, Datatypes)
