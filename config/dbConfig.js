@@ -2,7 +2,7 @@
 module.exports = {
     HOST: 'student.veleri.hr',
     USER: 'dpajovic',
-    PASSWORD: '11',
+    PASSWORD: 'cedevita123',
     DB: 'dpajovic',
     dialect: 'mysql',
 
