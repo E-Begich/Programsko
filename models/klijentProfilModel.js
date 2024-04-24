@@ -4,8 +4,7 @@ const { sequelize } = require(".");
 module.exports = (sequelize, DataTypes) => {
     const KlijentProfil = sequelize.define("KlijentProfil", {
         ID_Klijenta: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
         },
         Ime: {
             type: DataTypes.STRING

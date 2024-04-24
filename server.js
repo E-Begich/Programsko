@@ -8,10 +8,17 @@ var corOptions = {
 origin: 'https://localhost:8081'
 
 }
+
+
  //middleware
 app.use(cors(corOptions))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+
+//routers
+const router = require('./routes/klijentRouter.js');
+app.use('/api/klijentProfil', router);
+
 
 //testing api
 app.get('/', (req, res) => {

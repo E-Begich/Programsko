@@ -33,7 +33,7 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 //Sada tu dohvaćamo podatke iz tablica i nakon toga u mapi models radimo datoteke sa nazivima navedenim ovdje
-db.klijent_profil = require('./klijent_profilModel.js')(sequelize, Datatypes)
+db.klijentProfil = require('./klijentProfilModel.js')(sequelize, Datatypes)
 db.vozilo = require('./voziloModel.js')(sequelize, Datatypes)
 db.zahtjev = require('./zahtjevModel.js')(sequelize, Datatypes)
 db.korisnik = require('./korisnikModel.js')(sequelize, Datatypes)
