@@ -41,6 +41,6 @@ const getAllKlijent_profil = async (req, res) => {
             'Lozinka'
         ]*/
     })
-    res.status(200).send(KlijentProfil)
+    res.status(200).send(KlijentProfil)//37:23
 
 }
