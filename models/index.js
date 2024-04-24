@@ -40,4 +40,12 @@ db.korisnik = require('./korisnikModel.js')(sequelize, Datatypes)
 db.zaposlenik = require('./zaposlenikModel.js')(sequelize, Datatypes)
 db.ugovor = require('./ugovorModel.js')(sequelize, Datatypes)
 db.pracenje = require('./pracenjeModel.js')(sequelize, Datatypes)
-db.racun = require('./racunModel.js')(sequelize, Datatypes) //21:54
+db.racun = require('./racunModel.js')(sequelize, Datatypes) 
+
+
+db.sequelize.sync({ force: false })
+.then(() => {
+    console.log('Done!')
+})
+
+module.exports = db
