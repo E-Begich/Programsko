@@ -1,14 +1,13 @@
-//podaci za spajanje na bazu
 module.exports = {
     HOST: 'student.veleri.hr',
-    USER: 'dpajovic',
-    PASSWORD: 'cedevita123',
-    DB: 'dpajovic',
+    USER: 'ebegic1',
+    PASSWORD: '11',
+    DB: 'ebegic1',
     dialect: 'mysql',
 
     pool: {
-        max:5,
-        min:0,
+        max: 5,
+        min: 0,
         acquire: 30000,
         idle: 10000
     }

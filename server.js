@@ -1,33 +1,31 @@
-//datoteka za spajanje na server
 const express = require('express')
 const cors = require('cors')
+
+
 const app = express()
 
-
 var corOptions = {
-origin: 'https://localhost:8081'
-
+    origin: 'https://student.veleri.hr:3306'
 }
 
-
- //middleware
+//middleware
 app.use(cors(corOptions))
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 //routers
-const router = require('./routes/klijentRouter.js');
-app.use('/api/klijentProfil', router);
-
+const router = require('./routes/routes')
+app.use('/api/vozila', router)
 
 //testing api
 app.get('/', (req, res) => {
-    res.json({message: 'Hello api'})
+    res.json({ message: 'hello from API'})
 })
+
 //port
 const PORT = process.env.PORT || 8080
 
 //server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
+    console.log(`server is running on port ${PORT}`)
 })

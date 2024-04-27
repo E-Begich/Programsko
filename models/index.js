@@ -1,6 +1,5 @@
-const { operatorAliases } = require('sequelize/lib/utils/deprecations');
 const dbConfig = require('../config/dbConfig.js');
-const {Sequelize, Datatypes} = require('sequelize');
+const {Sequelize, DataTypes} = require('sequelize');
 
 const sequelize = new Sequelize(
     dbConfig.DB,
@@ -15,16 +14,17 @@ const sequelize = new Sequelize(
             min: dbConfig.pool.min,
             acquire: dbConfig.pool.acquire,
             idle: dbConfig.pool.idle
+
         }
     }
-
 )
+
 sequelize.authenticate()
 .then(() => {
-    console.log('connected')
+    console.log('connected..')
 })
 .catch(err => {
-    console.log('Error' + err)
+    console.log('Error'+ err)
 })
 
 const db = {}
@@ -32,20 +32,11 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
-//Sada tu dohvaćamo podatke iz tablica i nakon toga u mapi models radimo datoteke sa nazivima navedenim ovdje
-db.klijentProfil = require('./klijentProfilModel.js')(sequelize, Datatypes)
-db.vozilo = require('./voziloModel.js')(sequelize, Datatypes)
-db.zahtjev = require('./zahtjevModel.js')(sequelize, Datatypes)
-db.korisnik = require('./korisnikModel.js')(sequelize, Datatypes)
-db.zaposlenik = require('./zaposlenikModel.js')(sequelize, Datatypes)
-db.ugovor = require('./ugovorModel.js')(sequelize, Datatypes)
-db.pracenje = require('./pracenjeModel.js')(sequelize, Datatypes)
-db.racun = require('./racunModel.js')(sequelize, Datatypes) 
-
+db.Vozila = require('./vozilaModel.js')(sequelize, DataTypes) //ovdje dodati jos tablica
 
 db.sequelize.sync({ force: false })
 .then(() => {
-    console.log('Done!')
+    console.log('yes re-sync done!')
 })
 
 module.exports = db
