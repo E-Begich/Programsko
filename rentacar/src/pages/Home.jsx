@@ -1,10 +1,38 @@
 import React from "react";
+import Vozila from "./Vozila";
 
 function Home(){
     return(
-        <div>
-            <h1 className='mt-5'>Home</h1>
-        </div>
+            <>
+              <div id='carouselExampleIndicators' className='carousel slide'>
+                <div className='carousel-indicators'>
+                  <button type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='0' className='active' aria-current='true' aria-label='Slide 1'></button>
+                  <button type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='1' aria-label='Slide 2'></button>
+                  <button type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='2' aria-label='Slide 3'></button>
+                </div>
+                <div className='carousel-inner'>
+                  <div className='carousel-item active'>
+                    <img src={process.env.PUBLIC_URL+ "/images/background1.jpg"} className='d-block w-100' alt='background1' height='700px'/>
+                  </div>
+                  <div className='carousel-item'>
+                    <img src={process.env.PUBLIC_URL+ "/images/background2.jpg"} className='d-block w-100' alt='background2' height='700px'/>
+                  </div>
+                  <div className='carousel-item'>
+                    <img src={process.env.PUBLIC_URL+ "/images/background3.png"} className='d-block w-100' alt='background3'height='700px'/>
+                  </div>
+                </div>
+                <button className='carousel-control-prev' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='prev'>
+                  <span className='carousel-control-prev-icon' aria-hidden='true'></span>
+                  <span className='visually-hidden'>Previous</span>
+                </button>
+                <button className='carousel-control-next' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='next'>
+                  <span className='carousel-control-next-icon' aria-hidden='true'></span>
+                  <span className='visually-hidden'>Next</span>
+                </button>
+              </div>
+              <p className='lead text-center py-4 my-6'>This is test site. Please do not order for now.</p>
+              <Vozila />
+            </>
     )
 }
 export default Home;
