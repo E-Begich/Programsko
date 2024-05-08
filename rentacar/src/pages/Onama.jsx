@@ -9,7 +9,7 @@ const Onama = () => {
         <div className="col-md-6">
           <h1 className='text-dark fw-bold mb-4'>O nama</h1>
           <p className="lead mb-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ut nihil nostrum consequuntur, inventore molestiae pariatur delectus magni aliquam expedita doloribus non et neque nulla maiores, illo perferendis voluptatum aperiam? Vero impedit doloremque, molestiae facere sapiente magni sint veritatis eveniet neque repudiandae earum est, corrupti facilis. Rem vel vero iste architecto, neque earum suscipit dicta nisi harum praesentium? Maiores suscipit neque culpa atque provident? Ad dignissimos dolorem esse. Exercitationem illo nisi, laboriosam perspiciatis voluptatem laudantium facere iusto temporibus reiciendis id blanditiis nulla, necessitatibus, molestiae illum dolor rem! Provident perferendis sed, dignissimos architecto dolore amet, similique laborum dicta vel fuga facilis.
+          Najam automobila u Hrvatskoj i preko 100 ostalih zemalja i područja. Bez obzira kakve su vaše želje i potrebe te na koliki period trebate teretno vozilo - tu smo za vas. Rent-a-car nudi usluge poslovnih najmova čije trajanje možete prilagoditi svojim potrebama. U potpunosti smo predani pružanju čistih i dobro održavanih vozila.
           </p>
           <NavLink to="/" className="btn btn-outline-dark px-3">Kontaktiraj nas</NavLink>
         </div>

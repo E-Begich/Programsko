@@ -1,38 +1,102 @@
-import React from "react";
-import Vozila from "./Vozila";
+import React from 'react';
+import { MenuBtn } from '../components/MenuBtn';
+import './Home.css';
+import AboutImg from '../utils/img/about-img.jpg';
+import { Link } from 'react-router-dom';
+import { ImageGallery } from '../components/ImageGallery';
+import { ContactInfo } from '../components/ContactInfo';
+import ContactImage from '../utils/img/contact-img.jpg';
 
-function Home(){
-    return(
-            <>
-              <div id='carouselExampleIndicators' className='carousel slide'>
-                <div className='carousel-indicators'>
-                  <button type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='0' className='active' aria-current='true' aria-label='Slide 1'></button>
-                  <button type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='1' aria-label='Slide 2'></button>
-                  <button type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to='2' aria-label='Slide 3'></button>
+function Home() {
+    return (
+        <div className='home-page'>
+            <header className='h-100 min-vh-100 d-flex align-items-center text-light shadow'>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-sm-6 d-flex d-sm-block flex-column align-items-center'>
+                            <h2 className='mb-0 text-black fw-bold'>Welcome To</h2>
+                            <h1 className='mb-5 text-black fw-bold text-center text-sm-start'>React Rent a car</h1>
+                            <MenuBtn />
+                        </div>
+                    </div>
                 </div>
-                <div className='carousel-inner'>
-                  <div className='carousel-item active'>
-                    <img src={process.env.PUBLIC_URL+ "/images/background1.jpg"} className='d-block w-100' alt='background1' height='700px'/>
-                  </div>
-                  <div className='carousel-item'>
-                    <img src={process.env.PUBLIC_URL+ "/images/background2.jpg"} className='d-block w-100' alt='background2' height='700px'/>
-                  </div>
-                  <div className='carousel-item'>
-                    <img src={process.env.PUBLIC_URL+ "/images/background3.png"} className='d-block w-100' alt='background3'height='700px'/>
-                  </div>
+            </header>
+
+            <div className='container my-5'>
+                <div className='row'>
+                    <div className='col-lg-6 d-flex justify-content-center d-none d-lg-flex'>
+                        <img src={AboutImg} className='img-fluid w-50' alt="about img" />
+                    </div>
+                    <div className='col-lg-6 d-flex flex-column align-items-center justify-content-center'>
+                        <h2 className='fs-1 mb-5 text-uppercase fw-bold'>O nama</h2>
+                        <p>Trebas auto?</p>
+                        <p className='mb-5'>Mi imamo auto!</p>
+                        <Link to="/about">
+                            <button type='button' className='btn btn-outline-success btn-lg'>Vise o nama</button>
+                        </Link>
+                    </div>
                 </div>
-                <button className='carousel-control-prev' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='prev'>
-                  <span className='carousel-control-prev-icon' aria-hidden='true'></span>
-                  <span className='visually-hidden'>Previous</span>
-                </button>
-                <button className='carousel-control-next' type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide='next'>
-                  <span className='carousel-control-next-icon' aria-hidden='true'></span>
-                  <span className='visually-hidden'>Next</span>
-                </button>
-              </div>
-              <p className='lead text-center py-4 my-6'>This is test site. Please do not order for now.</p>
-              <Vozila />
-            </>
+            </div>
+
+            <div className='menu-section py-5 text-light shadow'>
+                <div className='container d-flex flex-column align-items-center'>
+                    <h2 className='fs-1 mb-5 text-uppercase fw-bold'>Popularno</h2>
+                    <div className='row mb-5 w-100'>
+                        <div className='col-lg-6 d-flex flex-column align-items-center mb-5 mb-lg-0'>
+                            <h3 className='fs-2 mb-5'><Vozila></Vozila></h3>
+                            <ul className='px-0'>
+                                <li className='d-flex justify-content-between'>
+                                    <p className='fs-3 mx-2'>Audi A4</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>£12</p>
+                                </li>
+                                <li className='d-flex justify-content-between'>
+                                    <p className='fs-3 mx-2'>Dacia Duster</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>£15</p>
+                                </li>
+                                <li className='d-flex justify-content-between'>
+                                    <p className='fs-3 mx-2'>Fiat 500</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>£11</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className='col-lg-6 d-flex flex-column align-items-center mb-5 mb-lg-0'>
+                            <h3 className='fs-2 mb-5'>Opel Corsa</h3>
+                            <ul className='px-0'>
+                                <li className='d-flex justify-content-between'>
+                                    <p className='fs-3 mx-2'>Renault Clio</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>£2</p>
+                                </li>
+                                <li className='d-flex justify-content-between'>
+                                    <p className='fs-3 mx-2'>Mercedes Vito</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>£1</p>
+                                </li>
+                                <li className='d-flex justify-content-between'>
+                                    <p className='fs-3 mx-2'>Toyota Hilux</p>
+                                    <p className='fs-3 mx-2 text-success fw-nold'>£5</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <MenuBtn />
+                </div>
+            </div>
+
+            <ImageGallery />
+
+            <div className='bg-dark text-light py-5 shadow'>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='col-lg-6 d-flex flex-column align-items-center justify-content-center mb-5 mb-lg-0'>
+                            <ContactInfo />
+                        </div>
+                        <div className='col-lg-6 d-flex justify-content-center'>
+                            <img src={ContactImage} className='img-fluid w-50' alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
+
 export default Home;
