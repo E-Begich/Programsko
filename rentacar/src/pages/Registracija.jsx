@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import axios from "axios";
-
-const Registracija = () => {
+//1. prvo se napravi forma za upis podataka koje želimo upisati u tablicu u bazi to je html
+//2. zatim se kreira useState gdje ćemo napraviti naziv, setNaziv za svako polje iz kojeg uzimamo upisanu vrijendost
+//3. kreiramo button koje ima u sebi submit
+//4. u formu dodajemo <Form onSubmit={addKlijentProHandler}> kako bi nakon klika gumba se preuzeli podaci i ubacili u bazu
+//5. kreiramo handler gdje je prvi naziv naziv tocnog polja u bazi drugi naziv polja tu u formi
+//6. na kraju handlera dodajemo await axios.post('/api/aplikacija/addKlijentProfil', data), koji preuzima podatke iz polja i ubacuje u API koji smo mu zadali u routes
+const AddKlijentProfil = () => {
     const [ime, setIme] = useState('');
     const [prezime, setPrezime] = useState('');
     const [adresa, setAdresa] = useState('');
@@ -16,15 +21,15 @@ const Registracija = () => {
 
     const addKlijentProHandler = async () => {
         const data = {
-            ime: ime,
-            prezime: prezime,
-            adresa: adresa,
-            post_broj: post_broj,
-            mjesto: mjesto,
-            kontakt: kontakt,
-            email: email,
-            kor_ime: kor_ime,
-            lozinka: lozinka
+            Ime: ime,
+            Prezime: prezime,
+            Adresa: adresa,
+            Post_broj: post_broj,
+            Mjesto: mjesto,
+            Kontakt: kontakt,
+            Email: email,
+            Kor_ime: kor_ime,
+            Lozinka: lozinka
         }
         await axios.post('/api/aplikacija/addKlijentProfil', data)
     }
@@ -36,12 +41,13 @@ const Registracija = () => {
                 <hr />
 
                 <Form onSubmit={addKlijentProHandler}>
+
                     <Form.Group className="mb3" controlId="ime">
                         <Form.Label>Ime: </Form.Label>
                         <Form.Control
                             value={ime}
                             onChange={(e) => setIme(e.target.value)}
-                            type="text " />
+                            type="text" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb3" controlId="prezime">
@@ -49,7 +55,7 @@ const Registracija = () => {
                         <Form.Control
                             value={prezime}
                             onChange={(e) => setPrezime(e.target.value)}
-                            type="text " />
+                            type="text" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb3" controlId="adresa">
@@ -57,7 +63,7 @@ const Registracija = () => {
                         <Form.Control
                             value={adresa}
                             onChange={(e) => setAdresa(e.target.value)}
-                            type="text " />
+                            type="text" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb3" controlId="post_broj">
@@ -65,7 +71,7 @@ const Registracija = () => {
                         <Form.Control
                             value={post_broj}
                             onChange={(e) => setPost_broj(e.target.value)}
-                            type="text " />
+                            type="text" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb3" controlId="mjesto">
@@ -73,7 +79,7 @@ const Registracija = () => {
                         <Form.Control
                             value={mjesto}
                             onChange={(e) => setMjesto(e.target.value)}
-                            type="text " />
+                            type="text" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb3" controlId="kontakt">
@@ -81,7 +87,7 @@ const Registracija = () => {
                         <Form.Control
                             value={kontakt}
                             onChange={(e) => setKontakt(e.target.value)}
-                            type="text " />
+                            type="text" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb3" controlId="email">
@@ -89,7 +95,7 @@ const Registracija = () => {
                         <Form.Control
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            type="text " />
+                            type="text" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb3" controlId="kor_ime">
@@ -97,7 +103,7 @@ const Registracija = () => {
                         <Form.Control
                             value={kor_ime}
                             onChange={(e) => setKor_ime(e.target.value)}
-                            type="text " />
+                            type="text" />
                     </Form.Group>
                     <br/>
                     <Form.Group className="mb3" controlId="lozinka">
@@ -120,4 +126,4 @@ const Registracija = () => {
         </>
     )
 }
-export default Registracija;
+export default AddKlijentProfil;
