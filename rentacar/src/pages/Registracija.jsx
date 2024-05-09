@@ -108,7 +108,7 @@ const Registracija = () => {
                             type="password" />
                     </Form.Group>
                     <br/>
-                    <div class="d-grid gap-2 col-6 mx-auto">
+                    <div className="d-grid gap-2 col-6 mx-auto">
                     <Button variant="btn btn-primary" type="submit">
                         Registriraj se
                     </Button>
