@@ -13,7 +13,6 @@ const Zaposlenik = db.Zaposlenik
 //1. kreiranje racuna (ovo radi zaposlenik)
 const addRacun = async (req, res) => {
     let info = {
-        ID_racun: req.body.ID_racun,
         ID_ugovor: req.body.ID_ugovor,
         Cijena: req.body.Cijena,
         Porez: req.body.Porez,
@@ -34,23 +33,23 @@ const getAllRacun= async (req, res) => {
 //3. preuzmi jedan račun
 const getOneRacun= async (req, res) => {
 
-    let ID_racun = req.params.ID_racun
-    let racun = await Racun.findOne({ where: { ID_racun: ID_racun}})
+    let id = req.params.id
+    let racun = await Racun.findOne({ where: { id: id}})
     res.status(200).send(racun)
 }
 
 //4. ažuriraj račun ( ne treba ali da imamo u slučaju ažuriranja)
 const updateRacun = async (req, res) => {
-    let ID_racun = req.params.ID_racun
-    const racun = await Racun.update(req.body, {where: { ID_racun: ID_racun }})
+    let id = req.params.id
+    const racun = await Racun.update(req.body, {where: { id: id }})
     res.status(200).send(racun)
 }
 
 //5. brisanje računa po id (ako zatreba)
 const deleteRacun = async (req, res) => {
 
-    let ID_racun = req.params.ID_racun
-    await Racun.destroy({where: { ID_racun: ID_racun }})
+    let id = req.params.id
+    await Racun.destroy({where: { id: id }})
     res.send('Račun je obrisan!')
 }
 

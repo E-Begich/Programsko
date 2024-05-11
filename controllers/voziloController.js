@@ -1,4 +1,8 @@
-const db = require('../models')
+const db = require('../models');
+//upload Fotografije
+const multer = require('multer')
+const path = require('path')
+
 
 //kreiranje glavnog modela
 const Klijent_profil = db.Klijent_profil
@@ -13,7 +17,6 @@ const Zaposlenik = db.Zaposlenik
 //1. kreiranje vozila (ovo radi zaposlenik)
 const addVozilo = async (req, res) => {
     let info = {
-        ID_vozilo: req.body.ID_vozilo,
         Marka: req.body.Marka,
         Model: req.body.Model,
         Godina: req.body.Godina,
@@ -22,8 +25,8 @@ const addVozilo = async (req, res) => {
         Kilometri: req.body.Kilometri,
         Broj_sjedala: req.body.Broj_sjedala,
         Cijena_dan: req.body.Cijena_dan,
-        Fotografija: req.body.Fotografija,
-}
+        Fotografija: req.body.Fotografija// req.file.path
+} 
 //unutar ove naredbe kreiramo vozilo te ubacujemo u tablicu Vozilo podatke opisane u info
 const vozilo = await Vozilo.create(info)
 res.status(200).send(vozilo)
@@ -39,57 +42,58 @@ const getAllVozilo= async (req, res) => {
 //3. preuzmi jedno vozilo
 const getOneVozilo= async (req, res) => {
 
-    let ID_vozilo = req.params.ID_vozilo
-    let vozilo = await Vozilo.findOne({ where: { ID_vozilo: ID_vozilo}})
+    let id = req.params.id
+    let vozilo = await Vozilo.findOne({ where: { id: id}})
     res.status(200).send(vozilo)
 }
 
 //4. ažuriraj vozilo 
 const updateVozilo = async (req, res) => {
-    let ID_vozilo = req.params.ID_vozilo
-    const vozilo = await Vozilo.update(req.body, {where: { ID_vozilo: ID_vozilo }})
+    let id = req.params.id
+    const vozilo = await Vozilo.update(req.body, {where: { id: id }})
     res.status(200).send(vozilo)
 }
 
 //5. brisanje vozila po id 
 const deleteVozilo = async (req, res) => {
 
-    let ID_vozilo = req.params.ID_vozilo
-    await Vozilo.destroy({where: { ID_vozilo: ID_vozilo }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
+    let id = req.params.id
+    await Vozilo.destroy({where: { id: id }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
     res.send('Vozilo je obrisano!')
 }
-//6. veza one to many vozilo i zahtjev
-//ovaj as: mora biti isti naziv kao u index.js kod veze vozilo hasMany
+
+//veza Vozilo- Zahtjev sa zahtjevom one to many
 const getVoziloZahtjev = async (req, res) => {
     const data = await Vozilo.findAll({
         include: [{
             model: Zahtjev,
             as: 'Zahtjev'
         }],
-        where: { ID_vozilo: 1}
+        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }
 
-//veza one to many vozilo-praćenje
+//veza Vozilo- pracenje sa zahtjevom one to many
 const getVoziloPracenje = async (req, res) => {
     const data = await Vozilo.findAll({
         include: [{
             model: Pracenje,
             as: 'Pracenje'
         }],
-        where: { ID_vozilo: 1}
+        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }
-//veza one to many vozilo-ugovor
+
+//veza Vozilo- ugovor sa zahtjevom one to many
 const getVoziloUgovor = async (req, res) => {
     const data = await Vozilo.findAll({
         include: [{
             model: Ugovor,
             as: 'Ugovor'
         }],
-        where: { ID_vozilo: 1}
+        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }

@@ -13,7 +13,6 @@ const Zaposlenik = db.Zaposlenik
 //1. kreiranje zaposlenika 
 const addZaposlenik = async (req, res) => {
     let info = {
-        ID_zaposlenik: req.body.ID_zaposlenik,
         Ime: req.body.Ime,
         Prezime: req.body.Prezime,
         Sifra_zaposlenika: req.body.Sifra_zaposlenika,
@@ -34,34 +33,34 @@ const getAllZaposlenik = async (req, res) => {
 //3. preuzmi jednog zaposlenika
 const getOneZaposlenik= async (req, res) => {
 
-    let ID_zaposlenik = req.params.ID_zaposlenik
-    let zaposlenik = await Zaposlenik.findOne({ where: { ID_zaposlenik: ID_zaposlenik}})
+    let id = req.params.id
+    let zaposlenik = await Zaposlenik.findOne({ where: { id: id}})
     res.status(200).send(zaposlenik)
 }
 
 //4. ažuriraj podatke zaposlenika
 const updateZaposlenik = async (req, res) => {
-    let ID_zaposlenik = req.params.ID_zaposlenik
-    const zaposlenik = await Zaposlenik.update(req.body, {where: { ID_zaposlenik: ID_zaposlenik }})
+    let id = req.params.id
+    const zaposlenik = await Zaposlenik.update(req.body, {where: { id: id }})
     res.status(200).send(zaposlenik)
 }
 
 //5. brisanje zaposlenika po id (ako zatreba)
 const deleteZaposlenik = async (req, res) => {
 
-    let ID_zaposlenik = req.params.ID_zaposlenik
-    await Zaposlenik.destroy({where: { ID_zaposlenik: ID_zaposlenik }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
+    let id = req.params.id
+    await Zaposlenik.destroy({where: { id: id }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
     res.send('Zaposlenik je obrisan!')
 }
 
-//veza zaposlenik-ugovor
+//veza zaposlenik-ugovor sa zahtjevom one to many
 const getZaposlenikUgovor = async (req, res) => {
     const data = await Zaposlenik.findAll({
         include: [{
             model: Ugovor,
             as: 'Ugovor'
         }],
-        where: { ID_zaposlenik: 1}
+        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }

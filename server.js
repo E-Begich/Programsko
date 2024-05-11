@@ -19,6 +19,8 @@ app.use(express.urlencoded({ extended: true}))
 const router = require('./routes/appRouter.js')
 app.use('/api/aplikacija', router)
 
+//folder za slike
+//app.use('/images', express.static('./images'))
 
 //test API
 app.get('/', (req, res) => {

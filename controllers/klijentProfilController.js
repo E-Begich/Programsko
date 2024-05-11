@@ -13,7 +13,6 @@ const Zaposlenik = db.Zaposlenik
 //1. kreiranje klijent profila
 const addKlijentProfil = async (req, res) => {
     let info = {
-        ID_klijenta: req.body.ID_klijenta,
         Ime: req.body.Ime,
         Prezime: req.body.Prezime,
         Adresa: req.body.Adresa,
@@ -39,36 +38,37 @@ const getAllKlijentPro = async (req, res) => {
 //3. preuzmi jednog klijenta (također nam ne treba ali u slucaju neke nadogradnje da imamo spremnu funkciju)
 const getOneKlijentPro = async (req, res) => {
 
-    let ID_klijenta = req.params.ID_klijenta
-    let korPro = await Klijent_profil.findOne({ where: { ID_klijenta: ID_klijenta}})
+    let id = req.params.id
+    let korPro = await Klijent_profil.findOne({ where: { id: id}})
     res.status(200).send(korPro)
 }
 
 //4. ažuriraj profil klijenta (također ne treba ali da imamo u slučaju ažuriranja)
 const updateKlijentPro = async (req, res) => {
-    let ID_klijenta = req.params.ID_klijenta
-    const korPro = await Klijent_profil.update(req.body, {where: { ID_klijenta: ID_klijenta }})
+    let id = req.params.id
+    const korPro = await Klijent_profil.update(req.body, {where: { id: id }})
     res.status(200).send(korPro)
 }
 
 //5. brisanje klijenta profila po id (također ne treba ali da imamo u slučaju ažuriranja)
 const deleteKlijentPro = async (req, res) => {
 
-    let ID_klijenta = req.params.ID_klijenta
-    await Klijent_profil.destroy({where: { ID_klijenta: ID_klijenta }})
+    let id = req.params.id
+    await Klijent_profil.destroy({where: { id: id }})
     res.send('Profil korisnika je obrisan!')
 }
-//veza klijent profil sa zahtjevom
+//veza klijent profil sa zahtjevom one to many
 const getProfilZahtjev = async (req, res) => {
     const data = await Klijent_profil.findAll({
         include: [{
             model: Zahtjev,
             as: 'Zahtjev'
         }],
-        where: { ID_klijenta: 1}
+        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }
+
 module.exports = {
     addKlijentProfil,
     getAllKlijentPro,

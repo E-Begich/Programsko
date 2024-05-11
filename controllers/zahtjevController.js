@@ -13,7 +13,6 @@ const Zaposlenik = db.Zaposlenik
 //1. kreiranje zahtjeva (ovo radi registrirani odnosni prijavljeni klijent)
 const addZahtjev = async (req, res) => {
     let info = {
-        ID_zahtjev: req.body.ID_zahtjev,
         ID_klijenta: req.body.ID_klijenta,
         ID_vozilo: req.body.ID_vozilo,
         Datum_pocetka: req.body.Datum_pocetka,
@@ -35,23 +34,23 @@ const getAllZahtjev= async (req, res) => {
 //3. preuzmi jedan zahtjev
 const getOneZahtjev= async (req, res) => {
 
-    let ID_zahtjev = req.params.ID_zahtjev
-    let zahtjev = await Zahtjev.findOne({ where: { ID_zahtjev: ID_zahtjev}})
+    let id = req.params.id
+    let zahtjev = await Zahtjev.findOne({ where: { id: id}})
     res.status(200).send(zahtjev)
 }
 
 //4. ažuriraj zahtjev 
 const updateZahtjev = async (req, res) => {
-    let ID_zahtjev = req.params.ID_zahtjev
-    const zahtjev = await Zahtjev.update(req.body, {where: { ID_zahtjev: ID_zahtjev }})
+    let id = req.params.id
+    const zahtjev = await Zahtjev.update(req.body, {where: { id: id }})
     res.status(200).send(zahtjev)
 }
 
 //5. brisanje zahtjeva po id (ako zatreba)
 const deleteZahtjev = async (req, res) => {
 
-    let ID_zahtjev = req.params.ID_zahtjev
-    await Zahtjev.destroy({where: { ID_zahtjev: ID_zahtjev }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
+    let id = req.params.id
+    await Zahtjev.destroy({where: { id: id }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
     res.send('Zahtjev je obrisan!')
 }
 

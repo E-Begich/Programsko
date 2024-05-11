@@ -1,13 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
 
     const Klijent_profil = sequelize.define("Klijent_profil", {
-        ID_klijenta: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoincrement: true
-        },
         Ime: {
             type: DataTypes.STRING,
+            allowNull: false
         },
         Prezime: {
             type: DataTypes.STRING

@@ -13,9 +13,8 @@ const Zaposlenik = db.Zaposlenik
 //1. kreiranje ugovora (ovo radi zaposlenik)
 const addUgovor = async (req, res) => {
     let info = {
-        ID_ugovor: req.body.ID_ugovor,
-        ID_korisnika: req.body.ID_korisnika,
         ID_vozilo: req.body.ID_vozilo,
+        ID_korisnik: req.body.ID_korisnik,
         ID_zaposlenik: req.body.ID_zaposlenik,
         Datum_pocetka: req.body.Datum_pocetka,
         Datum_zavrsetka: req.body.Datum_zavrsetka,
@@ -38,51 +37,49 @@ const getAllUgovor= async (req, res) => {
 //3. preuzmi jedan ugovor
 const getOneUgovor= async (req, res) => {
 
-    let ID_ugovor = req.params.ID_ugovor
-    let ugovor = await Ugovor.findOne({ where: { ID_ugovor: ID_ugovor}})
+    let id = req.params.id
+    let ugovor = await Ugovor.findOne({ where: { id: id}})
     res.status(200).send(ugovor)
 }
 
 //4. ažuriraj ugovor ( ne treba ali da imamo u slučaju ažuriranja)
 const updateUgovor = async (req, res) => {
-    let ID_ugovor = req.params.ID_ugovor
-    const ugovor = await Ugovor.update(req.body, {where: { ID_ugovor: ID_ugovor }})
+    let id = req.params.id
+    const ugovor = await Ugovor.update(req.body, {where: { id: id }})
     res.status(200).send(ugovor)
 }
 
 //5. brisanje ugovora po id (ako zatreba)
 const deleteUgovor = async (req, res) => {
 
-    let ID_ugovor = req.params.ID_ugovor
-    await Ugovor.destroy({where: { ID_ugovor: ID_ugovor }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
+    let id = req.params.id
+    await Ugovor.destroy({where: { id: id }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
     res.send('Ugovor je obrisan!')
 }
 
-//veza ugovor-pracenje
+//veza Ugovor-pracenje sa zahtjevom one to many
 const getUgovorPracenje = async (req, res) => {
     const data = await Ugovor.findAll({
         include: [{
             model: Pracenje,
             as: 'Pracenje'
         }],
-        where: { ID_ugovor: 1}
+        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }
 
-//veza ugovor-racun
+//veza Ugovor-racun sa zahtjevom one to many
 const getUgovorRacun = async (req, res) => {
     const data = await Ugovor.findAll({
         include: [{
             model: Racun,
             as: 'Racun'
         }],
-        where: { ID_ugovor: 1}
+        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }
-
-
 
 
 module.exports = {
@@ -93,4 +90,5 @@ module.exports = {
     deleteUgovor,
     getUgovorPracenje,
     getUgovorRacun
+
 }

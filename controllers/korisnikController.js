@@ -13,7 +13,6 @@ const Zaposlenik = db.Zaposlenik
 //1. kreiranje korisnika (ovo radi zaposlenik)
 const addKorisnik = async (req, res) => {
     let info = {
-        ID_korisnika: req.body.ID_korisnika,
         Ime: req.body.Ime,
         Prezime: req.body.Prezime,
         Adresa: req.body.Adresa,
@@ -42,33 +41,34 @@ const getAllKorisnik = async (req, res) => {
 //3. preuzmi jednog korisnika 
 const getOneKorisnik = async (req, res) => {
 
-    let ID_korisnika = req.params.ID_korisnika
-    let korisnik = await Korisnik.findOne({ where: { ID_korisnika: ID_korisnika}})
+    let id = req.params.id
+    let korisnik = await Korisnik.findOne({ where: { id: id}})
     res.status(200).send(korisnik)
 }
 
 //4. ažuriraj profil klijenta (također ne treba ali da imamo u slučaju ažuriranja)
 const updateKorisnik = async (req, res) => {
-    let ID_korisnika = req.params.ID_korisnika
-    const korisnik = await Korisnik.update(req.body, {where: { ID_korisnika: ID_korisnika }})
+    let id = req.params.id
+    const korisnik = await Korisnik.update(req.body, {where: { id: id }})
     res.status(200).send(korisnik)
 }
 
 //5. brisanje klijenta profila po id 
 const deleteKorisnik = async (req, res) => {
 
-    let ID_korisnika = req.params.ID_korisnika
-    await Klijent.destroy({where: { ID_korisnika: ID_korisnika }})
+    let id = req.params.id
+    await Korisnik.destroy({where: { id: id }})
     res.send('Profil korisnika je obrisan!')
 }
-//veza ugovor-korisnik
-const getUgovorKorisnik = async (req, res) => {
+
+//veza korisnik-ugovor sa zahtjevom one to many
+const getKorisnikUgovor = async (req, res) => {
     const data = await Korisnik.findAll({
         include: [{
             model: Ugovor,
             as: 'Ugovor'
         }],
-        where: { ID_korisnika: 1}
+        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }
@@ -79,5 +79,5 @@ module.exports = {
     getOneKorisnik,
     updateKorisnik,
     deleteKorisnik,
-    getUgovorKorisnik
+    getKorisnikUgovor
 }

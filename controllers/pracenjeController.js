@@ -13,7 +13,6 @@ const Zaposlenik = db.Zaposlenik
 //1. kreiranje pracenja (ovo radi zaposlenik)
 const addPracenje = async (req, res) => {
     let info = {
-        ID_pracenje: req.body.ID_pracenje,
         ID_ugovor: req.body.ID_ugovor,
         ID_vozilo: req.body.ID_vozilo,
         Latitude: req.body.Latitude,
@@ -34,23 +33,23 @@ const getAllPracenje = async (req, res) => {
 //3. preuzmi jedno pracenje
 const getOnePracenje= async (req, res) => {
 
-    let ID_pracenje = req.params.ID_pracenje
-    let pracenje = await Pracenje.findOne({ where: { ID_pracenje: ID_pracenje}})
+    let id = req.params.id
+    let pracenje = await Pracenje.findOne({ where: { id: id}})
     res.status(200).send(pracenje)
 }
 
 //4. ažuriraj praćenje (također ne treba ali da imamo u slučaju ažuriranja)
 const updatePracenje = async (req, res) => {
-    let ID_pracenje = req.params.ID_pracenje
-    const pracenje = await Pracenje.update(req.body, {where: { ID_pracenje: ID_pracenje }})
+    let id = req.params.id
+    const pracenje = await Pracenje.update(req.body, {where: { id: id }})
     res.status(200).send(pracenje)
 }
 
 //5. brisanje pracenja po id (ako zatreba)
 const deletePracenje = async (req, res) => {
 
-    let ID_pracenje = req.params.ID_pracenje
-    await Pracenje.destroy({where: { ID_pracenje: ID_pracenje }})
+    let id = req.params.id
+    await Pracenje.destroy({where: { id: id }})
     res.send('Ovo praćenje je obrisano!')
 }
 

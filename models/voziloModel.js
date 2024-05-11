@@ -1,11 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
     const Vozilo = sequelize.define("Vozilo", {
-        ID_vozilo: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoincrement: true
-        },
         Marka: {
             type: DataTypes.STRING,
             allowNull: false
@@ -32,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
         Fotografija: {
-            type: DataTypes.BLOB
+            type: DataTypes.STRING
         }
     
     })

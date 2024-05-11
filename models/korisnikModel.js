@@ -1,11 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
     const Korisnik = sequelize.define("Korisnik", {
-        ID_korisnika: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoincrement: true
-        },
         Ime: {
             type: DataTypes.STRING,
             allowNull: false
@@ -38,10 +33,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
         Scan_vozacke: {
-            type: DataTypes.BLOB
+            type: DataTypes.STRING
         },
         Scan_osobne: {
-            type: DataTypes.BLOB
+            type: DataTypes.STRING
         }
     })
 

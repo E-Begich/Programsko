@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
     dbConfig.PASSWORD, {
         host: dbConfig.HOST,
         dialect: dbConfig.dialect,
-        operatorsAliases: false,
+        operatorsAliases: 0,
 
         pool: {
             max: dbConfig.pool.max,
@@ -49,8 +49,17 @@ db.sequelize.sync({ force: false })
     console.log('yes re-sync done!')
 })
 
-// veze has many i belongs to
-//veza vozilo-zahtjev - prvi dio nalazi se u vozilo controller a link u approuter
+//veza klijent-zahtjev -one to many
+db.Klijent_profil.hasMany(db.Zahtjev, {
+    foreignKey: 'ID_klijenta',
+    as: 'Zahtjev'
+})
+db.Zahtjev.belongsTo(db.Klijent_profil, {
+    foreignKey: 'ID_klijenta',
+    as: 'Klijent_profil'
+})
+
+//veza vozilo-zahtjev -one to many
 db.Vozilo.hasMany(db.Zahtjev, {
     foreignKey: 'ID_vozilo',
     as: 'Zahtjev'
@@ -60,16 +69,7 @@ db.Zahtjev.belongsTo(db.Vozilo, {
     as: 'Vozilo'
 })
 
-//veza klijent profil-zahtjev . prvi dio nalazi se u klijent profil controller a link u app router
-db.Klijent_profil.hasMany(db.Zahtjev, {
-    foreignKey: 'ID_klijenta',
-    as: 'Zahtjev'
-})
-db.Zahtjev.belongsTo(db.Klijent_profil, {
-    foreignKey: 'ID_klijenta',
-    as: 'Klijent_profil'
-})
-//veza vozilo-pracenje - glavni u vozilo kontroler drugi u approuter
+//veza vozilo-pracenje
 db.Vozilo.hasMany(db.Pracenje, {
     foreignKey: 'ID_vozilo',
     as: 'Pracenje'
@@ -78,7 +78,8 @@ db.Pracenje.belongsTo(db.Vozilo, {
     foreignKey: 'ID_vozilo',
     as: 'Vozilo'
 })
- //veza vozilo-ugovor - vozilo može imati više ugovora ali ugovor može imati samo jedno vozilo
+
+//veza vozilo-ugovor
 db.Vozilo.hasMany(db.Ugovor, {
     foreignKey: 'ID_vozilo',
     as: 'Ugovor'
@@ -87,6 +88,7 @@ db.Ugovor.belongsTo(db.Vozilo, {
     foreignKey: 'ID_vozilo',
     as: 'Vozilo'
 })
+
 //veza ugovor-pracenje
 db.Ugovor.hasMany(db.Pracenje, {
     foreignKey: 'ID_ugovor',
@@ -96,7 +98,8 @@ db.Pracenje.belongsTo(db.Ugovor, {
     foreignKey: 'ID_ugovor',
     as: 'Ugovor'
 })
-//veza ugovor-račun
+
+//veza ugovor-racun
 db.Ugovor.hasMany(db.Racun, {
     foreignKey: 'ID_ugovor',
     as: 'Racun'
@@ -106,14 +109,14 @@ db.Racun.belongsTo(db.Ugovor, {
     as: 'Ugovor'
 })
 
-//veza korisnik ugovor
+//veza korisnik-ugovor
 db.Korisnik.hasMany(db.Ugovor, {
-    foreignKey: 'ID_korisnika',
+    foreignKey: 'ID_korisnik',
     as: 'Ugovor'
 })
 db.Ugovor.belongsTo(db.Korisnik, {
-    foreignKey: 'ID_korisnika',
-    as: 'Korisnika'
+    foreignKey: 'ID_korisnik',
+    as: 'Korisnik'
 })
 
 //veza zaposlenik-ugovor
@@ -125,4 +128,5 @@ db.Ugovor.belongsTo(db.Zaposlenik, {
     foreignKey: 'ID_zaposlenik',
     as: 'Zaposlenik'
 })
+
 module.exports = db

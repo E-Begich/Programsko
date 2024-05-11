@@ -90,7 +90,7 @@ function Registracija() {
             toast.success('Registracija je uspješna.')
             navigate('/prijava');
         }).catch((err) => {
-            toast.error('Registracija neuspješna :' + err.message);
+            toast.error('Registracija neuspješna :' + err.message,);
         });
 
     }
@@ -175,6 +175,7 @@ function Registracija() {
                             value={lozinka}
                             onChange={(e) => setLozinka(e.target.value)}
                             type="password"
+                            autoComplete="off"
                         />
                     </Form.Group>
                     <br />
