@@ -6,11 +6,13 @@ import Vozila from './pages/Vozila';
 import Onama from './pages/Onama';
 import Prijava from './pages/Prijava';
 import Registracija from './pages/Registracija';
+import { ToastContainer } from 'react-bootstrap';
 
 function App() {
   return (
     <>
     <Header />
+    <ToastContainer theme='colored' position='top-center'></ToastContainer>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/vozila' element={<Vozila />} />
