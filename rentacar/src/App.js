@@ -6,6 +6,7 @@ import Vozila from './pages/Vozila';
 import Onama from './pages/Onama';
 import Prijava from './pages/Prijava';
 import Registracija from './pages/Registracija';
+import AdminPocetna from './pages/Admin/AdminPocetna';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,6 +22,7 @@ function App() {
         <Route path='/onama' element={<Onama />} />
         <Route path='/prijava' element={<Prijava />} />
         <Route path='/registracija' element={<Registracija />} />
+        <Route path='/AdminPocetna' element={<AdminPocetna />} />
       </Routes>
       <Footer />
     </>
