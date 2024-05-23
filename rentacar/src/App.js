@@ -9,8 +9,6 @@ import Prijava from './pages/Prijava';
 import Odjava from './pages/Odjava';
 import Registracija from './pages/Registracija';
 import AdminPocetna from './pages/Admin/AdminPocetna';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import AddPracenje from './pages/Admin/AddPracenje';
 import AddRacun from './pages/Admin/AddRacun';
 import AddUgovor from './pages/Admin/AddUgovor';
@@ -24,12 +22,15 @@ import EditVozilo from './pages/Admin/EditVozilo';
 import ShowUgovor from './pages/Admin/ShowUgovor';
 import ShowVozilo from './pages/Admin/ShowVozilo';
 import ShowZahtjeva from './pages/Admin/ShowZahtjeva';
+import KorisnikPocetna from './pages/Korisnik/KorisnikPocetna';
+import KorisnikEdit from './pages/Korisnik/KorisnikEdit';
+import KorisnikEditLozinka from './pages/Korisnik/KorisnikEditLozinka';
+import ShowZahtjevi from './pages/Korisnik/KorisnikEditLozinka';
 
 
 function App() {
   return (
     <>
-    <ToastContainer></ToastContainer>
     <Header />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -52,6 +53,10 @@ function App() {
         <Route path='/showugovor' element={<ShowUgovor />} />
         <Route path='/showvozilo' element={<ShowVozilo />} />
         <Route path='/showzahtjeva' element={<ShowZahtjeva />} />
+        <Route path='/KorisnikPocetna/:id' element={<KorisnikPocetna />} />
+        <Route path='/KorisnikEdit/:id' element={<KorisnikEdit />} />
+        <Route path='/KorisnikEditLozinka/:id' element={<KorisnikEditLozinka />} />
+        <Route path='/showZahtjevi/:id' element={<ShowZahtjevi />} />
       </Routes>
       <Footer />
     </>

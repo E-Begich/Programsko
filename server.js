@@ -1,5 +1,6 @@
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require("body-parser");
 
 const app = express()
 
@@ -11,8 +12,11 @@ const app = express()
 
 //ovdje je middleware
 //app.use(cors(corOptions))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+
 app.use(express.json())
-app.use(express.urlencoded({ extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 
 //routers - ovdje importamo fajl iz mape routes - ovdje koristimo url /api/profili/addKlijentProfil i ostale iz mape appRouter
@@ -20,7 +24,7 @@ const router = require('./routes/appRouter.js')
 app.use('/api/aplikacija', router)
 
 //folder za slike
-//app.use('/images', express.static('./images'))
+app.use('/Slike', express.static('./Slike'))
 
 //test API
 app.get('/', (req, res) => {

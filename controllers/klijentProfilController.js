@@ -59,12 +59,15 @@ const deleteKlijentPro = async (req, res) => {
 }
 //veza klijent profil sa zahtjevom one to many
 const getProfilZahtjev = async (req, res) => {
-    const data = await Klijent_profil.findAll({
+
+    const id = req.params.id
+
+    const data = await Klijent_profil.findOne({
         include: [{
             model: Zahtjev,
             as: 'Zahtjev'
         }],
-        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
+        where: { id: id } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }

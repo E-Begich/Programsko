@@ -12,8 +12,10 @@ const Zaposlenik = db.Zaposlenik
 
 //1. kreiranje zahtjeva (ovo radi registrirani odnosni prijavljeni klijent)
 const addZahtjev = async (req, res) => {
+
+    const id = req.params.id
     let info = {
-        ID_klijenta: req.body.ID_klijenta,
+        ID_klijenta: id,
         ID_vozilo: req.body.ID_vozilo,
         Datum_pocetka: req.body.Datum_pocetka,
         Datum_zavrsetka: req.body.Datum_zavrsetka,
@@ -59,5 +61,5 @@ module.exports = {
     getAllZahtjev,
     getOneZahtjev,
     updateZahtjev,
-    deleteZahtjev
+    deleteZahtjev,
 }

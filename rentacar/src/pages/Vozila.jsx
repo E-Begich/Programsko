@@ -35,7 +35,7 @@ function Vozila(){
             <Row>
             {
               vozila.map(Vozilo => {
-                return <Col key={Vozilo.ID_vozilo}>
+                return <Col md={6} lg={4} sm={12} key={Vozilo.id}>
                 <VoziloCard Vozilo={Vozilo}/>
                 </Col>
               })

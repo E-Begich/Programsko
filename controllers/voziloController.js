@@ -25,32 +25,32 @@ const addVozilo = async (req, res) => {
         Kilometri: req.body.Kilometri,
         Broj_sjedala: req.body.Broj_sjedala,
         Cijena_dan: req.body.Cijena_dan,
-        Fotografija: req.body.Fotografija// req.file.path
-} 
-//unutar ove naredbe kreiramo vozilo te ubacujemo u tablicu Vozilo podatke opisane u info
-const vozilo = await Vozilo.create(info)
-res.status(200).send(vozilo)
+        Fotografija: req.file.path //req.body.Fotografija // req.file.path
+    }
+    //unutar ove naredbe kreiramo vozilo te ubacujemo u tablicu Vozilo podatke opisane u info
+    const vozilo = await Vozilo.create(info)
+    res.status(200).send(vozilo)
 
 }
 
 //2. preuzimanje svih vozila
-const getAllVozilo= async (req, res) => {
+const getAllVozilo = async (req, res) => {
     let vozilo = await Vozilo.findAll({})
     res.send(vozilo)
 }
 
 //3. preuzmi jedno vozilo
-const getOneVozilo= async (req, res) => {
+const getOneVozilo = async (req, res) => {
 
     let id = req.params.id
-    let vozilo = await Vozilo.findOne({ where: { id: id}})
+    let vozilo = await Vozilo.findOne({ where: { id: id } })
     res.status(200).send(vozilo)
 }
 
 //4. ažuriraj vozilo 
 const updateVozilo = async (req, res) => {
     let id = req.params.id
-    const vozilo = await Vozilo.update(req.body, {where: { id: id }})
+    const vozilo = await Vozilo.update(req.body, { where: { id: id } })
     res.status(200).send(vozilo)
 }
 
@@ -58,45 +58,80 @@ const updateVozilo = async (req, res) => {
 const deleteVozilo = async (req, res) => {
 
     let id = req.params.id
-    await Vozilo.destroy({where: { id: id }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
+    await Vozilo.destroy({ where: { id: id } }) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
     res.send('Vozilo je obrisano!')
 }
 
 //veza Vozilo- Zahtjev sa zahtjevom one to many
 const getVoziloZahtjev = async (req, res) => {
-    const data = await Vozilo.findAll({
+
+    const id = req.params.id
+
+    const data = await Vozilo.findOne({
         include: [{
             model: Zahtjev,
             as: 'Zahtjev'
         }],
-        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
+        where: { id: id } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }
 
 //veza Vozilo- pracenje sa zahtjevom one to many
 const getVoziloPracenje = async (req, res) => {
-    const data = await Vozilo.findAll({
+
+    const id = req.params.id
+
+    const data = await Vozilo.FindOne({
         include: [{
             model: Pracenje,
             as: 'Pracenje'
         }],
-        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
+        where: { id: id } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }
 
 //veza Vozilo- ugovor sa zahtjevom one to many
 const getVoziloUgovor = async (req, res) => {
-    const data = await Vozilo.findAll({
+
+    const id = req.params.id
+
+    const data = await Vozilo.findOne({
         include: [{
             model: Ugovor,
             as: 'Ugovor'
         }],
-        where: { id: 2 } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
+        where: { id: id } //ovdje ide id iz prave tablice koju je sequelize sam kreirao
     })
     res.status(200).send(data);
 }
+
+//učitavanje slike
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        // cb(null, Date.now() + path.extname(file.originalname)) 
+        cb(null, 'Slike')
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)) 
+    }
+})
+
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: '1000000' },
+    fileFilter: (req, file, cb) => {
+        const fileTypes = /jpeg|jpg|png|gif/
+        const mimeType = fileTypes.test(file.mimetype)
+        const extname = fileTypes.test(path.extname(file.originalname))
+
+        if(mimeType && extname) {
+            return cb(null, true)
+        }
+        cb('Priloži ispravan format slike')
+    }
+}).single('Fotografija')
 
 module.exports = {
     addVozilo,
@@ -106,5 +141,7 @@ module.exports = {
     deleteVozilo,
     getVoziloZahtjev,
     getVoziloPracenje,
-    getVoziloUgovor
+    getVoziloUgovor,
+    upload
+
 }
