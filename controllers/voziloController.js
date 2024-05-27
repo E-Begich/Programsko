@@ -76,6 +76,13 @@ const getVoziloZahtjev = async (req, res) => {
     })
     res.status(200).send(data);
 }
+//ispis vozila po id-ju uz zahtjeva (veza)
+const testVoziloZahtjev = async (req, res) => {
+    const data = await Vozilo.find({});
+    data.map((Vozilo) => {
+        Vozilo.Zahtjev = Zahtjev.find({id: Zahtjev.ID_vozilo})
+    })
+}
 
 //veza Vozilo- pracenje sa zahtjevom one to many
 const getVoziloPracenje = async (req, res) => {
@@ -142,6 +149,7 @@ module.exports = {
     getVoziloZahtjev,
     getVoziloPracenje,
     getVoziloUgovor,
-    upload
+    upload,
+    testVoziloZahtjev
 
 }

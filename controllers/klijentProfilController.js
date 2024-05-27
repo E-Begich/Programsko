@@ -29,7 +29,7 @@ res.status(200).send(klijentPro)
 
 }
 
-//2. preuzimanje svih profila klijenata (ovo nam ne treba ali u slucaju neke nadogradnje da imamo spremnu funkciju)
+//2. preuzimanje svih profila klijenata (ovo nam treba za prijavu korisnika)
 const getAllKlijentPro = async (req, res) => {
     let korPro = await Klijent_profil.findAll({})
     res.send(korPro)
@@ -42,6 +42,7 @@ const getOneKlijentPro = async (req, res) => {
     let korPro = await Klijent_profil.findOne({ where: { id: id}})
     res.status(200).send(korPro)
 }
+
 
 //4. ažuriraj profil klijenta (također ne treba ali da imamo u slučaju ažuriranja)
 const updateKlijentPro = async (req, res) => {

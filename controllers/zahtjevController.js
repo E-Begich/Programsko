@@ -13,9 +13,8 @@ const Zaposlenik = db.Zaposlenik
 //1. kreiranje zahtjeva (ovo radi registrirani odnosni prijavljeni klijent)
 const addZahtjev = async (req, res) => {
 
-    const id = req.params.id
     let info = {
-        ID_klijenta: id,
+        ID_klijenta: req.body.ID_klijenta,
         ID_vozilo: req.body.ID_vozilo,
         Datum_pocetka: req.body.Datum_pocetka,
         Datum_zavrsetka: req.body.Datum_zavrsetka,
@@ -55,6 +54,7 @@ const deleteZahtjev = async (req, res) => {
     await Zahtjev.destroy({where: { id: id }}) //znaci prvo ide id iz tablice pa onda ovdje kreiran const id
     res.send('Zahtjev je obrisan!')
 }
+
 
 module.exports = {
     addZahtjev,
