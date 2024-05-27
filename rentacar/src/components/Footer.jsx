@@ -10,6 +10,7 @@ const Footer = () => {
       <li className="nav-item"><NavLink className="nav-link px-2 text-muted" to="/">Početna</NavLink></li>
       <li className="nav-item"><NavLink className="nav-link px-2 text-muted" to="/Vozila">Vozila</NavLink></li>
       <li className="nav-item"><NavLink className="nav-link px-2 text-muted" to="/Onama">O nama</NavLink></li>
+      <li className="nav-item"><NavLink className="nav-link px-2 text-muted" to="/adminPrijava">Zaposlenik </NavLink></li>
     </ul>
     <p className="text-center text-muted">copyright @  2024 made by DariaiEmina</p>
   </footer>

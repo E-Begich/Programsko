@@ -19,7 +19,7 @@ const ShowUgovor = () => {
     }
     getAllUgovor()
 
-  }, []) 
+  }) 
 
 
   return (

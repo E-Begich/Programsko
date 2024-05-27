@@ -110,6 +110,8 @@ const ShowZahtjevi = () => {
                                                         <Card.Text><b>Datum početka:</b> {Zahtjev.Datum_pocetka} || <b>Datum završetka:</b> {Zahtjev.Datum_zavrsetka} </Card.Text>
                                                         <Card.Text><b>Napomena:</b> {Zahtjev.Napomena}</Card.Text>
                                                         <Card.Text><b>Marka:</b> {marka} || <b>Model:</b> {model}</Card.Text>
+                                                        <hr/>
+                                                        <hr/>
                                                         </p>         
                                     })
                                     

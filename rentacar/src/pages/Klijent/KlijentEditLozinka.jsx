@@ -95,6 +95,7 @@ const KlijentEditLozinka = () => {
                   <Form.Control
                     value={lozinka}
                     onChange={(e) => setLozinka(e.target.value)}
+                    disabled
                     type="password"
                   />
                 </Form.Group>

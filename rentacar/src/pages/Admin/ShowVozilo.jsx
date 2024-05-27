@@ -19,7 +19,7 @@ const ShowVozila = () => {
     }
     getAllVozilo()
 
-  }, []) 
+  }) 
 
 
   return (

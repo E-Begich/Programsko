@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from 'react-router';
-import { Container, Button, Form, Card, Row, Col } from "react-bootstrap";
-import { Link, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router';
+import { Container, Card, Row, Col } from "react-bootstrap";
 import { toast } from 'react-toastify';
 
 const KlijentZahtjev = () => {
     const { id } = useParams()
-    const navigate = useNavigate()
 
+    //za preuzimanje podataka iz tablice Vozilo
     const [marka, setMarka] = useState('')
     const [model, setModel] = useState('')
     const [godina, setGodina] = useState('')
@@ -19,6 +18,14 @@ const KlijentZahtjev = () => {
     const [cijenaDan, setCijenaDan] = useState('')
     const [fotografija, setFotografija] = useState('')
 
+    //ovdje se uzimaju parametri iz forme a vezani su za id automobila i klijenta kako bi se poslao upit
+    const [idVozilo, setIdVozilo] = useState('')
+    const [idKlijent, setIdKlijent] = useState('')
+
+    //za uzimanje podataka iz forme
+    const [datumPocetka, setDatumPocetka] = useState('')
+    const [datumZavrsetka, setDatumZavrsetka] = useState('')
+    const [napomena, setNapomena] = useState('')
 
     useEffect(() => {
 
@@ -40,8 +47,24 @@ const KlijentZahtjev = () => {
 
     }, [id])
 
+    const sendHandler = async (e) => {
 
+        e.preventDefault()
 
+        const data = {
+            ID_klijenta: id,
+            ID_vozilo: id,
+            Datum_pocetka: datumPocetka,
+            Datum_zavrsetka: datumZavrsetka,
+            Napomena: napomena,
+          }
+
+          await axios.post(`/api/aplikacija/addZahtjev`, data)
+          toast.success('Zahtjev uspješno poslan!')
+          setDatumPocetka("")
+          setDatumZavrsetka("")
+          setNapomena("")
+    }
     return (
         <>
             <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
@@ -61,32 +84,32 @@ const KlijentZahtjev = () => {
                             <br />
                             <br />
                             <br />
-                            <form className="container">
+                            <form className="container" onSubmit={sendHandler}>
                                 <h1 className="d-grid gap-2 col-6 mx-auto">Pošalji upit.</h1>
                                 <hr />
                                 <div className="form-group">
                                     <label>Id vozila: <span className="errmsg">*</span></label>
-                                    <input type="text" className="form-control" disabled value={id}/>
+                                    <input type="text" className="form-control" disabled value={id}  onChange={(e) => setIdVozilo(e.target.value)}/>
                                 </div>
                                 <br />
                                 <div className="form-group">
                                     <label>Id korisnika: <span className="errmsg">*</span></label>
-                                    <input type="text" className="form-control" disabled value={id}/>
+                                    <input type="text" className="form-control" disabled value={id}  onChange={(e) => setIdKlijent(e.target.value)}/>
                                 </div>
                                 <br />
                                 <div className="form-group">
                                     <label>Datum početka: <span className="errmsg">*</span></label>
-                                    <input type="date" className="form-control" />
+                                    <input type="date" className="form-control" value={datumPocetka} onChange={(e)=> setDatumPocetka(e.target.value)} />
                                 </div>
                                 <br />
                                 <div className="form-group">
                                     <label>Datum završetka: <span className="errmsg">*</span></label>
-                                    <input type="date" className="form-control" />
+                                    <input type="date" className="form-control" value={datumZavrsetka} onChange={(e)=> setDatumZavrsetka(e.target.value)} />
                                 </div>
                                 <br />
                                 <div className="form-group">
                                     <label>Napomena: <span className="errmsg">*</span></label>
-                                    <input type="text" className="form-control" />
+                                    <input type="text" className="form-control" value={napomena} onChange={(e)=> setNapomena(e.target.value)}/>
                                 </div>
                                 <br />
                                 <div className="d-grid gap-2 col-6 mx-auto">

@@ -19,7 +19,7 @@ const ShowPracenje = () => {
     }
     getAllPracenje()
 
-  }, []) 
+  }) 
 
 
   return (
