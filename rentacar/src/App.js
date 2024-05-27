@@ -26,6 +26,7 @@ import KlijentEdit from './pages/Klijent/KlijentEdit';
 import KlijentEditLozinka from './pages/Klijent/KlijentEditLozinka';
 import KlijentPocetna from './pages/Klijent/KlijentPocetna';
 import ShowZahtjevi from './pages/Klijent/ShowZahtjevi';
+import KlijentZahtjev from './pages/Klijent/KlijentZahtjev';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -60,6 +61,7 @@ function App() {
         <Route path='/klijentEdit/:id' element={<KlijentEdit />} />
         <Route path='/klijentEditLozinka/:id' element={<KlijentEditLozinka />} />
         <Route path='/klijentPocetna/:id' element={<KlijentPocetna />} />
+        <Route path='/klijentZahtjev/:id' element={<KlijentZahtjev />} />
       </Routes>
       <Footer />
     </div>

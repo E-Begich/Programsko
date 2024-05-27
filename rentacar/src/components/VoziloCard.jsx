@@ -9,7 +9,10 @@ const VoziloCard = ( { Vozilo }) => {
                 <div className="card-body text-center">
                     <h5 className="card-title">{Vozilo.Marka} {Vozilo.Model}</h5>
                     <p className="lead">Cijena po danu: {Vozilo.Cijena_dan}€</p>
-                    <NavLink to={`/aboutVozilo/${Vozilo.id}`} className="btn btn-outline-dark"><span className="fa-regular fa-magnifying-glass " ></span>Pogledaj vozilo</NavLink>
+                    <NavLink to={`/showVozilo/${Vozilo.id}`} className="btn btn-outline-dark"><span className="fa-regular fa-magnifying-glass " ></span>Pogledaj detalje o vozilu</NavLink>
+                    <br />
+                    <br />
+                    <NavLink to={`/klijentZahtjev/${Vozilo.id}`} className="btn btn-outline-dark"><span className="fa-regular fa-magnifying-glass " ></span>Pošalji zahtjev</NavLink>
                 </div>
 </div>
     </>
