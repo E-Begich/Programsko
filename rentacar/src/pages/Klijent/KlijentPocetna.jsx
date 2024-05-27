@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
 
-const KorisnikPocetna = () => {
+const KlijentPocetna = () => {
   const { id } = useParams()
 
   const [ime, setIme] = useState('')
@@ -63,11 +63,11 @@ const KorisnikPocetna = () => {
               <br />
               <br />
               <NavLink className="nav-link">
-                <Link to={`/korisnikEdit/${id}`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
+                <Link to={`/klijentEdit/${id}`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
               </NavLink>
-              <a className="nav-link">
-                <Link to={`/korisnikEdit/${id}`} className="btn btn-outline-dark btn-lg">Promijeni lozinku</Link>
-              </a>
+              <div className="nav-link">
+                <Link to={`/klijentEditLozinka/${id}`} className="btn btn-outline-dark btn-lg">Promijeni lozinku</Link>
+              </div>
 
             </nav>
           </div>
@@ -115,4 +115,4 @@ const KorisnikPocetna = () => {
   )
 }
 
-export default KorisnikPocetna
+export default KlijentPocetna

@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { useParams } from 'react-router'
 import axios from 'axios'
 
+
 const ShowZahtjevi = () => {
 
     const { id } = useParams()
@@ -17,12 +18,14 @@ const ShowZahtjevi = () => {
     const [zahtjevi, setZahtjev] = useState([])
 
     //podaci iz tablice vozilo
-    const [vozila, setVozilo] = useState([])
+    const [model, setModel] = useState('')
+    const [marka, setMarka] = useState('')
+
 
     useEffect(() => {
 
         const getProfilZahtjev = async () => {
-            const { data } = await axios.get(`/api/aplikacija/${id}`)
+            const { data } = await axios.get(`/api/aplikacija/getProfilZahtjev/${id}`)
             console.log(data)
 
             setIme(data.Ime)
@@ -31,12 +34,25 @@ const ShowZahtjevi = () => {
 
             // podaci iz tablice Zahtjev
             setZahtjev(data.Zahtjev) //ovdje ide naziv tablice u ovom slučaju Zahtjev
-
-            //podaci iz tablice Vozilo
-            setVozilo(data.Vozilo)
-
         }
         getProfilZahtjev()
+
+    }, [id])
+
+    //funkcija testVoziloZahtjev u voziloController gdje pretražuje id vozila (u tablici vozila) i id_vozila kao vanjski ključ u tablici zahtjev i ispisuje iste redove
+    useEffect(() => {
+
+        const testVoziloZahtjev = async () => {
+            const { data } = await axios.get(`/api/aplikacija/testVoziloZahtjev/${id}`)
+            console.log(data)
+
+            setMarka(data.Marka)
+            setModel(data.Model)
+
+            // podaci iz tablice Zahtjev
+            setVozilo(data.Vozilo) //ovdje ide naziv tablice u ovom slučaju Zahtjev
+        }
+        testVoziloZahtjev()
 
     }, [id])
 
@@ -67,11 +83,12 @@ const ShowZahtjevi = () => {
                             <br />
                             <br />
                             <NavLink className="nav-link">
-                                <Link to={`/korisnikEdit/${id}`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
+                                <Link to={`/klijentEdit/${id}`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
                             </NavLink>
-                            <a className="nav-link">
-                                <Link to={`/korisnikEdit/${id}`} className="btn btn-outline-dark btn-lg">Promijeni lozinku</Link>
-                            </a>
+                            <div className="nav-link">
+                                <Link to={`/klijentEditLozinka/${id}`} className="btn btn-outline-dark btn-lg">Promijeni lozinku</Link>
+                            </div>
+
 
                         </nav>
                     </div>
@@ -80,7 +97,23 @@ const ShowZahtjevi = () => {
                             <Row>
                                 <Card className=' m-3 p-2 rounded card text-left'>
                                     <Card.Body>
+                                    {zahtjevi.length > 0 ? (
+                                    zahtjevi.map(Zahtjev => {
+                                        //ovdje se preuzima zahtjevi iz gore napravljenog const [zahtjevi, setZahtjev] = useState([])
+                                        //zatim Zahtjev iz setZahtjev(data.Zahtjev) gdje je Zahtjev naziv tablice
+                                        //nakon toga uzimaju se polja iz tablice Zahtjev a to su Datum_pocetka, Datum_zavrsetka i Napomena
+                                            return <p key={Zahtjev.id}>
 
+                                                        <Card.Text><b>Ime:</b> {ime} || <b>Prezime:</b> {prezime} || <b>Korisničko ime:</b> {kor_ime}</Card.Text>
+                                                        <Card.Text><b>Zahtjev broj:</b> {Zahtjev.id}</Card.Text>
+                                                        <Card.Text><b>Datum početka:</b> {Zahtjev.Datum_pocetka} || <b>Datum završetka:</b> {Zahtjev.Datum_zavrsetka} </Card.Text>
+                                                        <Card.Text><b>Napomena:</b> {Zahtjev.Napomena}</Card.Text>
+                                                        <Card.Text><b>Marka:</b> {marka} || <b>Model:</b> {model}</Card.Text>
+                                                        </p>         
+                                    })
+                                    
+                                    
+                                ) : (<p> Ovaj korisnik još uvijek nema zahtjeva!</p>)}
 
                                     </Card.Body>
                                 </Card>
