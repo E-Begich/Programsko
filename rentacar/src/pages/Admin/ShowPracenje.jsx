@@ -4,20 +4,20 @@ import { useParams } from 'react-router';
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
 
-const ShowZahtjeva = () => {
+const ShowPracenje = () => {
   const { id } = useParams()
 
-  const [zahtjev, setZahtjev] = useState([]); 
+  const [pracenje, setPracenje] = useState([]); 
 
   useEffect(() => {
 
-    const getAllZahtjev = async () => {
-      const { data } = await axios.get('/api/aplikacija/getAllZahtjev')
+    const getAllPracenje = async () => {
+      const { data } = await axios.get('/api/aplikacija/getAllPracenje')
       console.log(data)
-      setZahtjev(data)
+      setPracenje(data)
 
     }
-    getAllZahtjev()
+    getAllPracenje()
 
   }, []) 
 
@@ -28,7 +28,7 @@ const ShowZahtjeva = () => {
         <div className="row">
           <div className="col"></div>
           <div className="col">
-            <h1>Popis zahtjeva</h1>
+            <h1>Popis pracenja</h1>
           </div>
           <div className="col">
           </div>
@@ -40,10 +40,10 @@ const ShowZahtjeva = () => {
               <Link to={`/showVozilo/${id}`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
               </NavLink>
               <NavLink className="nav-link">
-                <Link to={`/addUgovor/${id}`} className="btn btn-outline-dark btn-lg">Kreiraj ugovor</Link>
+              <Link to={`/showZahtjevi/${id}`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-                <Link to={`/addPracenje/${id}`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
+              <Link to={`/addUgovor/${id}`} className="btn btn-outline-dark btn-lg">Kreiraj ugovor</Link>
               </NavLink>
               <br />
               <br />
@@ -53,18 +53,18 @@ const ShowZahtjeva = () => {
           <div className="col-8">
             <Container>
               <Row>
-                {zahtjev.length > 0 ? ( 
+                {pracenje.length > 0 ? ( 
 
-                  zahtjev.map(Zahtjev => {
-                    return <Col md={6} lg={4} sm={12} key={Zahtjev.id}>
-                      <Card.Text><b>Datum_pocetka:</b> {Zahtjev.Datum_pocetka}</Card.Text> 
-                      <Card.Text><b>Datum_zavrsetka:</b> {Zahtjev.Datum_zavrsetka} </Card.Text>
+                  pracenje.map(Pracenje => {
+                    return <Col md={6} lg={4} sm={12} key={Pracenje.id}>
+                      <Card.Text><b>Latitude:</b> {Pracenje.Latitude}</Card.Text> 
+                      <Card.Text><b>Longitude:</b> {Pracenje.Longitude} </Card.Text>
                     </Col>
 
 
                   })
                 ) : (
-                  <p> Nema unesenih zahtjeva!</p>)}
+                  <p> Nema unesenih pracenja!</p>)}
                 
                     
               </Row>
@@ -77,4 +77,4 @@ const ShowZahtjeva = () => {
   )
 }
 
-export default ShowZahtjeva
+export default ShowPracenje

@@ -87,7 +87,7 @@ return (
           <Form.Label>Id_korisnik</Form.Label>
           <Form.Control 
           value={id_korisnik}
-          onChange={(e) => setId_zaposlenik(e.target.value)}
+          onChange={(e) => setId_korisnik(e.target.value)}
           type="number" />
       </Form.Group>
 

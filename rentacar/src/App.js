@@ -22,6 +22,7 @@ import EditVozilo from './pages/Admin/EditVozilo';
 import ShowUgovor from './pages/Admin/ShowUgovor';
 import ShowVozilo from './pages/Admin/ShowVozilo';
 import ShowZahtjeva from './pages/Admin/ShowZahtjeva';
+import ShowPracenje from './pages/Admin/ShowPracenje';
 import KlijentEdit from './pages/Klijent/KlijentEdit';
 import KlijentEditLozinka from './pages/Klijent/KlijentEditLozinka';
 import KlijentPocetna from './pages/Klijent/KlijentPocetna';
@@ -57,6 +58,7 @@ function App() {
         <Route path='/showugovor' element={<ShowUgovor />} />
         <Route path='/showvozilo' element={<ShowVozilo />} />
         <Route path='/showzahtjeva' element={<ShowZahtjeva />} />
+        <Route path='/showpracenje' element={<ShowPracenje />} />
         <Route path='/showZahtjevi/:id' element={<ShowZahtjevi />} />
         <Route path='/klijentEdit/:id' element={<KlijentEdit />} />
         <Route path='/klijentEditLozinka/:id' element={<KlijentEditLozinka />} />
