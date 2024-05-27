@@ -7,37 +7,19 @@ import { Link, NavLink } from 'react-router-dom';
 const ShowVozila = () => {
   const { id } = useParams()
 
-    const [marka, setMarka] = useState('');
-    const [model, setModel] = useState('');
-    const [godina, setGodina] = useState('');
-    const [radni_obujam, setRadni_obujam] = useState('');
-    const [vrsta_motora, setVrsta_motora] = useState('');
-    const [kilometri, setKilometri] = useState('');
-    const [broj_sjedala, setBroj_sjedala] = useState('');
-    const [cijena_dan, setCijena_dan] = useState('');
-    const [fotografija, setFotografija] = useState('');
+  const [vozilo, setVozilo] = useState([]); //Emina: ovdje tu je use state kako bi preuzela listu vozila koje trebaš ispisati
 
   useEffect(() => {
 
     const getAllVozilo = async () => {
-      const { data } = await axios.get(`/api/aplikacija/getAllVozilo/${id}`)
-      console.log(data)
-
-
-      setMarka(data.Marka)
-      setModel(data.Model)
-      setGodina(data.Godina)
-      setRadni_obujam(data.Radni_obujam)
-      setVrsta_motora(data.Vrsta_motora)
-      setKilometri(data.Kilometri)
-      setBroj_sjedala(data.Broj_sjedala)
-      setCijena_dan(data.Cijena_dan)
-      setFotografija(data.Fotografija)
+      const { data } = await axios.get('/api/aplikacija/getAllVozilo') //Emina: ovdje pozivaš putem apija sva vozila, sve informacije o svakom vozilu
+      console.log(data) //Emina: ovo ti je za ispis u konzoli na pregledniku da znas u slucaju ako nesto ne valja da mozes vidjeti sta ne valja
+      setVozilo(data) //Emina: ovdje spremaš podatke o svakom vozilu posebno
 
     }
     getAllVozilo()
 
-  }, [id])
+  }, []) //Emina: ovo označavaš jer ispisujesš listu automobila (marka, model, obujam)m itd
 
 
   return (
@@ -71,40 +53,22 @@ const ShowVozila = () => {
           <div className="col-8">
             <Container>
               <Row>
-                <Col md={8} lg={8} sm={8}>
-                  <Card className=' m-3 p-2 rounded card text-left'>
-                    <Card.Body>
-                      <Card.Text>
-                        Marka: {marka}
-                      </Card.Text>
-                      <Card.Text>
-                        Model: {model}
-                      </Card.Text>
-                      <Card.Text>
-                        Godina: {godina}
-                      </Card.Text>
-                      <Card.Text>
-                        Radni obujam: {radni_obujam}
-                      </Card.Text>
-                      <Card.Text>
-                        Vrsta motora: {vrsta_motora}
-                      </Card.Text>
-                      <Card.Text>
-                        Kilometri: {kilometri}
-                      </Card.Text>
-                      <Card.Text>
-                        Broj sjedala: {broj_sjedala}
-                      </Card.Text>
-                      <Card.Text>
-                        Cijena dan: {cijena_dan}
-                      </Card.Text>
-                      <Card.Text>
-                        Fotografija: {fotografija}
-                      </Card.Text>
-                      <br />
-                    </Card.Body>
-                  </Card>
-                </Col>
+                {vozilo.length > 0 ? ( //Emina: ovdje provjeravaš ima li u listi odnosno bazi upisanih vozila
+                  //Emina: ovdje moraš poznati map jer imaš listu vozila a ne jedno da ti odvrti petlju i ispiše sve..ti si bila napisala da ti ispiše samo jedno vozilo
+                  //Emina: return <Col md={6} lg={4} sm={12} key={vozilo.id}>, ovdje moraš napisati da tražiš automobile po id
+                  //Emina: u card text upisuješ naziv tablice iz baze.naziv stupca u bazi 
+                  vozilo.map(Vozilo => {
+                    return <Col md={6} lg={4} sm={12} key={Vozilo.id}>
+                      <Card.Text><b>Model:</b> {Vozilo.Model}</Card.Text> 
+                      <Card.Text><b>Marka:</b> {Vozilo.Marka} </Card.Text>
+                    </Col>
+
+
+                  })
+                ) : (
+                  <p> Nema unesenih vozila!</p>)}
+                
+                    
               </Row>
             </Container>
           </div>

@@ -78,12 +78,12 @@ const ShowZahtjevi = () => {
                     <div className="col-8">
                         <Container>
                             <Row>
-                            <Card className=' m-3 p-2 rounded card text-left'>
-                            <Card.Body>
+                                <Card className=' m-3 p-2 rounded card text-left'>
+                                    <Card.Body>
 
 
-  </Card.Body>
-                                                </Card>
+                                    </Card.Body>
+                                </Card>
                             </Row>
                         </Container>
                     </div>
