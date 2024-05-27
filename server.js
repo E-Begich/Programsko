@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require("body-parser");
 
+
 const app = express()
 
 //var corOptions = {
@@ -20,7 +21,9 @@ app.use(express.urlencoded({ extended: true }))
 
 
 //routers - ovdje importamo fajl iz mape routes - ovdje koristimo url /api/profili/addKlijentProfil i ostale iz mape appRouter
-const router = require('./routes/appRouter.js')
+const router = require('./routes/appRouter.js');
+const korisnikModel = require('./models/korisnikModel.js');
+const { Klijent_profil } = require('./models/index.js');
 app.use('/api/aplikacija', router)
 
 //folder za slike

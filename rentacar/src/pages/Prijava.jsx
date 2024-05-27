@@ -1,118 +1,94 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import { Button, Form } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router';
-import AuthContext from "../context/AuthProvider";
 
-const LOGIN_URL = '/auth';
 
-const  Prijava = () => {
-    const { setAuth } = useContext(AuthContext);
-    const userRef = useRef();
-    const errRef = useRef();
+const Prijava = () => {
+    const { id } = useParams()
+    const navigate = useNavigate()
 
     const [kor_ime, setKor_ime] = useState('');
     const [lozinka, setLozinka] = useState('');
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        userRef.current.focus();
-    }, [])
+        //preuzimanje podataka
+        const getOneKlijentPro = async () => {
+          const { data } = await axios.get(`/api/aplikacija/getOneKlijentPro/${id}`)
+          console.log(data)
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [kor_ime, lozinka])
+          setKor_ime(data.Kor_ime)
+          setLozinka(data.Lozinka)
+    
+        }
+        getOneKlijentPro()
+    
+      }, [id])
 
-    const handleSubmit = async (e) => {
+    async function handleLogin (e) {
         e.preventDefault();
 
-        try {
-            const response = await axios.post(LOGIN_URL, 
-                JSON.stringify({ kor_ime, lozinka }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            );
-            console.log(JSON.stringify(response?.data));
-            console.log(JSON.stringify(response));
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setAuth({ kor_ime, lozinka, roles, accessToken });
-            setKor_ime('');
-            setLozinka('');
-            setSuccess(true);
+        if (validate()) {
+            fetch("/api/aplikacija/getOneKlijentPro/" + id, {
+                    method: "GET",
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify()
+                }).then((resp)=>{
+                    console.log(resp);
+                    navigate(`/klijentPocetna/${id}`)
+                }).catch((err)=>{
+                    toast.error('Greška :' +err.message);
+                });
+            
+            } 
+
+
+        
+    }
+
+    //provjerava jesu li polja za upis korisnickog imena i lozinke prazna ili ne
+    const validate = () => {
+        let result = true;
+
+        if (kor_ime === '' || kor_ime === null) {
+            result = false;
+            toast.warning('Unesi korisničko ime')
         }
-
-        catch (err) {
-            if (!err?.response) {
-                setErrMsg('nema odgovora od strane servera');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Nedostaje lozinka ili korisničko ime');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Neautorizirano');
-            } else {
-                setErrMsg('Greška kod prijave');
-            }
-            errRef.current.focus();
+        if (lozinka === '' || lozinka === null) {
+            result = false;
+            toast.warning('Unesi lozinku')
         }
-    
+        return result;
+    }
 
-}
 
-
-return (
-    <div>
-                    {success ? (
-                <section>
-                    <h1>You are logged in!</h1>
+    return (
+        <>
+            <div className="d-grid gap-2 col-6 mx-auto">
+                <h1 className="d-grid gap-2 col-6 mx-auto">Prijava</h1>
+                <hr />
+                <form onSubmit={handleLogin}>
+                    <div className="form-group">
+                        <label>Korisničko ime: <span className="errmsg">*</span> </label>
+                        <input value={kor_ime} onChange={e => setKor_ime(e.target.value)} className="form-control" />
+                    </div>
+                    <div className="form-group">
+                        <label>Lozinka: <span className="errmsg">*</span> </label>
+                        <input type="password" value={lozinka} onChange={e => setLozinka(e.target.value)} className="form-control" autoComplete="on" />
+                    </div>
                     <br />
-                    <p>
-                        <a href="#">Go to Home</a>
-                    </p>
-                </section>
-            ) : (
-        <Container className="d-grid gap-2 col-6 mx-auto">
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1 className="d-grid gap-2 col-6 mx-auto">Prijava</h1>
-            <hr />
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb3" controlId="kor_ime">
-                    <Form.Label >Korisničko ime: <span className="errmsg">*</span></Form.Label>
-                    <Form.Control
-                        ref={userRef}
-                        autoComplete="off"
-                        value={kor_ime}
-                        onChange={(e) => setKor_ime(e.target.value)}
-                        type="text"
-                        required
-                    />
-                </Form.Group>
-                <br />
-                <Form.Group className="mb3" controlId="lozinka">
-                    <Form.Label>Lozinka: <span className="errmsg">*</span></Form.Label>
-                    <Form.Control
-                        value={lozinka}
-                        autoComplete="off"
-                        onChange={(e) => setLozinka(e.target.value)}
-                        type="password"
-                        required
-                    />
-                </Form.Group>
-                <br />
-                <div className="d-grid gap-2 col-6 mx-auto">
-                    <Button variant="btn btn-outline-dark ms-2" type="submit">
-                        Prijavi se
-                    </Button>
-                    <Link to={`/registracija`} className="btn btn-primary ms-2">Nemaš račun? Registriraj se ovdje</Link>
-                </div>
-            </Form>
-        </Container>
-            )}
-    </div>
-)
+                    <div className="d-grid gap-2 col-6 mx-auto">
+                        <button className="btn btn-outline-dark ms-2" type="submit">
+                            Prijavi se
+                        </button>
+                        <Link to={`/registracija`} className="btn btn-primary ms-2">Novi korisnik? Registriraj se ovdje</Link>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </>
+    )
 }
 export default Prijava;

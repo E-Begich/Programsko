@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import {useState} from 'react';
+import "./App.css"
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -22,15 +22,18 @@ import EditVozilo from './pages/Admin/EditVozilo';
 import ShowUgovor from './pages/Admin/ShowUgovor';
 import ShowVozilo from './pages/Admin/ShowVozilo';
 import ShowZahtjeva from './pages/Admin/ShowZahtjeva';
-import KorisnikPocetna from './pages/Korisnik/KorisnikPocetna';
-import KorisnikEdit from './pages/Korisnik/KorisnikEdit';
-import KorisnikEditLozinka from './pages/Korisnik/KorisnikEditLozinka';
-import ShowZahtjevi from './pages/Korisnik/KorisnikEditLozinka';
+import KlijentEdit from './pages/Klijent/KlijentEdit';
+import KlijentEditLozinka from './pages/Klijent/KlijentEditLozinka';
+import KlijentPocetna from './pages/Klijent/KlijentPocetna';
+import ShowZahtjevi from './pages/Klijent/ShowZahtjevi';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
   return (
-    <>
+    <div className='App'>
+      <ToastContainer></ToastContainer>
     <Header />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -53,13 +56,13 @@ function App() {
         <Route path='/showugovor' element={<ShowUgovor />} />
         <Route path='/showvozilo' element={<ShowVozilo />} />
         <Route path='/showzahtjeva' element={<ShowZahtjeva />} />
-        <Route path='/KorisnikPocetna/:id' element={<KorisnikPocetna />} />
-        <Route path='/KorisnikEdit/:id' element={<KorisnikEdit />} />
-        <Route path='/KorisnikEditLozinka/:id' element={<KorisnikEditLozinka />} />
         <Route path='/showZahtjevi/:id' element={<ShowZahtjevi />} />
+        <Route path='/klijentEdit/:id' element={<KlijentEdit />} />
+        <Route path='/klijentEditLozinka/:id' element={<KlijentEditLozinka />} />
+        <Route path='/klijentPocetna/:id' element={<KlijentPocetna />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

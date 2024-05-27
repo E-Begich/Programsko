@@ -21,6 +21,7 @@ const ShowZahtjevi = () => {
     const [model, setModel] = useState('')
     const [marka, setMarka] = useState('')
 
+    const [vozila, setVozilo] = useState([])
 
     useEffect(() => {
 

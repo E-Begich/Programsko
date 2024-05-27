@@ -54,7 +54,7 @@ router.put('/updateVozilo/:id', voziloController.upload , voziloController.updat
 router.delete('/deleteVozilo/:id', voziloController.deleteVozilo);
 
 //rute za tablicu zahtjev
-router.post('/addZahtjev/:id', zahtjevController.addZahtjev);
+router.post('/addZahtjev', zahtjevController.addZahtjev);
 router.get('/getAllZahtjev', zahtjevController.getAllZahtjev);
 router.get('/getOneZahtjev/:id', zahtjevController.getOneZahtjev);
 router.put('/updateZahtjev/:id', zahtjevController.updateZahtjev);
@@ -70,7 +70,8 @@ router.delete('/deleteZaposlenik/:id', zaposlenikController.deleteZaposlenik);
 //veza klijent_profil-zahtjev
 router.get('/getProfilZahtjev/:id', klijentProfilController.getProfilZahtjev);
 //veza vozilo-zahtjev
-router.get('/getVoziloZahtjev', voziloController.getVoziloZahtjev);
+router.get('/getVoziloZahtjev/:id', voziloController.getVoziloZahtjev);
+router.get('/testVoziloZahtjev/:id', voziloController.getVoziloZahtjev);
 //veza vozilo pracenje
 router.get('/getVoziloPracenje', voziloController.getVoziloPracenje);
 //veza vozilo-ugovor
