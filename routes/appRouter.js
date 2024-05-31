@@ -15,6 +15,7 @@ const router = require('express').Router()
 router.post('/addKlijentProfil', klijentProfilController.addKlijentProfil);
 router.get('/getAllKlijentPro', klijentProfilController.getAllKlijentPro);
 router.get('/getOneKlijentPro/:id', klijentProfilController.getOneKlijentPro);
+router.get('/getKlijentEmail/:Email', klijentProfilController.getKlijentEmail)
 router.put('/updateKlijentPro/:id', klijentProfilController.updateKlijentPro);
 router.delete('/deleteKlijentPro/:id', klijentProfilController.deleteKlijentPro);
 

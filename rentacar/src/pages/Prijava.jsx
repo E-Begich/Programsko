@@ -1,48 +1,43 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
 
 
 const Prijava = () => {
-    const { id } = useParams()
     const navigate = useNavigate()
-
-    const [kor_ime, setKor_ime] = useState('');
+ //ovdje se preuzimaju podaci iz forme a to su email i lozinka
+    const [email, setEmail] = useState('');
     const [lozinka, setLozinka] = useState('');
 
-    useEffect(() => {
-        //preuzimanje podataka
-        const getOneKlijentPro = async () => {
-          const { data } = await axios.get(`/api/aplikacija/getOneKlijentPro/${id}`)
-          console.log(data)
 
-          setKor_ime(data.Kor_ime)
-          setLozinka(data.Lozinka)
-    
-        }
-        getOneKlijentPro()
-    
-      }, [id])
-
+//unutar fukcije poziva se api koji je napravljen za pretraživanje emailova unutar relacije klijent_profil
+//ovdje se događa to da funkcija preuzima podatke iz forme i uspoređuje ih sa podacima u relaciji 
+//i sukladno tome daje pristup ostatku aplikacije, ili ne
     async function handleLogin (e) {
         e.preventDefault();
 
         if (validate()) {
-            fetch("/api/aplikacija/getOneKlijentPro/" + id, {
-                    method: "GET",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify()
+            fetch("/api/aplikacija/getKlijentEmail/" + email).then((res) => {
+                return res.json();
+
                 }).then((resp)=>{
-                    console.log(resp);
-                    navigate(`/klijentPocetna/${id}`)
+                   // console.log(resp);
+                    if(Object.keys(resp).length === 0) {
+                        toast.error('Molimo unesite ispravan e-mail');
+                    }else {
+                        if(resp.Lozinka === lozinka){
+                            toast.success('Uspješna prijava!')
+                            sessionStorage.setItem('email',email)
+                            navigate("/pocetna")
+                        }else {
+                            toast.error('Lozinka nije ispravna');
+                        }
+                    }
                 }).catch((err)=>{
-                    toast.error('Greška :' +err.message);
+                    toast.error('Upisani korisnik još nije registriran');
                 });
             
             } 
-
-
         
     }
 
@@ -50,9 +45,9 @@ const Prijava = () => {
     const validate = () => {
         let result = true;
 
-        if (kor_ime === '' || kor_ime === null) {
+        if (email === '' || email === null) {
             result = false;
-            toast.warning('Unesi korisničko ime')
+            toast.warning('Unesi e-mail adresu')
         }
         if (lozinka === '' || lozinka === null) {
             result = false;
@@ -69,8 +64,8 @@ const Prijava = () => {
                 <hr />
                 <form onSubmit={handleLogin}>
                     <div className="form-group">
-                        <label>Korisničko ime: <span className="errmsg">*</span> </label>
-                        <input value={kor_ime} onChange={e => setKor_ime(e.target.value)} className="form-control" />
+                        <label>E-mail: <span className="errmsg">*</span> </label>
+                        <input value={email} onChange={e => setEmail(e.target.value)} className="form-control" />
                     </div>
                     <div className="form-group">
                         <label>Lozinka: <span className="errmsg">*</span> </label>

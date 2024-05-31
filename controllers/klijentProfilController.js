@@ -43,6 +43,14 @@ const getOneKlijentPro = async (req, res) => {
     res.status(200).send(korPro)
 }
 
+//3.1 preuzmi klijenta po emailu
+const getKlijentEmail = async (req, res) => {
+
+    let Email = req.params.Email
+    const korPro = await Klijent_profil.findOne({ where: { Email: Email}})
+    res.status(200).send(korPro)
+}
+
 
 //4. ažuriraj profil klijenta (također ne treba ali da imamo u slučaju ažuriranja)
 const updateKlijentPro = async (req, res) => {
@@ -77,6 +85,7 @@ module.exports = {
     addKlijentProfil,
     getAllKlijentPro,
     getOneKlijentPro,
+    getKlijentEmail,
     updateKlijentPro,
     deleteKlijentPro,
     getProfilZahtjev

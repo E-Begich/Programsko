@@ -8,6 +8,7 @@ import Vozila from './pages/Vozila';
 import Onama from './pages/Onama';
 import Prijava from './pages/Prijava';
 import Odjava from './pages/Odjava';
+import Home2 from './pages/Home2';
 import Registracija from './pages/Registracija';
 import AboutVozilo from './pages/AboutVozilo';
 
@@ -34,6 +35,7 @@ import KlijentEditLozinka from './pages/Klijent/KlijentEditLozinka';
 import KlijentPocetna from './pages/Klijent/KlijentPocetna';
 import ShowZahtjevi from './pages/Klijent/ShowZahtjevi';
 import KlijentZahtjev from './pages/Klijent/KlijentZahtjev';
+import KlijentAllUgovori from './pages/Klijent/KlijentAllUgovori';
 
 
 
@@ -50,6 +52,7 @@ function App() {
       <Routes>
         {/* pocetna stranica */}
         <Route path='/' element={<Home />} />
+        <Route path='/pocetna' element={<Home2 />} />
         <Route path='/vozila' element={<Vozila />} />
         <Route path='/aboutVozilo/:id' element={<AboutVozilo />} />
         <Route path='/onama' element={<Onama />} />
@@ -80,6 +83,7 @@ function App() {
         <Route path='/klijentEditLozinka/:id' element={<KlijentEditLozinka />} />
         <Route path='/showZahtjevi/:id' element={<ShowZahtjevi />} />
         <Route path='/klijentZahtjev/:id' element={<KlijentZahtjev />} />
+        <Route path='/klijentAllUgovori/:id' element={<KlijentAllUgovori />} />
 
       </Routes>
       <Footer />
