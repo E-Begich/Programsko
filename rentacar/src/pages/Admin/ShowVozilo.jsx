@@ -59,6 +59,13 @@ const ShowVozila = () => {
                     return <Col md={6} lg={4} sm={12} key={Vozilo.id}>
                       <Card.Text><b>Model:</b> {Vozilo.Model}</Card.Text> 
                       <Card.Text><b>Marka:</b> {Vozilo.Marka} </Card.Text>
+                      <Card.Text><b>Godina:</b> {Vozilo.Godina} </Card.Text>
+                      <Card.Text><b>Radni_obujam:</b> {Vozilo.Radni_obujam} </Card.Text>
+                      <Card.Text><b>Vrsta_motora:</b> {Vozilo.Vrsta_motora} </Card.Text>
+                      <Card.Text><b>Kilometri:</b> {Vozilo.Kilometri} </Card.Text>
+                      <Card.Text><b>Broj_sjedala:</b> {Vozilo.Broj_sjedala} </Card.Text>
+                      <Card.Text><b>Cijena_dan:</b> {Vozilo.Cijena_dan} </Card.Text>
+                      <Card.Text><b>Fotografija:</b> {Vozilo.Fotografija} </Card.Text>
                     </Col>
 
 

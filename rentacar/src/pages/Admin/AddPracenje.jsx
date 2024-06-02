@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate, Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const AddPracenje = ({navigate}) => {
+const AddPracenje = () => {
 
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
@@ -13,7 +12,7 @@ const AddPracenje = ({navigate}) => {
     const [id_ugovor, setId_ugovor] = useState('');
 
 
-    const addVoziloHandler = async ({useNavigate}) => {
+    const addVoziloHandler = async () => {
       
 
       const data = {
@@ -26,7 +25,6 @@ const AddPracenje = ({navigate}) => {
 
     await axios.post('/api/aplikacija/addPracenje', data)
 
-    navigate.push('/getAllPracenje')
 
   }
 
@@ -38,6 +36,7 @@ const AddPracenje = ({navigate}) => {
 
       <Form>
       
+      <form className="container" onSubmit={addVoziloHandler}/>
 
         <Form.Group className="mb-3" controlId="latitude">
             <Form.Label>Latitude</Form.Label>

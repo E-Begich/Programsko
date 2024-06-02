@@ -58,7 +58,12 @@ const ShowUgovor = () => {
                   ugovor.map(Ugovor => {
                     return <Col md={6} lg={4} sm={12} key={Ugovor.id}>
                       <Card.Text><b>Datum_pocetka:</b> {Ugovor.Datum_pocetka}</Card.Text> 
-                      <Card.Text><b>Datum_zavrsetka:</b> {Ugovor.Datum_zavrsetka} </Card.Text>
+                      <Card.Text><b>Status:</b> {Ugovor.Datum_zavrsetka} </Card.Text>
+                      <Card.Text><b>Osiguranje:</b> {Ugovor.Osiguranje} </Card.Text>
+                      <Card.Text><b>Id_vozilo:</b> {Ugovor.Id_vozilo} </Card.Text>
+                      <Card.Text><b>Id_korisnik:</b> {Ugovor.Id_korisnik} </Card.Text>
+                      <Card.Text><b>Id_zaposlenik:</b> {Ugovor.Id_zaposlenik} </Card.Text>
+
                     </Col>
 
 

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate, Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const AddUgovor = ({navigate}) => {
+const AddUgovor = () => {
 
     const [datum_pocetka, setDatum_pocetka] = useState('');
     const [datum_zavrsetka, setDatum_zavrsetka] = useState('');
@@ -16,7 +15,7 @@ const AddUgovor = ({navigate}) => {
     const [id_korisnik, setId_korisnik] = useState('');
     const [id_zaposlenik, setId_zaposlenik] = useState('');
 
-    const addUgovorHandler = async ({useNavigate}) => {
+    const addUgovorHandler = async () => {
 
   const data = {
 
@@ -32,7 +31,6 @@ const AddUgovor = ({navigate}) => {
 
     await axios.post('/api/aplikacija/addUgovor', data)
 
-    navigate.push('/getAllUgovor')
 }
 
 return (
@@ -42,6 +40,8 @@ return (
       <hr />
 
     <Form>
+
+    <form className="container" onSubmit={addUgovorHandler}/>
 
       <Form.Group className="mb-3" controlId="datum pocetka">
           <Form.Label>Datum_pocetka</Form.Label>
@@ -58,6 +58,18 @@ return (
           onChange={(e) => setDatum_zavrsetka(e.target.value)}
           type="date" />
       </Form.Group>
+
+      <Form.Group className="demo-radio-buttons-group-label" controlId="datum zavrsetka">
+                        <Form.Label>Status:</Form.Label><br />
+                        <input type="radio" checked={status === 'U tijeku'} onChange={e => setStatus(e.target.value)} name="status" value="U tijeku" className="app-check"></input>
+                        <label>U tijeku</label>
+                        <br />
+                        <br />
+                        <input type="radio" checked={status === 'Zavrsen'} onChange={e => setStatus(e.target.value)} name="status" value="Zavrsen" className="app-check"></input>
+                        <label>Završen</label>
+                        <br />
+                        <br />
+                    </Form.Group>
 
       <Form.Group className="mb-3" controlId="osiguranje">
           <Form.Label>Osiguranje</Form.Label>

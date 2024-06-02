@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Button} from "react-bootstrap";
-import { Container, Form } from "react-bootstrap";
+import { Container, Form, Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate, Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const AddZahtjev= ({navigate}) => {
+const AddZahtjev= () => {
 
     
     const [datum_pocetka, setDatum_pocetka] = useState('');
@@ -14,7 +13,7 @@ const AddZahtjev= ({navigate}) => {
     const [id_klijenta, setId_klijenta] = useState('');
     const [id_vozilo, setId_vozilo] = useState('');
 
-    const addZahtjevHandler = async ({useNavigate}) => {
+    const addZahtjevHandler = async () => {
 
 
     const data = {
@@ -28,9 +27,7 @@ const AddZahtjev= ({navigate}) => {
 
     await axios.post('/api/aplikacija/addZahtjev', data)
 
-    navigate.push('/getAllZahtjev')
-
-
+   
 }
 
 return (
@@ -40,6 +37,8 @@ return (
       <hr />
 
     <Form>
+
+    <form className="container" onSubmit={addZahtjevHandler}/>
 
 
       <Form.Group className="mb-3" controlId="datum pocetka">

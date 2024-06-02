@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate, Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const AddVozilo = ({navigate}) => {
+const AddVozilo = () => {
 
     const [marka, setMarka] = useState('');
     const [model, setModel] = useState('');
@@ -17,7 +16,7 @@ const AddVozilo = ({navigate}) => {
     const [cijena_dan, setCijena_dan] = useState('');
     const [fotografija, setFotografija] = useState('');
 
-    const addVoziloHandler = async ({useNavigate}) => {
+    const addVoziloHandler = async () => {
 
 
         const data = {
@@ -36,7 +35,6 @@ const AddVozilo = ({navigate}) => {
 
         await axios.post('/api/aplikacija/addVozilo', data)
 
-        navigate.push('/getAllVozilo')
 
 
     }
@@ -48,6 +46,8 @@ const AddVozilo = ({navigate}) => {
             <hr />
   
           <Form>
+
+          <form className="container" onSubmit={addVoziloHandler}/>
 
             <Form.Group className="mb-3" controlId="marka">
                 <Form.Label>Marka</Form.Label>

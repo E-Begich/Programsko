@@ -59,6 +59,8 @@ const ShowPracenje = () => {
                     return <Col md={6} lg={4} sm={12} key={Pracenje.id}>
                       <Card.Text><b>Latitude:</b> {Pracenje.Latitude}</Card.Text> 
                       <Card.Text><b>Longitude:</b> {Pracenje.Longitude} </Card.Text>
+                      <Card.Text><b>Id_vozilo:</b> {Pracenje.Id_vozilo} </Card.Text>
+                      <Card.Text><b>Id_ugovor:</b> {Pracenje.Id_ugovor} </Card.Text>
                     </Col>
 
 

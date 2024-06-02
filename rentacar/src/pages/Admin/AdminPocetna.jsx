@@ -16,7 +16,7 @@ const AdminPocetna = ( ) => {
                     </div>
                     <div className="col-sm-8">
                         <h1>Popis vozila</h1>
-                        <p>tablica ispisa vozila javascript</p>
+                        <p>tablica ispisa vozila</p>
                     </div>
                 </div>
             </div>

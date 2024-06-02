@@ -59,6 +59,9 @@ const ShowZahtjeva = () => {
                     return <Col md={6} lg={4} sm={12} key={Zahtjev.id}>
                       <Card.Text><b>Datum_pocetka:</b> {Zahtjev.Datum_pocetka}</Card.Text> 
                       <Card.Text><b>Datum_zavrsetka:</b> {Zahtjev.Datum_zavrsetka} </Card.Text>
+                      <Card.Text><b>Napomena:</b> {Zahtjev.Napomena} </Card.Text>
+                      <Card.Text><b>Id_klijenta:</b> {Zahtjev.Id_klijenta} </Card.Text>
+                      <Card.Text><b>Id_vozilo:</b> {Zahtjev.Id_vozilo} </Card.Text>
                     </Col>
 
 

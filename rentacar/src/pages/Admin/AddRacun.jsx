@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { useNavigate, Link, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const AddRacun = ({navigate}) => {
+const AddRacun = () => {
 
 
     const [cijena, setCijena] = useState('');
@@ -13,7 +12,7 @@ const AddRacun = ({navigate}) => {
     const [ukupna_cijena, setUkupna_cijena] = useState('');
     const [id_ugovor, setId_ugovor] = useState('');
 
-    const addRacunHandler = async ({useNavigate}) => {
+    const addRacunHandler = async () => {
 
 
       const data = {
@@ -26,7 +25,6 @@ const AddRacun = ({navigate}) => {
 
     await axios.post('/api/aplikacija/addRacun', data)
 
-    navigate.push('/getAllRacun')
 
 }
 
@@ -37,6 +35,8 @@ return (
       <hr />
 
     <Form>
+
+    <form className="container" onSubmit={addRacunHandler}/>
 
       <Form.Group className="mb-3" controlId="cijena">
           <Form.Label>Cijena</Form.Label>
