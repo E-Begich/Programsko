@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 
 function Registracija() {
@@ -127,6 +128,7 @@ function Registracija() {
 
     return (
         <>
+        <Header/>
             <div className="d-grid gap-2 col-6 mx-auto">
                 <form className="container" onSubmit={handlesubmit}>
                     <h1 className="d-grid gap-2 col-6 mx-auto">Registracija</h1>

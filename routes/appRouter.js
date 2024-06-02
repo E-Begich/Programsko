@@ -15,15 +15,16 @@ const router = require('express').Router()
 router.post('/addKlijentProfil', klijentProfilController.addKlijentProfil);
 router.get('/getAllKlijentPro', klijentProfilController.getAllKlijentPro);
 router.get('/getOneKlijentPro/:id', klijentProfilController.getOneKlijentPro);
-router.get('/getKlijentEmail/:Email', klijentProfilController.getKlijentEmail)
+router.get('/getKlijentEmail/:Email', klijentProfilController.getKlijentEmail);
 router.put('/updateKlijentPro/:id', klijentProfilController.updateKlijentPro);
 router.delete('/deleteKlijentPro/:id', klijentProfilController.deleteKlijentPro);
 
 //rute za korisnik tablicu
-router.post('/addKorisnik', korisnikController.addKorisnik);
+router.post('/addKorisnik', korisnikController.upload, korisnikController.addKorisnik);
 router.get('/getAllKorisnik', korisnikController.getAllKorisnik);
 router.get('/getOneKorisnik/:id', korisnikController.getOneKorisnik);
-router.put('/updateKorisnik/:id', korisnikController.updateKorisnik);
+router.get('/getKorisnikEmail/:Email', korisnikController.getKorisnikEmail);
+router.put('/updateKorisnik/:id', korisnikController.upload, korisnikController.updateKorisnik);
 router.delete('/deleteKorisnik/:id', korisnikController.deleteKorisnik);
 
 //rute za pracenje tablicu
@@ -76,13 +77,13 @@ router.get('/testVoziloZahtjev/:id', voziloController.getVoziloZahtjev);
 //veza vozilo pracenje
 router.get('/getVoziloPracenje', voziloController.getVoziloPracenje);
 //veza vozilo-ugovor
-router.get('/getVoziloUgovor', voziloController.getVoziloUgovor);
+router.get('/getVoziloUgovor/:id', voziloController.getVoziloUgovor);
 //veza ugovor-pracenje
 router.get('/getUgovorPracenje', ugovorController.getUgovorPracenje);
 //veza ugovor-racun
 router.get('/getUgovorRacun', ugovorController.getUgovorRacun);
 //veza korisnik-ugovor
-router.get('/getKorisnikUgovor', korisnikController.getKorisnikUgovor);
+router.get('/getKorisnikUgovor/:id', korisnikController.getKorisnikUgovor);
 //veza zaposlenik-ugovor
 router.get('/getZaposlenikUgovor', zaposlenikController.getZaposlenikUgovor);
 //

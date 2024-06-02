@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Header from "../components/Header";
 
 
 const Prijava = () => {
@@ -9,6 +10,9 @@ const Prijava = () => {
     const [email, setEmail] = useState('');
     const [lozinka, setLozinka] = useState('');
 
+    useEffect(()=>{
+        sessionStorage.clear();
+            },[]);
 
 //unutar fukcije poziva se api koji je napravljen za pretraživanje emailova unutar relacije klijent_profil
 //ovdje se događa to da funkcija preuzima podatke iz forme i uspoređuje ih sa podacima u relaciji 
@@ -27,7 +31,9 @@ const Prijava = () => {
                     }else {
                         if(resp.Lozinka === lozinka){
                             toast.success('Uspješna prijava!')
-                            sessionStorage.setItem('email',email)
+                            sessionStorage.setItem('email', email)
+                            sessionStorage.setItem('userId', resp.id);
+                            console.log(resp.id)
                             navigate("/pocetna")
                         }else {
                             toast.error('Lozinka nije ispravna');
@@ -59,6 +65,7 @@ const Prijava = () => {
 
     return (
         <>
+        <Header/>
             <div className="d-grid gap-2 col-6 mx-auto">
                 <h1 className="d-grid gap-2 col-6 mx-auto">Prijava</h1>
                 <hr />

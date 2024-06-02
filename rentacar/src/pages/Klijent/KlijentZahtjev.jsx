@@ -3,9 +3,19 @@ import axios from "axios";
 import { useParams } from 'react-router';
 import { Container, Card, Row, Col } from "react-bootstrap";
 import { toast } from 'react-toastify';
+import Header2 from '../../components/Header2'
 
 const KlijentZahtjev = () => {
     const { id } = useParams()
+
+    const [userId, setUserId] = useState('');
+  
+    useEffect(() => {
+      let userId = sessionStorage.getItem('userId');
+      if (userId) {
+        setUserId(userId)
+      }
+    }, []);
 
     //za preuzimanje podataka iz tablice Vozilo
     const [marka, setMarka] = useState('')
@@ -52,7 +62,7 @@ const KlijentZahtjev = () => {
         e.preventDefault()
 
         const data = {
-            ID_klijenta: id,
+            ID_klijenta: userId,
             ID_vozilo: id,
             Datum_pocetka: datumPocetka,
             Datum_zavrsetka: datumZavrsetka,
@@ -67,6 +77,7 @@ const KlijentZahtjev = () => {
     }
     return (
         <>
+        <Header2/>
             <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
                 <Container>
                     <Row>
@@ -88,13 +99,11 @@ const KlijentZahtjev = () => {
                                 <h1 className="d-grid gap-2 col-6 mx-auto">Pošalji upit.</h1>
                                 <hr />
                                 <div className="form-group">
-                                    <label>Id vozila: <span className="errmsg">*</span></label>
-                                    <input type="text" className="form-control" disabled value={id}  onChange={(e) => setIdVozilo(e.target.value)}/>
+                                    <input type="hidden" className="form-control" disabled value={id}  onChange={(e) => setIdVozilo(e.target.value)}/>
                                 </div>
                                 <br />
                                 <div className="form-group">
-                                    <label>Id korisnika: <span className="errmsg">*</span></label>
-                                    <input type="text" className="form-control" disabled value={id}  onChange={(e) => setIdKlijent(e.target.value)}/>
+                                    <input type="hidden" className="form-control" disabled value={userId}  onChange={(e) => setIdKlijent(e.target.value)}/>
                                 </div>
                                 <br />
                                 <div className="form-group">

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { Container, Card, Row, Col } from "react-bootstrap";
+import Header2 from "../components/Header2";
 
 const AboutVozilo = () => {
     const { id } = useParams()
@@ -39,6 +40,7 @@ const AboutVozilo = () => {
     }, [id])
     return (
         <>
+        <Header2/>
             <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
                 <Container>
                     <Row>
@@ -54,7 +56,7 @@ const AboutVozilo = () => {
                                 <NavLink to={`/klijentZahtjev/${id}`} className="btn btn-outline-dark"><span className="fa-regular fa-magnifying-glass " ></span>Pošalji zahtjev</NavLink>
                                 <br />
                                 <br />
-                                <NavLink to={`/`} className="btn btn-outline-dark"><span className="fa-regular fa-magnifying-glass " ></span>Vrati se na početnu stranicu</NavLink>
+                                <NavLink to={`/pocetna`} className="btn btn-outline-dark"><span className="fa-regular fa-magnifying-glass " ></span>Vrati se na početnu stranicu</NavLink>
                             </Card.Body>
                             <br />
                             <br />

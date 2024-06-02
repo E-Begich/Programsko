@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
+import Header2 from '../../components/Header2'
 
 const KlijentPocetna = () => {
   const { id } = useParams()
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    let userId = sessionStorage.getItem('userId');
+    if (userId && userId !== '') {
+      navigate(`/klijentPocetna/${userId}`);
+    }
+  }, []);
 
   const [ime, setIme] = useState('')
   const [prezime, setPrezime] = useState('')
@@ -39,6 +49,7 @@ const KlijentPocetna = () => {
 
   return (
     <div>
+      <Header2/>
       <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
         <div className="row">
           <div className="col"></div>
@@ -58,7 +69,7 @@ const KlijentPocetna = () => {
                 <Link to={`/ActiveUgovor/${id}`} className="btn btn-outline-dark btn-lg">Trenutni ugovor</Link>
               </NavLink>
               <NavLink className="nav-link">
-                <Link to={`/ActiveUgovor/${id}`} className="btn btn-outline-dark btn-lg">Prijašnji ugovori</Link>
+                <Link to={`/klijentAllUgovori/${id}`} className="btn btn-outline-dark btn-lg">Prijašnji ugovori</Link>
               </NavLink>
               <br />
               <br />

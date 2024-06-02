@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Header from '../components/Header';
 
 const Onama = () => {
   return (
     <div>
+      <Header/>
     <div className="container py-5 my-5">
       <div className="row">
         <div className="col-md-6">

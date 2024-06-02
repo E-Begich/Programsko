@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
-import { useNavigate, NavLink } from "react-router-dom";
 import axios from "axios";
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap";
+import Header from '../components/Header';
 
 function Home() {
     const [index, setIndex] = useState(0);
@@ -11,15 +11,6 @@ function Home() {
     const handleSelect = (selectedIndex) => {
       setIndex(selectedIndex);
     };
-
-    const navigate = useNavigate();
-
-    useEffect(()=>{
-        let email=sessionStorage.getItem('email');
-        if(email === '' || email === null){
-            navigate('/')
-        }
-    }, []);
 
     const [vozila, setVozila] = useState([])
 
@@ -36,6 +27,7 @@ function Home() {
 
     return (
       <div>
+        <Header/>
       <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
       <img src={process.env.PUBLIC_URL+ "/images/background1.jpg"} className='d-block w-100' alt='background1' height='700px'/>

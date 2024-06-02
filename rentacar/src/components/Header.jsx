@@ -1,4 +1,4 @@
-
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Login from './buttons/Login';
 import { Signup } from './buttons/Signup';
@@ -18,12 +18,13 @@ const Header = () => {
                     <NavLink className="nav-link fw-bold" aria-current="page" to="/">Početna</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-link fw-bold" to="/vozila">Vozila</NavLink>
+                    <NavLink className="nav-link fw-bold" to="/vozila2">Vozila</NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink className="nav-link fw-bold" to="/Onama">O nama</NavLink>
                 </li>
             </ul>
+            
             <Login/>
             <Signup/>
         </div>

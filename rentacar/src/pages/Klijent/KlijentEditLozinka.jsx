@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 import { Container, Button, Form } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Header2 from '../../components/Header2'
 
 const KlijentEditLozinka = () => {
   const { id } = useParams()
@@ -42,7 +43,7 @@ const KlijentEditLozinka = () => {
       Lozinka: novaLozinka,
 
     }
-    if(novaLozinka === potvrdaL){
+    if( novaLozinka === potvrdaL){
 
     await axios.put(`/api/aplikacija/updateKlijentPro/${id}`, data)
 
@@ -54,6 +55,7 @@ const KlijentEditLozinka = () => {
    }
   return (
     <>
+    <Header2/>
       <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
         <div className="row">
           <div className="col"></div>
@@ -73,7 +75,7 @@ const KlijentEditLozinka = () => {
                 <Link to={`/ActiveUgovor/${id}`} className="btn btn-outline-dark btn-lg">Trenutni ugovor</Link>
               </NavLink>
               <NavLink className="nav-link">
-                <Link to={`/ActiveUgovor/${id}`} className="btn btn-outline-dark btn-lg">Prijašnji ugovori</Link>
+                <Link to={`/klijentAllUgovori/${id}`} className="btn btn-outline-dark btn-lg">Prijašnji ugovori</Link>
               </NavLink>
               <br />
               <br />
@@ -91,12 +93,11 @@ const KlijentEditLozinka = () => {
             <Container className='mt-2 p-3'>
               <Form onSubmit={updateHandlerEditLozinka}>
                 <Form.Group className="mb-3" controlId="OldPass">
-                  <Form.Label>Unesi staru lozinku:</Form.Label>
                   <Form.Control
                     value={lozinka}
                     onChange={(e) => setLozinka(e.target.value)}
                     disabled
-                    type="password"
+                    type="hidden"
                   />
                 </Form.Group>
 

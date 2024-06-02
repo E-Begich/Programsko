@@ -5,18 +5,18 @@ import VoziloCard from "../components/VoziloCard";
 
 function Vozila(){
 
-    const [vozila, setVozila] = useState([])
+  const [vozila, setVozila] = useState([])
 
-    useEffect(() => {
-      const getVoziloData = async () => {
-        const {data} = await axios.get('/api/aplikacija/getAllVozilo')
-        //za testiranje, da li se ispisuju ispravo podaci iz baze
-        console.log(data)
-        //spremanje ispisa vozila iz baze pomoću setVozilo
-        setVozila(data)
-      }
-      getVoziloData();
-    }, []);
+  useEffect(() => {
+    const getVoziloData = async () => {
+      const {data} = await axios.get('/api/aplikacija/getAllVozilo')
+      //za testiranje, da li se ispisuju ispravo podaci iz baze
+      console.log(data)
+      //spremanje ispisa vozila iz baze pomoću setVozilo
+      setVozila(data)
+    }
+    getVoziloData();
+  }, []);
 
 
     return(

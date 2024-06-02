@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 import { Container, Button, Form } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Header2 from '../../components/Header2'
 
 const KlijentEdit = () => {
   const { id } = useParams()
@@ -64,6 +65,7 @@ const KlijentEdit = () => {
   }
   return (
     <>
+    <Header2/>
       <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
         <div className="row">
           <div className="col"></div>
@@ -83,7 +85,7 @@ const KlijentEdit = () => {
                 <Link to={`/ActiveUgovor/${id}`} className="btn btn-outline-dark btn-lg">Trenutni ugovor</Link>
               </NavLink>
               <NavLink className="nav-link">
-                <Link to={`/showZahtjev/${id}`} className="btn btn-outline-dark btn-lg">Prijašnji ugovori</Link>
+                <Link to={`/klijentAllUgovori/${id}`} className="btn btn-outline-dark btn-lg">Svi ugovori</Link>
               </NavLink>
               <br />
               <br />

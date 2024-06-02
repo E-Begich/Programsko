@@ -89,7 +89,7 @@ const getVoziloPracenje = async (req, res) => {
 
     const id = req.params.id
 
-    const data = await Vozilo.FindOne({
+    const data = await Vozilo.Find({
         include: [{
             model: Pracenje,
             as: 'Pracenje'
@@ -104,7 +104,7 @@ const getVoziloUgovor = async (req, res) => {
 
     const id = req.params.id
 
-    const data = await Vozilo.findOne({
+    const data = await Vozilo.findAll({
         include: [{
             model: Ugovor,
             as: 'Ugovor'

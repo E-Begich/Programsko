@@ -1,16 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
 import "./App.css"
 //pocetna stranica
-import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Vozila from './pages/Vozila';
 import Onama from './pages/Onama';
 import Prijava from './pages/Prijava';
-import Odjava from './pages/Odjava';
 import Home2 from './pages/Home2';
 import Registracija from './pages/Registracija';
 import AboutVozilo from './pages/AboutVozilo';
+import Vozila2 from './pages/Vozila2';
 
 //admin radnje
 import AdminPrijava from './pages/Admin/AdminPrijava';
@@ -36,6 +35,7 @@ import KlijentPocetna from './pages/Klijent/KlijentPocetna';
 import ShowZahtjevi from './pages/Klijent/ShowZahtjevi';
 import KlijentZahtjev from './pages/Klijent/KlijentZahtjev';
 import KlijentAllUgovori from './pages/Klijent/KlijentAllUgovori';
+import ActiveUgovor from './pages/Klijent/ActiveUgovor';
 
 
 
@@ -48,16 +48,15 @@ function App() {
   return (
     <div className='App'>
       <ToastContainer></ToastContainer>
-    <Header />
       <Routes>
         {/* pocetna stranica */}
         <Route path='/' element={<Home />} />
         <Route path='/pocetna' element={<Home2 />} />
         <Route path='/vozila' element={<Vozila />} />
+        <Route path='/vozila2' element={<Vozila2 />} />
         <Route path='/aboutVozilo/:id' element={<AboutVozilo />} />
         <Route path='/onama' element={<Onama />} />
         <Route path='/prijava' element={<Prijava />} />
-        <Route path='/odjava' element={<Odjava />} />
         <Route path='/registracija' element={<Registracija />} />
 
         {/* Admin-Zaposlenik radnje */}
@@ -84,6 +83,7 @@ function App() {
         <Route path='/showZahtjevi/:id' element={<ShowZahtjevi />} />
         <Route path='/klijentZahtjev/:id' element={<KlijentZahtjev />} />
         <Route path='/klijentAllUgovori/:id' element={<KlijentAllUgovori />} />
+        <Route path='/ActiveUgovor/:id' element={<ActiveUgovor />} />
 
       </Routes>
       <Footer />
