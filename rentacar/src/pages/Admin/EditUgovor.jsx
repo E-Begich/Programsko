@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 import { Container, Button, Form } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import HeaderAdmin from "../../components/HeaderAdmin";
 
 const EditUgovor = () => {
   const { id } = useParams()
@@ -62,6 +63,7 @@ const EditUgovor = () => {
   }
   return (
     <>
+    <HeaderAdmin/>
       <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
         <div className="row">
           <div className="col"></div>

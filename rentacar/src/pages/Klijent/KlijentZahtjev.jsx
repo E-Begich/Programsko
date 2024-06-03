@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { Container, Card, Row, Col } from "react-bootstrap";
 import { toast } from 'react-toastify';
 import Header2 from '../../components/Header2'
@@ -14,6 +14,15 @@ const KlijentZahtjev = () => {
       let userId = sessionStorage.getItem('userId');
       if (userId) {
         setUserId(userId)
+      }
+    }, []);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      let email = sessionStorage.getItem('email');
+      if (email === '' || email === null) {
+        navigate('/');
       }
     }, []);
 

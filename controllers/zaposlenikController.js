@@ -38,6 +38,14 @@ const getOneZaposlenik= async (req, res) => {
     res.status(200).send(zaposlenik)
 }
 
+//3.1 preuzmi klijenta po emailu
+const getZaposlenikSifra = async (req, res) => {
+
+    let Sifra_zaposlenika = req.params.Sifra_zaposlenika
+    const korPro = await Zaposlenik.findOne({ where: { Sifra_zaposlenika: Sifra_zaposlenika}})
+    res.status(200).send(korPro)
+}
+
 //4. ažuriraj podatke zaposlenika
 const updateZaposlenik = async (req, res) => {
     let id = req.params.id
@@ -71,5 +79,6 @@ module.exports = {
     getOneZaposlenik,
     updateZaposlenik,
     deleteZaposlenik,
-    getZaposlenikUgovor
+    getZaposlenikUgovor,
+    getZaposlenikSifra
 }

@@ -4,6 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import Header from '../components/Header';
+import { toast } from "react-toastify";
 
 function Home() {
     const [index, setIndex] = useState(0);

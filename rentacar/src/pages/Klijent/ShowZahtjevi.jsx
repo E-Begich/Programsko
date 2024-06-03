@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Container, Row } from 'react-bootstrap'
 import { Link, NavLink } from 'react-router-dom'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import axios from 'axios'
 import Header2 from '../../components/Header2'
 
@@ -9,6 +9,17 @@ import Header2 from '../../components/Header2'
 const ShowZahtjevi = () => {
 
     const { id } = useParams()
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+      let email = sessionStorage.getItem('email');
+      if (email === '' || email === null) {
+        navigate('/');
+      }
+    }, []);
+
+    
 
     //podaci iz tablice Klijent_profil
     const [ime, setIme] = useState('')

@@ -1,54 +1,60 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
+import Header from "../../components/Header"
+
 
 const AdminPrijava = () => {
-    const { id } = useParams()
     const navigate = useNavigate()
-
+ //ovdje se preuzimaju podaci iz forme a to su email i lozinka
     const [sifraZaposlenika, setSifraZaposlenika] = useState('');
     const [lozinka, setLozinka] = useState('');
 
-    useEffect(() => {
-        //preuzimanje podataka
-        const getOneZaposlenikPro = async () => {
-          const { data } = await axios.get(`/api/aplikacija/getOneZaposlenik/${id}`)
-          console.log(data)
 
-          setSifraZaposlenika(data.Sifra_zaposlenika)
-          setLozinka(data.Lozinka)
-    
-        }
-        getOneZaposlenikPro()
-    
-      }, [id])
+    useEffect(()=>{
+        sessionStorage.clear();
+            },[]);
 
-      async function handleLogin (e) {
+//unutar fukcije poziva se api koji je napravljen za pretraživanje emailova unutar relacije klijent_profil
+//ovdje se događa to da funkcija preuzima podatke iz forme i uspoređuje ih sa podacima u relaciji 
+//i sukladno tome daje pristup ostatku aplikacije, ili ne
+    async function handleLogin (e) {
         e.preventDefault();
 
         if (validate()) {
-            fetch("/api/aplikacija/getOneZaposlenik/" + id,{
-                    method: "GET",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify()
+            fetch("/api/aplikacija/getZaposlenikSifra/" + sifraZaposlenika).then((res) => {
+                return res.json();
+
                 }).then((resp)=>{
-                    console.log(resp);
-                    navigate(`/adminpocetna/${id}`)
+                   // console.log(resp);
+                    if(Object.keys(resp).length === 0) {
+                        toast.error('Molimo unesite ispravnu šifru');
+                    }else {
+                        if(resp.Lozinka === lozinka){
+                            toast.success('Uspješna prijava!')
+                            sessionStorage.setItem('sifra', sifraZaposlenika)
+                            sessionStorage.setItem('userId', resp.id);
+                            console.log(resp.id)
+                            navigate(`/adminpocetna/${resp.id}`)
+                        }else {
+                            toast.error('Lozinka nije ispravna');
+                        }
+                    }
                 }).catch((err)=>{
-                    toast.error('Greška :' +err.message);
+                    toast.error('Ovaj zaposlenik ne postoji u tvrtci');
                 });
             
             } 
-        }
+        
+    }
 
-        //provjerava jesu li polja za upis korisnickog imena i lozinke prazna ili ne
+    //provjerava jesu li polja za upis korisnickog imena i lozinke prazna ili ne
     const validate = () => {
         let result = true;
 
         if (sifraZaposlenika === '' || sifraZaposlenika === null) {
             result = false;
-            toast.warning('Unesi šifru zaposlenika')
+            toast.warning('Unesi šifru')
         }
         if (lozinka === '' || lozinka === null) {
             result = false;
@@ -56,14 +62,17 @@ const AdminPrijava = () => {
         }
         return result;
     }
-  return (
-    <div>
-        <div className="d-grid gap-2 col-6 mx-auto">
+
+
+    return (
+        <>
+        <Header/>
+            <div className="d-grid gap-2 col-6 mx-auto">
                 <h1 className="d-grid gap-2 col-6 mx-auto">Prijava</h1>
                 <hr />
                 <form onSubmit={handleLogin}>
                     <div className="form-group">
-                        <label>Korisničko ime: <span className="errmsg">*</span> </label>
+                        <label>Šifra zaposlenika: <span className="errmsg">*</span> </label>
                         <input value={sifraZaposlenika} onChange={e => setSifraZaposlenika(e.target.value)} className="form-control" />
                     </div>
                     <div className="form-group">
@@ -77,9 +86,11 @@ const AdminPrijava = () => {
                         </button>
                     </div>
                 </form>
-                </div>
-    </div>
-  )
-}
+            </div>
 
-export default AdminPrijava
+
+
+        </>
+    )
+}
+export default AdminPrijava;

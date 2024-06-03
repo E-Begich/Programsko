@@ -10,6 +10,13 @@ const KlijentEdit = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
+  useEffect(() => {
+    let email = sessionStorage.getItem('email');
+    if (email === '' || email === null) {
+      navigate('/');
+    }
+  }, []);
+
   const [ime, setIme] = useState('')
   const [prezime, setPrezime] = useState('')
   const [adresa, setAdresa] = useState('')

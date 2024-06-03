@@ -66,6 +66,7 @@ router.delete('/deleteZahtjev/:id', zahtjevController.deleteZahtjev);
 router.post('/addZaposlenik', zaposlenikController.addZaposlenik);
 router.get('/getAllZaposlenik', zaposlenikController.getAllZaposlenik);
 router.get('/getOneZaposlenik/:id', zaposlenikController.getOneZaposlenik);
+router.get('/getZaposlenikSifra/:Sifra_zaposlenika', zaposlenikController.getZaposlenikSifra);
 router.put('/updateZaposlenik/:id', zaposlenikController.updateZaposlenik);
 router.delete('/deleteZaposlenik/:id', zaposlenikController.deleteZaposlenik);
 

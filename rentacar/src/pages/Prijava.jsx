@@ -9,6 +9,7 @@ const Prijava = () => {
  //ovdje se preuzimaju podaci iz forme a to su email i lozinka
     const [email, setEmail] = useState('');
     const [lozinka, setLozinka] = useState('');
+    
 
     useEffect(()=>{
         sessionStorage.clear();

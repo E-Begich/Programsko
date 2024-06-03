@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import HeaderAdmin from "../../components/HeaderAdmin";
 
 const DeleteVozilo = () => {
   return (
-    <div>DeleteVozilo</div>
+    <div>
+      <HeaderAdmin/>
+      DeleteVozilo</div>
   )
 }
 

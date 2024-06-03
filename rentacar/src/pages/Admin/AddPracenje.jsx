@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { Container, Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
+import HeaderAdmin from "../../components/HeaderAdmin";
 
 const AddPracenje = () => {
 
@@ -30,6 +31,7 @@ const AddPracenje = () => {
 
   return (
     <>
+    <HeaderAdmin/>
         <Container className='mt-5 p-2'>
         <h1>Dodaj pracenje</h1>
         <hr />

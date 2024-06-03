@@ -10,6 +10,13 @@ const KlijentEditLozinka = () => {
   const { id } = useParams()
   const navigate = useNavigate()
 
+  useEffect(() => {
+    let email = sessionStorage.getItem('email');
+    if (email === '' || email === null) {
+      navigate('/');
+    }
+  }, []);
+
   const [lozinka, setLozinka] = useState(''); //ispis stare lozinke
 
   const [novaLozinka, setNovaLozinka] = useState(''); //unos nove lozinke

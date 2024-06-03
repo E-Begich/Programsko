@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { Container, Card, Row, Col } from "react-bootstrap";
 import Header2 from "../components/Header2";
@@ -8,6 +8,15 @@ import Header2 from "../components/Header2";
 const AboutVozilo = () => {
     const { id } = useParams()
 
+    const navigate = useNavigate()
+
+    useEffect(() => {
+      let email = sessionStorage.getItem('email');
+      if (email === '' || email === null) {
+        navigate('/');
+      }
+    }, []);
+    
     //za preuzimanje podataka iz tablice Vozilo
     const [marka, setMarka] = useState('')
     const [model, setModel] = useState('')
