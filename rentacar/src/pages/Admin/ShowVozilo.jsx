@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from 'react-router';
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import HeaderAdmin from "../../components/HeaderAdmin";
 
 const ShowVozila = () => {
@@ -39,13 +40,13 @@ const ShowVozila = () => {
           <div className="col-4">
             <nav className="nav flex-column">
               <NavLink className="nav-link">
-                <Link to={`/showZahtjevi/${id}`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+                <Link to={`/getOneZahtjev/${id}`} className="btn btn-outline-dark btn-lg">Popis zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-                <Link to={`/addUgovor/${id}`} className="btn btn-outline-dark btn-lg">Kreiraj ugovor</Link>
+                <Link to={`/getAllUgovor/`} className="btn btn-outline-dark btn-lg">Popis ugovora</Link>
               </NavLink>
               <NavLink className="nav-link">
-                <Link to={`/addPracenje/${id}`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
+                <Link to={`/getAllPracenje/`} className="btn btn-outline-dark btn-lg">Popis praćenja automobila</Link>
               </NavLink>
               <br />
               <br />

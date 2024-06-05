@@ -19,11 +19,10 @@ import AddRacun from './pages/Admin/AddRacun';
 import AddUgovor from './pages/Admin/AddUgovor';
 import AddVozilo from './pages/Admin/AddVozilo';
 import AddZahtjev from './pages/Admin/AddZahtjev';
-import DeleteUgovor from './pages/Admin/DeleteUgovor';
-import DeleteVozilo from './pages/Admin/DeleteVozilo';
 import EditPracenje from './pages/Admin/EditPracenje';
 import EditUgovor from './pages/Admin/EditUgovor';
 import EditVozilo from './pages/Admin/EditVozilo';
+import EditZahtjev from './pages/Admin/EditZahtjev';
 import ShowUgovor from './pages/Admin/ShowUgovor';
 import ShowVozilo from './pages/Admin/ShowVozilo';
 import ShowZahtjeva from './pages/Admin/ShowZahtjeva';
@@ -67,11 +66,10 @@ function App() {
         <Route path='/addvozilo' element={<AddVozilo />} />
         <Route path='/addzahtjev' element={<AddZahtjev />} />
         <Route path='/adminpocetna/:id' element={<AdminPocetna />} />
-        <Route path='/deleteugovor' element={<DeleteUgovor />} />
-        <Route path='/deletevozilo' element={<DeleteVozilo />} />
         <Route path='/editpracenje' element={<EditPracenje />} />
         <Route path='/editugovor' element={<EditUgovor />} />
         <Route path='/editvozilo' element={<EditVozilo />} />
+        <Route path='/editzahtjev' element={<EditZahtjev />} />
         <Route path='/showugovor' element={<ShowUgovor />} />
         <Route path='/showvozilo' element={<ShowVozilo />} />
         <Route path='/showzahtjeva' element={<ShowZahtjeva />} />

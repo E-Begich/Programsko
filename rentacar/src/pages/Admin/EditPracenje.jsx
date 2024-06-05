@@ -84,6 +84,7 @@ const EditPracenje = () => {
           </div>
           <div className="col-8">
             <Container className='mt-2 p-3'>
+              <Form>Latitude</Form>
               <Form onSubmit={updateHandler}>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
@@ -93,6 +94,7 @@ const EditPracenje = () => {
                   />
                 </Form.Group>
 
+                <Form>Longitude</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={longitude}
@@ -101,6 +103,7 @@ const EditPracenje = () => {
                   />
                 </Form.Group>
 
+                <Form>Id vozilo</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={id_vozilo}
@@ -109,6 +112,7 @@ const EditPracenje = () => {
                   />
                 </Form.Group>
 
+                <Form>Id ugovor</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={id_ugovor}

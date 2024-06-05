@@ -45,7 +45,7 @@ const ShowPracenje = () => {
               <Link to={`/showZahtjevi/${id}`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/addUgovor/${id}`} className="btn btn-outline-dark btn-lg">Kreiraj ugovor</Link>
+              <Link to={`/addUgovor/${id}`} className="btn btn-outline-dark btn-lg">Pregled ugovor</Link>
               </NavLink>
               <br />
               <br />

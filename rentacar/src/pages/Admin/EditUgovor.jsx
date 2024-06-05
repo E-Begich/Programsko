@@ -96,6 +96,7 @@ const EditUgovor = () => {
           </div>
           <div className="col-8">
             <Container className='mt-2 p-3'>
+            <Form>Datum početka</Form>
               <Form onSubmit={updateHandler}>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
@@ -105,6 +106,7 @@ const EditUgovor = () => {
                   />
                 </Form.Group>
 
+                <Form>Datum završetka</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={datum_zavrsetka}
@@ -113,6 +115,7 @@ const EditUgovor = () => {
                   />
                 </Form.Group>
 
+                <Form>Status</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={status}
@@ -121,6 +124,7 @@ const EditUgovor = () => {
                   />
                 </Form.Group>
 
+                <Form>Osiguranje</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={osiguranje}
@@ -129,6 +133,7 @@ const EditUgovor = () => {
                   />
                 </Form.Group>
 
+                <Form>Napomena</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={napomena}
@@ -137,6 +142,7 @@ const EditUgovor = () => {
                   />
                 </Form.Group>
 
+                <Form>Id vozilo</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={id_vozilo}
@@ -145,6 +151,7 @@ const EditUgovor = () => {
                   />
                 </Form.Group>
 
+                <Form>Id korisnik</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={id_korisnik}
@@ -153,6 +160,7 @@ const EditUgovor = () => {
                   />
                 </Form.Group>
 
+                <Form>Id zaposlenik</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={id_zaposlenik}

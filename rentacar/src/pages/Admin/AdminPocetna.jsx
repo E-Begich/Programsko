@@ -14,7 +14,7 @@ const AdminPocetna = ( ) => {
           navigate(`/adminpocetna/${userId}`);
         }
       }, []);
-      // ovo href="/addugovor" u liniji koda 26 ti je iz datoteke App.js linija koda 66 tu si sama nazvala tako rutu
+
     return (
         <div>
             <HeaderAdmin/>

@@ -81,18 +81,18 @@ const EditVozilo = () => {
           <div className="col-4">
             <nav className="nav flex-column">
             <NavLink className="nav-link">
-              <Link to={`AddZahtjeva/${id}`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+              <Link to={`AddZahtjeva/`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/AddUgovor/${id}`} className="btn btn-outline-dark btn-lg">Pregled ugovora</Link>
+              <Link to={`/AddUgovor/`} className="btn btn-outline-dark btn-lg">Pregled ugovora</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/AddPracenje/${id}`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
+              <Link to={`/AddPracenje/`} className="btn btn-outline-dark btn-lg">Pregled praćenja automobila</Link>
               </NavLink>
               <br />
               <br />
               <NavLink className="nav-link">
-                <Link to={`/klijentEdit/${id}`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
+                <Link to={`/klijentEdit/`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
               </NavLink>
 
 
@@ -100,6 +100,7 @@ const EditVozilo = () => {
           </div>
           <div className="col-8">
             <Container className='mt-2 p-3'>
+            <Form>Marka</Form>
               <Form onSubmit={updateHandler}>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
@@ -109,6 +110,7 @@ const EditVozilo = () => {
                   />
                 </Form.Group>
 
+                <Form>Model</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={model}
@@ -117,6 +119,7 @@ const EditVozilo = () => {
                   />
                 </Form.Group>
 
+                <Form>Godina</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={godina}
@@ -125,6 +128,7 @@ const EditVozilo = () => {
                   />
                 </Form.Group>
 
+                <Form>Radni obujam</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={radni_obujam}
@@ -133,6 +137,7 @@ const EditVozilo = () => {
                   />
                 </Form.Group>
 
+                <Form>Vrsta motora</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={vrsta_motora}
@@ -141,6 +146,7 @@ const EditVozilo = () => {
                   />
                 </Form.Group>
 
+                <Form>KIlometri</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={kilometri}
@@ -149,6 +155,7 @@ const EditVozilo = () => {
                   />
                 </Form.Group>
 
+                <Form>Broj sjedala</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={broj_sjedala}
@@ -157,6 +164,7 @@ const EditVozilo = () => {
                   />
                 </Form.Group>
 
+                <Form>Cijena dan</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={cijena_dan}
@@ -165,6 +173,7 @@ const EditVozilo = () => {
                   />
                 </Form.Group>
 
+                <Form>Fotografija</Form>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
                     value={fotografija}
