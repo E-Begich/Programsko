@@ -1,43 +1,99 @@
-import React from 'react';
-import { useEffect } from "react";
-import {  useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from 'react-router';
+import { Container, Row, Col, Card, CardText } from "react-bootstrap";
+import { Link, NavLink } from 'react-router-dom';
 import HeaderAdmin from "../../components/HeaderAdmin";
+import "./../../App.css";
 
 
 
-const AdminPocetna = ( ) => {
+const AdminPocetna = () => {
     const navigate = useNavigate()
-    
+
     useEffect(() => {
         let userId = sessionStorage.getItem('userId');
         if (userId && userId !== '') {
-          navigate(`/adminpocetna/${userId}`);
+            navigate(`/adminpocetna/${userId}`);
         }
-      }, []);
+    }, []);
+
+    const [vozila, setVozila] = useState([])
+
+    useEffect(() => {
+        const getVoziloData = async () => {
+            const { data } = await axios.get('/api/aplikacija/getAllVozilo')
+            //za testiranje, da li se ispisuju ispravo podaci iz baze
+            console.log(data)
+            //spremanje ispisa vozila iz baze pomoću setVozilo
+            setVozila(data)
+        }
+        getVoziloData();
+    }, []);
 
     return (
         <div>
-            <HeaderAdmin/>
-            <div className="container text-center border border-warning">
+            <HeaderAdmin />
+            <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
                 <div className="row">
-                    <div className="col-sm-4">
-                    <a className="btn btn-primary" href="" role="button">Pregled zahtjeva</a>
-                    <br/>
-                    <a className="btn btn-primary" href="/addugovor" role="button">Kreiraj ugovor</a>
-                    <br/>
-                    <a className="btn btn-primary" href="#" role="button">Praćenje automobila</a>
+                    <div className="col"></div>
+                    <div className="col">
+                        <h1>Popis automobila</h1>
                     </div>
-                    <div className="col-sm-8">
-                        <h1>Popis vozila</h1>
-                        <p>tablica ispisa vozila</p>
+                    <div className="col">
+                        <NavLink className="nav-link">
+                            <Link to={`/addvozilo`} className="btn btn-outline-dark btn-lg">Dodaj novo vozilo</Link>
+                        </NavLink>
                     </div>
                 </div>
-            </div>
-            </div>
+                <div className="row">
+                    <div className="col-4">
+                        <nav className="nav flex-column">
+                            <NavLink className="nav-link">
+                                <Link to={`/pregledzahtjeva`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+                            </NavLink>
+                            <NavLink className="nav-link">
+                                <Link to={`/addugovor`} className="btn btn-outline-dark btn-lg">Izradi novi ugovor</Link>
+                            </NavLink>
+                            <NavLink className="nav-link">
+                                <Link to={`/showpracenje`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
+                            </NavLink>
+                        </nav>
+                    </div>
+                    <div className="col-8">
+                                    {vozila.length > 0 ? (
+                                        vozila.map(Vozilo => {
+                                            return <Col  key={Vozilo.id}>
+                                                <div class="container mt-5">
+                                                    <div class="card custom-card">
+                                                        <div class="custom-card-text">
+                                                            <CardText><img src={Vozilo.Fotografija} alt="" /></CardText>
+                                                            <Card.Text><b>Marka:</b> {Vozilo.Marka} || Model: {Vozilo.Model}</Card.Text>
+                                                        </div>
+                                                        <div class="card-buttons">
+                                                            <NavLink className="nav-link">
+                                                                <Link to={`/`} className="btn btn-outline-dark btn-lg">Uredi vozilo</Link>
+                                                            </NavLink>
+                                                            <br />
+                                                            <NavLink className="nav-link">
+                                                                <Link to={`/`} className="btn btn-outline-dark btn-lg">Obriši vozilo</Link>
+                                                            </NavLink>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </Col>
+                                        })
+
+                                    ) : (
+                                        <p> Nema unesenih vozila!</p>)}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
     )
 }
 
 export default AdminPocetna
-
-
-

@@ -26,6 +26,7 @@ import EditZahtjev from './pages/Admin/EditZahtjev';
 import ShowUgovor from './pages/Admin/ShowUgovor';
 import ShowVozilo from './pages/Admin/ShowVozilo';
 import ShowZahtjeva from './pages/Admin/ShowZahtjeva';
+import ShowPracenje from './pages/Admin/ShowPracenje';
 
 //klijent radnje
 import KlijentEdit from './pages/Klijent/KlijentEdit';
@@ -73,6 +74,7 @@ function App() {
         <Route path='/showugovor' element={<ShowUgovor />} />
         <Route path='/showvozilo' element={<ShowVozilo />} />
         <Route path='/showzahtjeva' element={<ShowZahtjeva />} />
+        <Route path='/showpracenje' element={<ShowPracenje />} />
 
         {/* Klijent radnje */}
         <Route path='/klijentPocetna/:id' element={<KlijentPocetna />} />
