@@ -47,7 +47,35 @@ const Prijava = () => {
             } 
         
     }
-
+    //const ProceedLoginusingAPI = (e) => {
+     //   e.preventDefault();
+      //  if (validate()) {
+            ///implentation
+            // console.log('proceed');
+           // let inputobj={"email": email,
+          //  "lozinka": lozinka};
+          //  fetch("/api/aplikacija/Authenticate",{
+             //   method:'POST',
+             //   headers:{'content-type':'application/json'},
+             //   body:JSON.stringify(inputobj)
+           // }).then((res) => {
+           //     return res.json();
+          //  }).then((resp) => {
+          //      console.log(resp)
+              //  if (Object.keys(resp).length === 0) {
+               //     toast.error('Prijava neuspješna, pogršni podaci');
+             //   }else{
+               //      toast.success('Uspješna prijava');
+               //      sessionStorage.setItem('email',email);
+               //      sessionStorage.setItem('jwttoken',resp.jwtToken);
+                //   usenavigate('/')
+           // }
+            // }).catch((err) => {
+             //    toast.error('Pogreška pri prijavi :' + err.message);
+            // });
+        // }
+     //}
+ 
     //provjerava jesu li polja za upis korisnickog imena i lozinke prazna ili ne
     const validate = () => {
         let result = true;
