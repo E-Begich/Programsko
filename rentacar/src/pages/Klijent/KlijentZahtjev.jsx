@@ -9,21 +9,21 @@ const KlijentZahtjev = () => {
     const { id } = useParams()
 
     const [userId, setUserId] = useState('');
-  
+
     useEffect(() => {
-      let userId = sessionStorage.getItem('userId');
-      if (userId) {
-        setUserId(userId)
-      }
+        let userId = sessionStorage.getItem('userId');
+        if (userId) {
+            setUserId(userId)
+        }
     }, []);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-      let email = sessionStorage.getItem('email');
-      if (email === '' || email === null) {
-        navigate('/');
-      }
+        let email = sessionStorage.getItem('email');
+        if (email === '' || email === null) {
+            navigate('/');
+        }
     }, []);
 
     //za preuzimanje podataka iz tablice Vozilo
@@ -76,23 +76,24 @@ const KlijentZahtjev = () => {
             Datum_pocetka: datumPocetka,
             Datum_zavrsetka: datumZavrsetka,
             Napomena: napomena,
-          }
+        }
 
-          await axios.post(`/api/aplikacija/addZahtjev`, data)
-          toast.success('Zahtjev uspješno poslan!')
-          setDatumPocetka("")
-          setDatumZavrsetka("")
-          setNapomena("")
+        await axios.post(`/api/aplikacija/addZahtjev`, data)
+        toast.success('Zahtjev uspješno poslan!')
+        setDatumPocetka("")
+        setDatumZavrsetka("")
+        setNapomena("")
     }
     return (
         <>
-        <Header2/>
-            <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
+            <Header2 />
+            <div className="container text-center d-grid gap-2 col-9 mx-auto py-3 m-5">
                 <Container>
                     <Row>
 
                         <Col></Col>
                         <Col xs={6}>
+                        
                             <Card.Body>
                                 <Card.Img src={`http://localhost:3000/${fotografija}`} fluid />
                                 <Card.Text><b>Marka:</b> {marka} || <b>Model:</b> {model}</Card.Text>
@@ -101,39 +102,61 @@ const KlijentZahtjev = () => {
                                 <Card.Text><b>Broj sjedala:</b> {brojSjedala} || <b>Cijena dan:</b> {cijenaDan}</Card.Text>
                             </Card.Body>
                             <br />
-                            <br />
-                            <br />
-                            <br />
-                            <form className="container" onSubmit={sendHandler}>
-                                <h1 className="d-grid gap-2 col-6 mx-auto">Pošalji upit.</h1>
-                                <hr />
-                                <div className="form-group">
-                                    <input type="hidden" className="form-control" disabled value={id}  onChange={(e) => setIdVozilo(e.target.value)}/>
+            <br />
+            <section className="container">
+                <div className="container">
+                    <div className=" g-0 align-items-center">
+                        <div className="col-md-offset-3 mb-5 mb-lg-0">
+                            <div className="card bg-body-tertiary">
+                                <div className="card-body p-5 shadow-5 text-center">
+                                    <h2 className="fw-bold mb-5">Pošalji upit</h2>
+                                    <form className="container" onSubmit={sendHandler}>
+                                        <div data-mdb-input-init className="form-outline mb-4">
+                                            <div className="form-group">
+                                                <input type="hidden" className="form-control" disabled value={id} onChange={(e) => setIdVozilo(e.target.value)} />
+                                            </div>
+                                        </div>
+                                        <div data-mdb-input-init className="form-outline mb-4">
+                                            <div className="form-group">
+                                                <input type="hidden" className="form-control" disabled value={userId} onChange={(e) => setIdKlijent(e.target.value)} />
+                                            </div>
+                                        </div>
+
+                                        <div data-mdb-input-init className="form-outline mb-4">
+                                            <div className="form-group">
+                                                <label>Datum početka: <span className="errmsg">*</span></label>
+                                                <input type="date" className="form-control" value={datumPocetka} onChange={(e) => setDatumPocetka(e.target.value)} />
+                                            </div>
+                                        </div>
+
+                                        <div data-mdb-input-init className="form-outline mb-4">
+                                            <div className="form-group">
+                                                <label>Datum završetka: <span className="errmsg">*</span></label>
+                                                <input type="date" className="form-control" value={datumZavrsetka} onChange={(e) => setDatumZavrsetka(e.target.value)} />
+                                            </div>
+                                        </div>
+
+                                        <div data-mdb-input-init className="form-outline mb-4">
+                                            <div className="form-group">
+                                                <label>Napomena: <span className="errmsg">*</span></label>
+                                                <input type="text" className="form-control" value={napomena} onChange={(e) => setNapomena(e.target.value)} />
+                                            </div>
+                                        </div>
+
+
+                                        <div className="d-grid gap-2 col-9 mx-auto">
+                                            <div className="d-grid gap-2 col-6 mx-auto">
+                                                <button type="submit" className="btn btn-outline-dark ms-2">Pošalji upit</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <br />
-                                <div className="form-group">
-                                    <input type="hidden" className="form-control" disabled value={userId}  onChange={(e) => setIdKlijent(e.target.value)}/>
-                                </div>
-                                <br />
-                                <div className="form-group">
-                                    <label>Datum početka: <span className="errmsg">*</span></label>
-                                    <input type="date" className="form-control" value={datumPocetka} onChange={(e)=> setDatumPocetka(e.target.value)} />
-                                </div>
-                                <br />
-                                <div className="form-group">
-                                    <label>Datum završetka: <span className="errmsg">*</span></label>
-                                    <input type="date" className="form-control" value={datumZavrsetka} onChange={(e)=> setDatumZavrsetka(e.target.value)} />
-                                </div>
-                                <br />
-                                <div className="form-group">
-                                    <label>Napomena: <span className="errmsg">*</span></label>
-                                    <input type="text" className="form-control" value={napomena} onChange={(e)=> setNapomena(e.target.value)}/>
-                                </div>
-                                <br />
-                                <div className="d-grid gap-2 col-6 mx-auto">
-                                    <button type="submit" className="btn btn-outline-dark ms-2">Pošalji upit</button>
-                                </div>
-                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
                         </Col>
                         <Col></Col>
                     </Row>
