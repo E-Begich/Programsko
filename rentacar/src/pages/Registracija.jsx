@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import './Stil.css';
 
 
 function Registracija() {
@@ -129,63 +130,103 @@ function Registracija() {
     return (
         <>
         <Header/>
-            <div className="d-grid gap-2 col-6 mx-auto">
-                <form className="container" onSubmit={handlesubmit}>
-                    <h1 className="d-grid gap-2 col-6 mx-auto">Registracija</h1>
-                    <hr />
-                    <div className="form-group">
+<section className="text-center text-lg-start">
+  <div className="container py-4">
+    <div className="row g-0 align-items-center">
+    <div className="col-lg-6 mb-5 mb-lg-0">
+        <img src="https://shorturl.at/GaefW" className="w-200 rounded-4 shadow-4" alt="" />
+      </div>
+      <div className="col-lg-6 mb-5 mb-lg-0">
+        <div className="card cascading-right bg-body-tertiary">
+          <div className="card-body p-5 shadow-5 text-center">
+            <h2 className="fw-bold mb-5">Registriraj se</h2>
+            <form className="container" onSubmit={handlesubmit}>
+              <div className="row">
+                <div className="col-md-6 mb-4">
+                  <div data-mdb-input-init className="form-outline">
+                  <div className="form-group">
                         <label>Ime: <span className="errmsg">*</span></label>
                         <input type="text" className="form-control" value={ime} onChange={e => setIme(e.target.value)} />
                     </div>
-                    <br />
-                    <div className="form-group">
+                  </div>
+                </div>
+                <div className="col-md-6 mb-4">
+                  <div data-mdb-input-init className="form-outline">
+                  <div className="form-group">
                         <label>Prezime: <span className="errmsg">*</span></label>
                         <input type="text" className="form-control" value={prezime} onChange={e => setPrezime(e.target.value)} />
                     </div>
-                    <br />
-                    <div className="form-group">
+                  </div>
+                </div>
+              </div>
+
+              <div data-mdb-input-init className="form-outline mb-4">
+              <div className="form-group">
                         <label>Adresa: <span className="errmsg">*</span></label>
                         <input type="text" className="form-control" value={adresa} onChange={e => setAdresa(e.target.value)} />
                     </div>
-                    <br />
+              </div>
+
+              <div className="row">
+                <div className="col-md-6 mb-4">
+                  <div data-mdb-input-init className="form-outline">
                     <div className="form-group">
                         <label>Poštanski broj: <span className="errmsg">*</span></label>
                         <input type="text" className="form-control" value={postBroj} onChange={e => setPostBroj(e.target.value)} />
                     </div>
-                    <br />
-                    <div className="form-group">
+                  </div>
+                </div>
+                <div className="col-md-6 mb-4">
+                  <div data-mdb-input-init className="form-outline">
+                  <div className="form-group">
                         <label>Mjesto: <span className="errmsg">*</span></label>
                         <input type="text" className="form-control" value={mjesto} onChange={e => setMjesto(e.target.value)} />
                     </div>
-                    <br />
-                    <div className="form-group">
+                  </div>
+                </div>
+              </div>
+
+              <div data-mdb-input-init className="form-outline mb-4">
+              <div className="form-group">
                         <label>Kontakt: <span className="errmsg">*</span></label>
                         <input type="text" className="form-control" value={kontakt} onChange={e => setKontakt(e.target.value)} />
                     </div>
-                    <br />
-                    <div className="form-group">
+              </div>
+
+              <div data-mdb-input-init className="form-outline mb-4">
+              <div className="form-group">
                         <label>E-mail: <span className="errmsg">*</span></label>
                         <input type="text" className="form-control" value={email} onChange={e => setEmail(e.target.value)} />
                     </div>
-                    <br />
-                    <div className="form-group">
+              </div>
+
+              <div data-mdb-input-init className="form-outline mb-4">
+              <div className="form-group">
                         <label>Korisničko ime: <span className="errmsg">*</span></label>
                         <input type="text" className="form-control" value={korIme} onChange={e => setKorIme(e.target.value)} />
                     </div>
-                    <br />
-                    <div className="form-group">
+              </div>
+
+              <div data-mdb-input-init className="form-outline mb-4">
+              <div className="form-group">
                         <label>Lozinka: <span className="errmsg">*</span></label>
                         <input type="password" className="form-control" value={lozinka} onChange={e => setLozinka(e.target.value)} />
                     </div>
-                    <br />
-                    <div className="d-grid gap-2 col-6 mx-auto">
+              </div>
+
+              <div className="d-grid gap-2 col-6 mx-auto">
                         <button type="submit" className="btn btn-outline-dark ms-2">Registriraj se</button>
                         <Link to={'/prijava'} className="btn btn-primary">Već imaš račun? Prijavi se</Link>
 
                     </div>
-                </form>
-            </div>
 
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
         </>
     )
 }

@@ -96,21 +96,21 @@ const Prijava = () => {
     return (
         <>
             <Header />
-            <section class="text-center text-lg-start">
-                <div class="container py-4">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-lg-6 mb-5 mb-lg-0">
-                            <div class="card cascading-right bg-body-tertiary">
-                                <div class="card-body p-5 shadow-5 text-center">
-                                    <h2 class="fw-bold mb-5">Prijavi se</h2>
+            <section className="text-center text-lg-start">
+                <div className="container py-4">
+                    <div className="row g-0 align-items-center">
+                        <div className="col-lg-6 mb-5 mb-lg-0">
+                            <div className="card cascading-right bg-body-tertiary">
+                                <div className="card-body p-5 shadow-5 text-center">
+                                    <h2 className="fw-bold mb-5">Prijavi se</h2>
                                     <form onSubmit={handleLogin}>
-                                        <div data-mdb-input-init class="form-outline mb-4">
+                                        <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
                                                 <label>E-mail: <span className="errmsg">*</span> </label>
                                                 <input value={email} onChange={e => setEmail(e.target.value)} className="form-control" />
                                             </div>
                                         </div>
-                                        <div data-mdb-input-init class="form-outline mb-4">
+                                        <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
                                                 <label>Lozinka: <span className="errmsg">*</span> </label>
                                                 <input type="password" value={lozinka} onChange={e => setLozinka(e.target.value)} className="form-control" autoComplete="on" />
@@ -127,8 +127,8 @@ const Prijava = () => {
                             </div>
                         </div>
 
-                        <div class="col-lg-6 mb-5 mb-lg-0">
-                            <img src="https://shorturl.at/GaefW" class="w-100 rounded-4 shadow-4" alt="" />
+                        <div className="col-lg-6 mb-5 mb-lg-0">
+                            <img src="https://shorturl.at/GaefW" className="w-100 rounded-4 shadow-4" alt="" />
                         </div>
                     </div>
                 </div>
