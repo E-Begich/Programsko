@@ -75,7 +75,7 @@ const AdminPrijava = () => {
                         <div className="col-lg-6 mb-5 mb-lg-0">
                             <div className="card cascading-right bg-body-tertiary">
                                 <div className="card-body p-5 shadow-5 text-center">
-                                    <h2 className="fw-bold mb-5">Prijavi se</h2>
+                                    <h2 className="fw-bold mb-5">Prijava zaposlenika</h2>
                                     <form onSubmit={handleLogin}>
                                         <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
