@@ -11,10 +11,10 @@ const ActiveUgovor = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-      let email = sessionStorage.getItem('email');
-      if (email === '' || email === null) {
-        navigate('/');
-      }
+        let email = sessionStorage.getItem('email');
+        if (email === '' || email === null) {
+            navigate('/');
+        }
     }, []);
 
     //podaci iz tablice Korisnik
@@ -40,7 +40,7 @@ const ActiveUgovor = () => {
             setPrezime(data.Prezime)
 
             // podaci iz tablice Zahtjev
-            setUgovor(data.Ugovor) //ovdje ide naziv tablice u ovom slučaju Zahtjev
+            setUgovor(data.Ugovor) //ovdje ide naziv tablice u ovom slučaju Ugovor
         }
         getKorisnikUgovor()
 
@@ -56,7 +56,7 @@ const ActiveUgovor = () => {
             setModel(data.Model)
 
             // podaci iz tablice Zahtjev
-            setVozilo(data.Vozilo) //ovdje ide naziv tablice u ovom slučaju Zahtjev
+            setVozilo(data.Vozilo) //ovdje ide naziv tablice u ovom slučaju Vozilo
         }
         getVoziloUgovor()
 
@@ -64,7 +64,7 @@ const ActiveUgovor = () => {
 
     return (
         <>
-        <Header2/>
+            <Header2 />
             <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
                 <div className="row">
                     <div className="col"></div>
@@ -101,29 +101,26 @@ const ActiveUgovor = () => {
                     <div className="col-8">
                         <Container>
                             <Row>
-                                <Card className=' m-3 p-2 rounded card text-left'>
+                                <Card className='m-3 p-2 rounded card text-left'>
                                     <Card.Body>
-                                        {ugovor.length > 0  || ugovor.Status == 'U tijeku'? (
-                                            ugovor.map(Ugovor => {
-                                                //ovdje se preuzimaju ugovori iz gore napravljenog const [ugovor, setUgovor] = useState([])
-                                                //zatim vozilo iz setVozilo(data.Vozilo) gdje je Vozilo naziv tablice
-                                                //nakon toga uzimaju se polja iz tablice Vozilo a to su marka i model
-                                                return <p key={Ugovor.id}>
+                                        {ugovor.length > 0 ? (
+                                             ugovor.filter(u => u.Status === "U tijeku").map(filteredUgovor => (
+                                            <p key={filteredUgovor.id}>
 
-                                                    <Card.Text><b>Ugovor broj:</b> {Ugovor.id} || <b>Ime:</b> {ime} || <b>Prezime:</b> {prezime} </Card.Text>
-                                                    <Card.Text><b>Marka:</b> {marka} || <b>Model:</b> {model} </Card.Text>
-                                                    <Card.Text><b>Status ugovora:</b> {Ugovor.Status} || <b>Ugovor završava:</b> {Ugovor.Datum_zavrsetka} </Card.Text>
-                                                    <div className="nav-link">
-                                                        <Link to={`/detailUgovor/${id}`} className="btn btn-outline-dark btn-lg">Pogledaj ugovor</Link>
-                                                    </div>
-                                                    <hr />
-                                                    <hr />
-                                                </p>
+                                                <Card.Text><b>Ugovor broj:</b> {id} || <b>Ime:</b> {ime} || <b>Prezime:</b> {prezime} </Card.Text>
+                                                <Card.Text><b>Marka:</b> {marka} || <b>Model:</b> {model} </Card.Text>
+                                                <Card.Text><b>Status ugovora:</b> {filteredUgovor.Status} || <b>Ugovor završava:</b> {filteredUgovor.Datum_zavrsetka} </Card.Text>
+                                                <div className="nav-link">
+                                                </div>
+                                                <hr />
+                                                <hr />
+                                            </p>
                                                 
-                                            })
-                                        
+                                           ))
+                                        ) : (
+                                            <p> Ovaj korisnik još uvijek nema ugovora!</p> ) }
 
-                                        ) : (<p> Ovaj korisnik još uvijek nema ugovora!</p>)}
+
 
                                     </Card.Body>
                                 </Card>

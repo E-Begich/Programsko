@@ -116,14 +116,11 @@ const KlijentAllUgovori = () => {
                                                     <Card.Text><b>Ugovor broj:</b> {Ugovor.id} || <b>Status ugovora:</b> {Ugovor.Status} </Card.Text>
                                                     <Card.Text><b>Marka:</b> {marka} || <b>Model:</b> {model}</Card.Text>
                                                     <div className="nav-link">
-                                                        <Link to={`/activeUgovor/${id}`} className="btn btn-outline-dark btn-lg">Pogledaj ugovor</Link>
                                                     </div>
                                                     <hr />
                                                     <hr />
                                                 </p>
                                             })
-
-
                                         ) : (<p> Ovaj korisnik još uvijek nema ugovora!</p>)}
 
                                     </Card.Body>
