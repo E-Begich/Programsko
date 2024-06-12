@@ -12,13 +12,13 @@ const ShowPracenje = () => {
 
   useEffect(() => {
 
-    const getPracenjeData = async () => {
+    const getAllPracenje = async () => {
       const { data } = await axios.get('/api/aplikacija/getAllPracenje')
       console.log(data)
       setPracenje(data)
 
     }
-    getPracenjeData()
+    getAllPracenje()
 
   }, []);
  
