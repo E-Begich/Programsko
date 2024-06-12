@@ -46,7 +46,7 @@ const EditZahtjev = () => {
         Id_vozilo: id_vozilo,
     }
 
-    await axios.put(`/api/aplikacija/getOneZahtjev/${id}`, data)
+    await axios.put(`/api/aplikacija/updateZahtjev/${id}`, data)
 
     toast.success('Zahtjev je uspjesno promijenjen!')
     navigate(`/adminPocetna/${id}`)
@@ -78,9 +78,7 @@ const EditZahtjev = () => {
               </NavLink>
               <br />
               <br />
-              <NavLink className="nav-link">
-                <Link to={`/klijentEdit/`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
-              </NavLink>
+            
 
 
             </nav>
@@ -134,9 +132,6 @@ const EditZahtjev = () => {
                 </Form.Group>
                 
 
-                <Button variant="btn btn-outline-dark btn-lg" type="submit">
-                  Uredi podatke
-                </Button>
               </Form>
             </Container>
           </div>

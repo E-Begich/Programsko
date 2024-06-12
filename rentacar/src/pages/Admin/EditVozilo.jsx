@@ -59,7 +59,7 @@ const EditVozilo = () => {
       Fotografija: fotografija
     }
 
-    await axios.put(`/api/aplikacija/getOneVozilo/${id}`, data)
+    await axios.put(`/api/aplikacija/updateVozilo/${id}`, data)
 
     toast.success('Vozilo je uspjesno promijenjeno!')
     navigate(`/adminPocetna/${id}`)
@@ -91,9 +91,7 @@ const EditVozilo = () => {
               </NavLink>
               <br />
               <br />
-              <NavLink className="nav-link">
-                <Link to={`/klijentEdit/`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
-              </NavLink>
+        
 
 
             </nav>
@@ -183,8 +181,17 @@ const EditVozilo = () => {
                 </Form.Group>
 
                 <Button variant="btn btn-outline-dark btn-lg" type="submit">
+                  Spremi podatke
+                </Button>
+
+                <Button variant="btn btn-outline-dark btn-lg" type="submit">
                   Uredi podatke
                 </Button>
+
+                <Button variant="btn btn-outline-dark btn-lg" type="submit">
+                  Izbriši podatke
+                </Button>
+
               </Form>
             </Container>
           </div>

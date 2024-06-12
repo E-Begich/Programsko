@@ -55,7 +55,7 @@ const EditUgovor = () => {
       Id_zaposlenik: id_zaposlenik
     }
 
-    await axios.put(`/api/aplikacija/getOneUgovor/${id}`, data)
+    await axios.put(`/api/aplikacija/updateUgovor/${id}`, data)
 
     toast.success('Ugovor je uspjesno promijenjen!')
     navigate(`/adminPocetna/${id}`)
@@ -69,6 +69,36 @@ const EditUgovor = () => {
           <div className="col"></div>
           <div className="col">
             <h1>Izmijeni ugovor</h1>
+            <div class="d-flex">
+  <div class="dropdown me-1">
+    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+      Vozilo
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+      <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+      <li><a class="dropdown-item" href="#">Marka i model</a></li>
+    </ul>
+  </div>
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Korisnik
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+    <li><a class="dropdown-item" href="#">OIB</a></li>
+  </ul>
+</div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary">Zaposlenik</button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+      <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+      <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+    </ul>
+  </div>
+</div>
+
           </div>
           <div className="col">
           </div>
@@ -77,20 +107,17 @@ const EditUgovor = () => {
           <div className="col-4">
             <nav className="nav flex-column">
             <NavLink className="nav-link">
-              <Link to={`/showVozilo/${id}`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
+              <Link to={`/showVozilo/`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/showZahtjevi/${id}`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+              <Link to={`/showZahtjevi/`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/addPracenje/${id}`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
+              <Link to={`/addPracenje/`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
               </NavLink>
               <br />
               <br />
-              <NavLink className="nav-link">
-                <Link to={`/klijentEdit/${id}`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
-              </NavLink>
-
+        
 
             </nav>
           </div>
@@ -142,36 +169,20 @@ const EditUgovor = () => {
                   />
                 </Form.Group>
 
-                <Form>Id vozilo</Form>
-                <Form.Group className="mb-3" controlId="title">
-                  <Form.Control
-                    value={id_vozilo}
-                    onChange={(e) => setId_vozilo(e.target.value)}
-                    type="text"
-                  />
-                </Form.Group>
 
-                <Form>Id korisnik</Form>
-                <Form.Group className="mb-3" controlId="title">
-                  <Form.Control
-                    value={id_korisnik}
-                    onChange={(e) => setId_korisnik(e.target.value)}
-                    type="text"
-                  />
-                </Form.Group>
-
-                <Form>Id zaposlenik</Form>
-                <Form.Group className="mb-3" controlId="title">
-                  <Form.Control
-                    value={id_zaposlenik}
-                    onChange={(e) => setId_zaposlenik(e.target.value)}
-                    type="text"
-                  />
-                </Form.Group>
+                <Button variant="btn btn-outline-dark btn-lg" type="submit">
+                  Spremi podatke
+                </Button>
 
                 <Button variant="btn btn-outline-dark btn-lg" type="submit">
                   Uredi podatke
                 </Button>
+
+                <Button variant="btn btn-outline-dark btn-lg" type="submit">
+                  Izbriši podatke
+                </Button>
+
+
               </Form>
             </Container>
           </div>

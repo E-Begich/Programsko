@@ -12,15 +12,16 @@ const ShowPracenje = () => {
 
   useEffect(() => {
 
-    const getAllPracenje = async () => {
+    const getPracenjeData = async () => {
       const { data } = await axios.get('/api/aplikacija/getAllPracenje')
       console.log(data)
       setPracenje(data)
 
     }
-    getAllPracenje()
+    getPracenjeData()
 
-  }) 
+  }, []);
+ 
 
 
   return (
@@ -30,7 +31,7 @@ const ShowPracenje = () => {
         <div className="row">
           <div className="col"></div>
           <div className="col">
-            <h1>Popis pracenja</h1>
+            <h1>Popis praćenja</h1>
           </div>
           <div className="col">
           </div>
@@ -39,13 +40,13 @@ const ShowPracenje = () => {
           <div className="col-4">
             <nav className="nav flex-column">
               <NavLink className="nav-link">
-              <Link to={`/showVozilo/${id}`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
+              <Link to={`/showVozilo/`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/showZahtjevi/${id}`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+              <Link to={`/showZahtjevi/`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/addUgovor/${id}`} className="btn btn-outline-dark btn-lg">Pregled ugovor</Link>
+              <Link to={`/showPracenje/`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
               </NavLink>
               <br />
               <br />
@@ -61,14 +62,13 @@ const ShowPracenje = () => {
                     return <Col md={6} lg={4} sm={12} key={Pracenje.id}>
                       <Card.Text><b>Latitude:</b> {Pracenje.Latitude}</Card.Text> 
                       <Card.Text><b>Longitude:</b> {Pracenje.Longitude} </Card.Text>
-                      <Card.Text><b>Id_vozilo:</b> {Pracenje.Id_vozilo} </Card.Text>
-                      <Card.Text><b>Id_ugovor:</b> {Pracenje.Id_ugovor} </Card.Text>
+
                     </Col>
 
 
                   })
                 ) : (
-                  <p> Nema unesenih pracenja!</p>)}
+                  <p> Nema unesenih praćenja!</p>)}
                 
                     
               </Row>

@@ -18,7 +18,6 @@ import AddPracenje from './pages/Admin/AddPracenje';
 import AddRacun from './pages/Admin/AddRacun';
 import AddUgovor from './pages/Admin/AddUgovor';
 import AddVozilo from './pages/Admin/AddVozilo';
-import AddZahtjev from './pages/Admin/AddZahtjev';
 import EditPracenje from './pages/Admin/EditPracenje';
 import EditUgovor from './pages/Admin/EditUgovor';
 import EditVozilo from './pages/Admin/EditVozilo';
@@ -44,6 +43,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 function App() {
   return (
     <div className='App'>
@@ -65,7 +65,6 @@ function App() {
         <Route path='/addracun' element={<AddRacun />} />
         <Route path='/addugovor' element={<AddUgovor />} />
         <Route path='/addvozilo' element={<AddVozilo />} />
-        <Route path='/addzahtjev' element={<AddZahtjev />} />
         <Route path='/adminpocetna/:id' element={<AdminPocetna />} />
         <Route path='/editpracenje' element={<EditPracenje />} />
         <Route path='/editugovor' element={<EditUgovor />} />

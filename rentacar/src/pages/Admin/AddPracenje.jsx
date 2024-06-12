@@ -13,7 +13,7 @@ const AddPracenje = () => {
     const [id_ugovor, setId_ugovor] = useState('');
 
 
-    const addVoziloHandler = async () => {
+    const addPracenjeHandler = async () => {
       
 
       const data = {
@@ -27,7 +27,11 @@ const AddPracenje = () => {
     await axios.post('/api/aplikacija/addPracenje', data)
 
 
+    
   }
+
+
+
 
   return (
     <>
@@ -36,9 +40,35 @@ const AddPracenje = () => {
         <h1>Dodaj pracenje</h1>
         <hr />
 
-      <Form>
-      
-      <form className="container" onSubmit={addVoziloHandler}/>
+        <Form>
+
+
+<div class="d-flex">
+  <div class="dropdown me-1">
+    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+      Vozilo
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+      <li><a class="dropdown-item" href="#">Ime i prezime </a></li>
+      <li><a class="dropdown-item" href="#">Marka i model</a></li>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary">Ugovor</button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+      <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+      <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+      <li><a class="dropdown-item" href="#">Datum i status</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+      <form className="container" onSubmit={addPracenjeHandler}/>
 
         <Form.Group className="mb-3" controlId="latitude">
             <Form.Label>Latitude</Form.Label>
@@ -56,25 +86,18 @@ const AddPracenje = () => {
             type="number" />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="id vozilo">
-            <Form.Label>Id_vozilo</Form.Label>
-            <Form.Control 
-            value={id_vozilo}
-            onChange={(e) => setId_vozilo(e.target.value)}
-            type="number" />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="id ugovor">
-            <Form.Label>Id_ugovor</Form.Label>
-            <Form.Control 
-            value={id_ugovor}
-            onChange={(e) => setId_ugovor(e.target.value)}
-            type="number" />
-        </Form.Group>
-
-        <Button variant="primary" type="potvrdi">
+        <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
             Dodaj pracenje
             </Button>
+
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Uredi praćenje
+            </Button>
+
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Izbriši praćenje
+            </Button>
+
         </Form>
       </Container>
       </>

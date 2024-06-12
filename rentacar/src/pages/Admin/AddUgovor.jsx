@@ -18,7 +18,7 @@ const AddUgovor = () => {
 
     const addUgovorHandler = async () => {
 
-  const data = {
+        const data = {
 
       Datum_pocetka: datum_pocetka,
       Datum_zavrsetka: datum_zavrsetka,
@@ -40,8 +40,40 @@ return (
       <Container className='mt-5 p-2'>
       <h1>Dodaj ugovor</h1>
       <hr />
+      
+<Form>
 
-    <Form>
+    <div class="d-flex">
+  <div class="dropdown me-1">
+    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+      Vozilo
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+      <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+      <li><a class="dropdown-item" href="#">Marka i model</a></li>
+    </ul>
+  </div>
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Korisnik
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+    <li><a class="dropdown-item" href="#">OIB</a></li>
+  </ul>
+</div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary">Zaposlenik</button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+      <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+      <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+    </ul>
+  </div>
+</div>
+
+
 
     <form className="container" onSubmit={addUgovorHandler}/>
 
@@ -89,34 +121,20 @@ return (
           type="text" />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="id vozilo">
-          <Form.Label>Id_vozilo</Form.Label>
-          <Form.Control 
-          value={id_vozilo}
-          onChange={(e) => setId_vozilo(e.target.value)}
-          type="number" />
-      </Form.Group>
 
-      <Form.Group className="mb-3" controlId="id korisnik">
-          <Form.Label>Id_korisnik</Form.Label>
-          <Form.Control 
-          value={id_korisnik}
-          onChange={(e) => setId_korisnik(e.target.value)}
-          type="number" />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="id zaposlenik">
-          <Form.Label>Id_zaposlenik</Form.Label>
-          <Form.Control 
-          value={id_zaposlenik}
-          onChange={(e) => setId_zaposlenik(e.target.value)}
-          type="number" />
-      </Form.Group>
-
-
-      <Button variant="primary" type="potvrdi">
+  
+      <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
             Dodaj ugovor
             </Button>
+
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Uredi ugovor
+            </Button>
+
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Izbriši ugovor
+            </Button>
+
         </Form>
       </Container>
       </>

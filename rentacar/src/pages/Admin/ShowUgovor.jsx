@@ -39,13 +39,13 @@ const ShowUgovor = () => {
           <div className="col-4">
             <nav className="nav flex-column">
               <NavLink className="nav-link">
-              <Link to={`/showVozilo/${id}`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
+              <Link to={`/showVozilo/`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/showZahtjevi/${id}`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+              <Link to={`/showZahtjevi/`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/addPracenje/${id}`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
+              <Link to={`/showPracenje/`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
               </NavLink>
               <br />
               <br />

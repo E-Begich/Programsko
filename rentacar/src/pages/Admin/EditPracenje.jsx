@@ -43,7 +43,7 @@ const EditPracenje = () => {
         Id_ugovor: id_ugovor
     }
 
-    await axios.put(`/api/aplikacija/getOnePracenje/${id}`, data)
+    await axios.put(`/api/aplikacija/updatePracenje/${id}`, data)
 
     toast.success('Pracenje je uspjesno izmijenjeno!')
     navigate(`/adminPocetna/${id}`)
@@ -52,32 +52,59 @@ const EditPracenje = () => {
   return (
     <>
     <HeaderAdmin/>
+
+    
       <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
         <div className="row">
           <div className="col"></div>
           <div className="col">
-            <h1>Izmijeni pracenje</h1>
+            <h1>Izmijeni praćenje</h1> 
+            
+
+<div class="d-flex">
+  <div class="dropdown-center">
+    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+      Vozilo
+    </button>
+    <ul class="dropdown-menu " aria-labelledby="dropdownMenuOffset">
+      <li><a class="dropdown-item" href="#">Ime i prezime </a></li>
+      <li><a class="dropdown-item" href="#">Marka i model</a></li>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary">Ugovor</button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+      <span class="visually-hidden">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+      <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+      <li><a class="dropdown-item" href="#">Datum i status</a></li>
+    </ul>
+  </div>
+</div>
+
           </div>
+          
           <div className="col">
           </div>
         </div>
+
+        
         <div className="row">
           <div className="col-4">
             <nav className="nav flex-column">
             <NavLink className="nav-link">
-              <Link to={`/showVozilo/${id}`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
+              <Link to={`/showVozilo/`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/showZahtjevi/${id}`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+              <Link to={`/showZahtjevi/`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/addUgovor/${id}`} className="btn btn-outline-dark btn-lg">Kreiraj ugovor</Link>
+              <Link to={`/addUgovor/`} className="btn btn-outline-dark btn-lg">Kreiraj ugovor</Link>
               </NavLink>
               <br />
               <br />
-              <NavLink className="nav-link">
-                <Link to={`/klijentEdit/${id}`} className="btn btn-outline-dark btn-lg">Promijeni podatke</Link>
-              </NavLink>
+      
 
 
             </nav>
@@ -100,31 +127,25 @@ const EditPracenje = () => {
                     value={longitude}
                     onChange={(e) => setLongitude(e.target.value)}
                     type="text"
+                    
                   />
+                  
                 </Form.Group>
 
-                <Form>Id vozilo</Form>
-                <Form.Group className="mb-3" controlId="title">
-                  <Form.Control
-                    value={id_vozilo}
-                    onChange={(e) => setId_vozilo(e.target.value)}
-                    type="text"
-                  />
-                </Form.Group>
-
-                <Form>Id ugovor</Form>
-                <Form.Group className="mb-3" controlId="title">
-                  <Form.Control
-                    value={id_ugovor}
-                    onChange={(e) => setId_ugovor(e.target.value)}
-                    type="text"
-                  />
-                </Form.Group>
 
 
                 <Button variant="btn btn-outline-dark btn-lg" type="submit">
-                  Uredi podatke
+                  Spremi podatke
                 </Button>
+
+                <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Uredi podatke
+            </Button>
+
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Izbriši podatke
+            </Button>
+
               </Form>
             </Container>
           </div>

@@ -37,6 +37,16 @@ return (
       <hr />
 
     <Form>
+    <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Ugovor
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+    <li><a class="dropdown-item" href="#">Cijena</a></li>
+  </ul>
+</div>
+
 
     <form className="container" onSubmit={addRacunHandler}/>
 
@@ -55,18 +65,19 @@ return (
           onChange={(e) => setPorez(e.target.value)}
           type="number" />
       </Form.Group>
-
-      <Form.Group className="mb-3" controlId="id ugovor">
-          <Form.Label>Id_ugovor</Form.Label>
-          <Form.Control 
-          value={id_ugovor}
-          onChange={(e) => setId_ugovor(e.target.value)}
-          type="number" />  
-      </Form.Group>
        
-      <Button variant="primary" type="potvrdi">
-            Dodaj racun
+      <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Dodaj račun
             </Button>
+
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Uredi račun
+            </Button>
+
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Izbriši račun
+            </Button>
+
         </Form>
       </Container>
       </>

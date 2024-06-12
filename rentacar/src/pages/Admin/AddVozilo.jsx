@@ -123,9 +123,18 @@ const AddVozilo = () => {
                 type="text" />
             </Form.Group>
 
-            <Button variant="primary" type="potvrdi">
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
             Dodaj vozilo
             </Button>
+
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Uredi vozilo
+            </Button>
+
+            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
+            Izbriši vozilo
+            </Button>
+
         </Form>
       </Container>
       </>
