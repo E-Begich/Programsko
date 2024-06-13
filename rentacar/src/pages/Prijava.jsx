@@ -109,17 +109,17 @@ const Prijava = () => {
                                         <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
                                                 <label>E-mail: <span className="errmsg">*</span> </label>
-                                                <input value={email} onChange={e => setEmail(e.target.value)} className="form-control" />
+                                                <input value={email} onChange={e => setEmail(e.target.value)} className="form-control" id="email" />
                                             </div>
                                         </div>
                                         <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
                                                 <label>Lozinka: <span className="errmsg">*</span> </label>
-                                                <input type="password" value={lozinka} onChange={e => setLozinka(e.target.value)} className="form-control" autoComplete="on" />
+                                                <input type="password" value={lozinka} onChange={e => setLozinka(e.target.value)} className="form-control" autoComplete="on" id="lozinka" />
                                             </div>
                                         </div>
                                         <div className="d-grid gap-2 col-6 mx-auto">
-                                            <button className="btn btn-outline-dark ms-2" type="submit">
+                                            <button className="btn btn-outline-dark ms-2" type="submit" id="Buttontest">
                                                 Prijavi se
                                             </button>
                                             <Link to={`/registracija`} className="btn btn-primary ms-2">Novi korisnik? Registriraj se ovdje</Link>

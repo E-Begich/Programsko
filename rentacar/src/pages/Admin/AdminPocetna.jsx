@@ -9,6 +9,8 @@ import "./../../App.css";
 
 
 const AdminPocetna = () => {
+    const { id } = useParams()
+
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -50,10 +52,25 @@ const AdminPocetna = () => {
                     <div className="col-4">
                         <nav className="nav flex-column">
                             <NavLink className="nav-link">
-                                <Link to={`/pregledzahtjeva`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+                                <Link to={`/showzahtjeva`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
                             </NavLink>
+                            <br/>
+                            <br/>
+                            <NavLink className="nav-link">
+                                <Link to={`/`} className="btn btn-outline-dark btn-lg">Dodaj novog klijenta</Link>
+                            </NavLink>
+                            <br/>
+                            <br/>
                             <NavLink className="nav-link">
                                 <Link to={`/addugovor`} className="btn btn-outline-dark btn-lg">Izradi novi ugovor</Link>
+                            </NavLink>
+                            <NavLink className="nav-link">
+                                <Link to={`/showugovor`} className="btn btn-outline-dark btn-lg">Pregledaj sve ugovore</Link>
+                            </NavLink>
+                            <br/>
+                            <br/>
+                            <NavLink className="nav-link">
+                                <Link to={`/addpracenje`} className="btn btn-outline-dark btn-lg">Dodaj praćenje automobila</Link>
                             </NavLink>
                             <NavLink className="nav-link">
                                 <Link to={`/showpracenje`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
@@ -72,7 +89,7 @@ const AdminPocetna = () => {
                                                         </div>
                                                         <div class="card-buttons">
                                                             <NavLink className="nav-link">
-                                                                <Link to={`/`} className="btn btn-outline-dark btn-lg">Uredi vozilo</Link>
+                                                                <Link to={`/editvozilo/${id}`} className="btn btn-outline-dark btn-lg">Uredi vozilo</Link>
                                                             </NavLink>
                                                             <br />
                                                             <NavLink className="nav-link">
