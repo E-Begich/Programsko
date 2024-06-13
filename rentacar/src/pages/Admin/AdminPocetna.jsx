@@ -75,6 +75,14 @@ const AdminPocetna = () => {
                             <NavLink className="nav-link">
                                 <Link to={`/showpracenje`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
                             </NavLink>
+                            <br/>
+                            <br/>
+                            <NavLink className="nav-link">
+                                <Link to={`/addracun`} className="btn btn-outline-dark btn-lg">Izradi račun</Link>
+                            </NavLink>
+                            <NavLink className="nav-link">
+                                <Link to={`/`} className="btn btn-outline-dark btn-lg">Pregled svih računa</Link>
+                            </NavLink>
                         </nav>
                     </div>
                     <div className="col-8">

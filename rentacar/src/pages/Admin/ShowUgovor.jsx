@@ -8,7 +8,7 @@ import HeaderAdmin from "../../components/HeaderAdmin";
 const ShowUgovor = () => {
   const { id } = useParams()
 
-  const [ugovor, setUgovor] = useState([]); 
+  const [ugovor, setUgovor] = useState([]);
 
   useEffect(() => {
 
@@ -20,12 +20,12 @@ const ShowUgovor = () => {
     }
     getAllUgovor()
 
-  }) 
+  })
 
 
   return (
     <div>
-      <HeaderAdmin/>
+      <HeaderAdmin />
       <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
         <div className="row">
           <div className="col"></div>
@@ -39,13 +39,13 @@ const ShowUgovor = () => {
           <div className="col-4">
             <nav className="nav flex-column">
               <NavLink className="nav-link">
-              <Link to={`/showVozilo/`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
+                <Link to={`/showVozilo/`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/showZahtjevi/`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+                <Link to={`/showZahtjevi/`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/showPracenje/`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
+                <Link to={`/showPracenje/`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
               </NavLink>
               <br />
               <br />
@@ -55,25 +55,40 @@ const ShowUgovor = () => {
           <div className="col-8">
             <Container>
               <Row>
-                {ugovor.length > 0 ? ( 
+                {ugovor.length > 0 ? (
 
                   ugovor.map(Ugovor => {
-                    return <Col md={6} lg={4} sm={12} key={Ugovor.id}>
-                      <Card.Text><b>Datum_pocetka:</b> {Ugovor.Datum_pocetka}</Card.Text> 
-                      <Card.Text><b>Status:</b> {Ugovor.Datum_zavrsetka} </Card.Text>
-                      <Card.Text><b>Osiguranje:</b> {Ugovor.Osiguranje} </Card.Text>
-                      <Card.Text><b>Id_vozilo:</b> {Ugovor.Id_vozilo} </Card.Text>
-                      <Card.Text><b>Id_korisnik:</b> {Ugovor.Id_korisnik} </Card.Text>
-                      <Card.Text><b>Id_zaposlenik:</b> {Ugovor.Id_zaposlenik} </Card.Text>
-
+                    return <Col key={Ugovor.id}>
+                      <div class="container mt-5">
+                        <div class="card custom-card">
+                          <div class="custom-card-text">
+                            <Card.Text><b>Datum_pocetka:</b> {Ugovor.Datum_pocetka}</Card.Text>
+                            <Card.Text><b>Status:</b> {Ugovor.Datum_zavrsetka} </Card.Text>
+                            <Card.Text><b>Osiguranje:</b> {Ugovor.Osiguranje} </Card.Text>
+                            <Card.Text><b>Id_vozilo:</b> {Ugovor.Id_vozilo} </Card.Text>
+                            <Card.Text><b>Id_korisnik:</b> {Ugovor.Id_korisnik} </Card.Text>
+                            <Card.Text><b>Id_zaposlenik:</b> {Ugovor.Id_zaposlenik} </Card.Text>
+                          </div>
+                          <div class="card-buttons">
+                            <NavLink className="nav-link">
+                              <Link to={`/editugovor/${Ugovor.id}`} className="btn btn-outline-dark btn-lg">Uredi ugovor</Link>
+                            </NavLink>
+                            <br />
+                            <NavLink className="nav-link">
+                              <Link to={`/`} className="btn btn-outline-dark btn-lg">Obriši ugovor</Link>
+                            </NavLink>
+                          </div>
+                          </div>
+                        </div>
+                        <br />
                     </Col>
 
 
                   })
                 ) : (
                   <p> Nema unesenih ugovora!</p>)}
-                
-                    
+
+
               </Row>
             </Container>
           </div>

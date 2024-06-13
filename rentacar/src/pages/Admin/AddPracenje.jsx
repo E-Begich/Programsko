@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { Container, Card, Row, Col } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { useParams } from 'react-router';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
 import HeaderAdmin from "../../components/HeaderAdmin";
 
 const AddPracenje = () => {
+  const { id } = useParams()
 
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
@@ -25,7 +28,7 @@ const AddPracenje = () => {
 
 
     await axios.post('/api/aplikacija/addPracenje', data)
-
+    toast.success('Praćenje je dodano!')
 
     
   }
@@ -86,17 +89,11 @@ const AddPracenje = () => {
             type="number" />
         </Form.Group>
 
-        <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
-            Dodaj pracenje
-            </Button>
+        <div className="d-grid gap-2 col-6 mx-auto">
+                  <button type="submit" className="btn btn-outline-dark ms-2" id="button-test">Spremi podatke</button>
+                  <Link to={`/adminpocetna/${id}`} className="btn btn-outline-dark ms-2">Vrati se na početnu</Link>
 
-            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
-            Uredi praćenje
-            </Button>
-
-            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
-            Izbriši praćenje
-            </Button>
+                </div>
 
         </Form>
       </Container>

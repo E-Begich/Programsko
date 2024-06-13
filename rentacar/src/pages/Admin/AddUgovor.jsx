@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import {  useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Container, Card, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
 import HeaderAdmin from "../../components/HeaderAdmin";
 
 const AddUgovor = () => {
+  const { id } = useParams()
 
     const [datum_pocetka, setDatum_pocetka] = useState('');
     const [datum_zavrsetka, setDatum_zavrsetka] = useState('');
@@ -31,7 +34,7 @@ const AddUgovor = () => {
   }
 
     await axios.post('/api/aplikacija/addUgovor', data)
-
+    toast.success('Ugovor je dodan!')
 }
 
 return (
@@ -123,17 +126,11 @@ return (
 
 
   
-      <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
-            Dodaj ugovor
-            </Button>
+      <div className="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" className="btn btn-outline-dark ms-2" id="button-test">Spremi podatke</button>
+            <Link to={`/adminpocetna/${id}`} className="btn btn-outline-dark ms-2">Vrati se na početnu</Link>
 
-            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
-            Uredi ugovor
-            </Button>
-
-            <Button variant="btn btn-outline-dark btn-lg" type="potvrdi">
-            Izbriši ugovor
-            </Button>
+          </div>
 
         </Form>
       </Container>

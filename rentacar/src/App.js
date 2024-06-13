@@ -67,7 +67,7 @@ function App() {
         <Route path='/addvozilo' element={<AddVozilo />} />
         <Route path='/adminpocetna/:id' element={<AdminPocetna />} />
         <Route path='/editpracenje' element={<EditPracenje />} />
-        <Route path='/editugovor' element={<EditUgovor />} />
+        <Route path='/editugovor/:id' element={<EditUgovor />} />
         <Route path='/editvozilo/:id' element={<EditVozilo />} />
         <Route path='/editzahtjev' element={<EditZahtjev />} />
         <Route path='/showugovor' element={<ShowUgovor />} />

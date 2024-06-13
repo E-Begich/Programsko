@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router';
-import { Container, Button, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import { Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import HeaderAdmin from "../../components/HeaderAdmin";
@@ -63,41 +63,41 @@ const EditUgovor = () => {
   }
   return (
     <>
-    <HeaderAdmin/>
+      <HeaderAdmin />
       <div className="container text-center d-grid gap-2 col-8 mx-auto py-3 m-5">
         <div className="row">
           <div className="col"></div>
           <div className="col">
             <h1>Izmijeni ugovor</h1>
             <div class="d-flex">
-  <div class="dropdown me-1">
-    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
-      Vozilo
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-      <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
-      <li><a class="dropdown-item" href="#">Marka i model</a></li>
-    </ul>
-  </div>
-  <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Korisnik
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
-    <li><a class="dropdown-item" href="#">OIB</a></li>
-  </ul>
-</div>
-  <div class="btn-group">
-    <button type="button" class="btn btn-secondary">Zaposlenik</button>
-    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
-      <span class="visually-hidden">Toggle Dropdown</span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-      <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
-    </ul>
-  </div>
-</div>
+              <div class="dropdown me-1">
+                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                  Vozilo
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                  <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+                  <li><a class="dropdown-item" href="#">Marka i model</a></li>
+                </ul>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Korisnik
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+                  <li><a class="dropdown-item" href="#">OIB</a></li>
+                </ul>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn-secondary">Zaposlenik</button>
+                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                  <li><a class="dropdown-item" href="#">Ime i prezime</a></li>
+                </ul>
+              </div>
+            </div>
 
           </div>
           <div className="col">
@@ -106,24 +106,24 @@ const EditUgovor = () => {
         <div className="row">
           <div className="col-4">
             <nav className="nav flex-column">
-            <NavLink className="nav-link">
-              <Link to={`/showVozilo/`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
+              <NavLink className="nav-link">
+                <Link to={`/showVozilo/`} className="btn btn-outline-dark btn-lg">Pregled vozila</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/showZahtjevi/`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
+                <Link to={`/showZahtjevi/`} className="btn btn-outline-dark btn-lg">Pregled zahtjeva</Link>
               </NavLink>
               <NavLink className="nav-link">
-              <Link to={`/addPracenje/`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
+                <Link to={`/addPracenje/`} className="btn btn-outline-dark btn-lg">Praćenje automobila</Link>
               </NavLink>
               <br />
               <br />
-        
+
 
             </nav>
           </div>
           <div className="col-8">
             <Container className='mt-2 p-3'>
-            <Form>Datum početka</Form>
+              <Form>Datum početka</Form>
               <Form onSubmit={updateHandler}>
                 <Form.Group className="mb-3" controlId="title">
                   <Form.Control
@@ -143,12 +143,15 @@ const EditUgovor = () => {
                 </Form.Group>
 
                 <Form>Status</Form>
-                <Form.Group className="mb-3" controlId="title">
-                  <Form.Control
-                    value={status}
-                    onChange={(e) => setStatus(e.target.value)}
-                    type="text"
-                  />
+                <Form.Group className="demo-radio-buttons-group-label" controlId="datum zavrsetka">
+                  <input type="radio" checked={status === 'U tijeku'} onChange={e => setStatus(e.target.value)} name="status" value="U tijeku" className="app-check"></input>
+                  <label>U tijeku</label>
+                  <br />
+                  <br />
+                  <input type="radio" checked={status === 'Zavrsen'} onChange={e => setStatus(e.target.value)} name="status" value="Zavrsen" className="app-check"></input>
+                  <label>Završen</label>
+                  <br />
+                  <br />
                 </Form.Group>
 
                 <Form>Osiguranje</Form>
@@ -168,20 +171,11 @@ const EditUgovor = () => {
                     type="text"
                   />
                 </Form.Group>
+                <div className="d-grid gap-2 col-6 mx-auto">
+                  <button type="submit" className="btn btn-outline-dark ms-2" id="button-test">Spremi podatke</button>
+                  <Link to={`/adminpocetna/${id}`} className="btn btn-outline-dark ms-2">Vrati se na početnu</Link>
 
-
-                <Button variant="btn btn-outline-dark btn-lg" type="submit">
-                  Spremi podatke
-                </Button>
-
-                <Button variant="btn btn-outline-dark btn-lg" type="submit">
-                  Uredi podatke
-                </Button>
-
-                <Button variant="btn btn-outline-dark btn-lg" type="submit">
-                  Izbriši podatke
-                </Button>
-
+                </div>
 
               </Form>
             </Container>
