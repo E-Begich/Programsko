@@ -18,6 +18,7 @@ import AddPracenje from './pages/Admin/AddPracenje';
 import AddRacun from './pages/Admin/AddRacun';
 import AddUgovor from './pages/Admin/AddUgovor';
 import AddVozilo from './pages/Admin/AddVozilo';
+import AddKorisnik from './pages/Admin/AddKorisnik';
 import EditPracenje from './pages/Admin/EditPracenje';
 import EditUgovor from './pages/Admin/EditUgovor';
 import EditVozilo from './pages/Admin/EditVozilo';
@@ -26,6 +27,7 @@ import ShowUgovor from './pages/Admin/ShowUgovor';
 import ShowVozilo from './pages/Admin/ShowVozilo';
 import ShowZahtjeva from './pages/Admin/ShowZahtjeva';
 import ShowPracenje from './pages/Admin/ShowPracenje';
+import ShowRacuni from './pages/Admin/ShowRacuni';
 
 //klijent radnje
 import KlijentEdit from './pages/Klijent/KlijentEdit';
@@ -41,6 +43,7 @@ import ActiveUgovor from './pages/Klijent/ActiveUgovor';
 //importan toast - onaj mali skocni prozorcic za informacije
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ShowRacun from './pages/Admin/ShowRacuni';
 
 
 
@@ -65,6 +68,7 @@ function App() {
         <Route path='/addracun' element={<AddRacun />} />
         <Route path='/addugovor' element={<AddUgovor />} />
         <Route path='/addvozilo' element={<AddVozilo />} />
+        <Route path='/addkorisnik' element={<AddKorisnik />} />
         <Route path='/adminpocetna/:id' element={<AdminPocetna />} />
         <Route path='/editpracenje' element={<EditPracenje />} />
         <Route path='/editugovor/:id' element={<EditUgovor />} />
@@ -74,6 +78,7 @@ function App() {
         <Route path='/showvozilo' element={<ShowVozilo />} />
         <Route path='/showzahtjeva' element={<ShowZahtjeva />} />
         <Route path='/showpracenje' element={<ShowPracenje />} />
+        <Route path='/showracuni' element={<ShowRacuni />} />
 
         {/* Klijent radnje */}
         <Route path='/klijentPocetna/:id' element={<KlijentPocetna />} />

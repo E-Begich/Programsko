@@ -57,7 +57,7 @@ const AdminPocetna = () => {
                             <br/>
                             <br/>
                             <NavLink className="nav-link">
-                                <Link to={`/`} className="btn btn-outline-dark btn-lg">Dodaj novog klijenta</Link>
+                                <Link to={`/addkorisnik`} className="btn btn-outline-dark btn-lg">Dodaj novog klijenta</Link>
                             </NavLink>
                             <br/>
                             <br/>
@@ -81,7 +81,7 @@ const AdminPocetna = () => {
                                 <Link to={`/addracun`} className="btn btn-outline-dark btn-lg">Izradi račun</Link>
                             </NavLink>
                             <NavLink className="nav-link">
-                                <Link to={`/`} className="btn btn-outline-dark btn-lg">Pregled svih računa</Link>
+                                <Link to={`/showracuni`} className="btn btn-outline-dark btn-lg">Pregled svih računa</Link>
                             </NavLink>
                         </nav>
                     </div>
