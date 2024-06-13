@@ -148,7 +148,7 @@ function Registracija() {
                                                 <div data-mdb-input-init className="form-outline">
                                                     <div className="form-group">
                                                         <label>Ime: <span className="errmsg">*</span></label>
-                                                        <input type="text" className="form-control" value={ime} onChange={e => setIme(e.target.value)} />
+                                                        <input type="text" className="form-control" value={ime} onChange={e => setIme(e.target.value)} id="ime" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -156,7 +156,7 @@ function Registracija() {
                                                 <div data-mdb-input-init className="form-outline">
                                                     <div className="form-group">
                                                         <label>Prezime: <span className="errmsg">*</span></label>
-                                                        <input type="text" className="form-control" value={prezime} onChange={e => setPrezime(e.target.value)} />
+                                                        <input type="text" className="form-control" value={prezime} onChange={e => setPrezime(e.target.value)} id="prezime"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -165,7 +165,7 @@ function Registracija() {
                                         <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
                                                 <label>Adresa: <span className="errmsg">*</span></label>
-                                                <input type="text" className="form-control" value={adresa} onChange={e => setAdresa(e.target.value)} />
+                                                <input type="text" className="form-control" value={adresa} onChange={e => setAdresa(e.target.value)} id="adresa" />
                                             </div>
                                         </div>
 
@@ -174,7 +174,7 @@ function Registracija() {
                                                 <div data-mdb-input-init className="form-outline">
                                                     <div className="form-group">
                                                         <label>Poštanski broj: <span className="errmsg">*</span></label>
-                                                        <input type="text" className="form-control" value={postBroj} onChange={e => setPostBroj(e.target.value)} />
+                                                        <input type="text" className="form-control" value={postBroj} onChange={e => setPostBroj(e.target.value)} id="postanski"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,7 +182,7 @@ function Registracija() {
                                                 <div data-mdb-input-init className="form-outline">
                                                     <div className="form-group">
                                                         <label>Mjesto: <span className="errmsg">*</span></label>
-                                                        <input type="text" className="form-control" value={mjesto} onChange={e => setMjesto(e.target.value)} />
+                                                        <input type="text" className="form-control" value={mjesto} onChange={e => setMjesto(e.target.value)} id="mjesto" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -191,33 +191,33 @@ function Registracija() {
                                         <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
                                                 <label>Kontakt: <span className="errmsg">*</span></label>
-                                                <input type="text" className="form-control" value={kontakt} onChange={e => setKontakt(e.target.value)} />
+                                                <input type="text" className="form-control" value={kontakt} onChange={e => setKontakt(e.target.value)} id="kontakt" />
                                             </div>
                                         </div>
 
                                         <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
                                                 <label>E-mail: <span className="errmsg">*</span></label>
-                                                <input type="text" className="form-control" value={email} onChange={e => setEmail(e.target.value)} />
+                                                <input type="text" className="form-control" value={email} onChange={e => setEmail(e.target.value)} id="email"/>
                                             </div>
                                         </div>
 
                                         <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
                                                 <label>Korisničko ime: <span className="errmsg">*</span></label>
-                                                <input type="text" className="form-control" value={korIme} onChange={e => setKorIme(e.target.value)} />
+                                                <input type="text" className="form-control" value={korIme} onChange={e => setKorIme(e.target.value)} id="korisnicko"/>
                                             </div>
                                         </div>
 
                                         <div data-mdb-input-init className="form-outline mb-4">
                                             <div className="form-group">
                                                 <label>Lozinka: <span className="errmsg">*</span></label>
-                                                <input type="password" className="form-control" value={lozinka} onChange={e => setLozinka(e.target.value)} />
+                                                <input type="password" className="form-control" value={lozinka} onChange={e => setLozinka(e.target.value)} id="lozinka" />
                                             </div>
                                         </div>
 
                                         <div className="d-grid gap-2 col-6 mx-auto">
-                                            <button type="submit" className="btn btn-outline-dark ms-2">Registriraj se</button>
+                                            <button type="submit" className="btn btn-outline-dark ms-2" id="button-test">Registriraj se</button>
                                             <Link to={'/prijava'} className="btn btn-primary">Već imaš račun? Prijavi se</Link>
 
                                         </div>

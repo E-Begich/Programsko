@@ -119,7 +119,7 @@ const Prijava = () => {
                                             </div>
                                         </div>
                                         <div className="d-grid gap-2 col-6 mx-auto">
-                                            <button className="btn btn-outline-dark ms-2" type="submit" id="Buttontest">
+                                            <button className="btn btn-outline-dark ms-2" type="submit" id="button-test">
                                                 Prijavi se
                                             </button>
                                             <Link to={`/registracija`} className="btn btn-primary ms-2">Novi korisnik? Registriraj se ovdje</Link>

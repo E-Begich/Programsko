@@ -9,7 +9,7 @@ describe("prijava", () => {
     cy.get("#email").type("ebegic1@veleri.hr");
     cy.get("#lozinka").clear();
     cy.get("#lozinka").type("Emina123@");
-    cy.get(".Buttontest").click();
+    cy.get("#button-test").click();
     cy.wait(5000);
 
     cy.url().should('include', 'http://localhost:3000/pocetna');
@@ -24,7 +24,7 @@ describe("prijava", () => {
     cy.get("#email").type("test@gmail.com");
     cy.get("#lozinka").clear();
     cy.get("#lozinka").type("PogresnaLozinka");
-    cy.get(".Buttontest").click();
+    cy.get("#button-test").click();
     /* ==== End Cypress Studio ==== */
   });
 
@@ -35,7 +35,7 @@ describe("prijava", () => {
     cy.get("#email").type("ebegic1@veleri.hr");
     cy.get("#lozinka").clear();
     cy.get("#lozinka").type("Test");
-    cy.get(".Buttontest").click();
+    cy.get("#button-test").click();
     /* ==== End Cypress Studio ==== */
   });
 });
