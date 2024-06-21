@@ -4,7 +4,7 @@
 
 Web-aplikacija „Rent a car“ izrađena je kao projekt u sklopu kolegija Programsko inženjerstvo.
 
-![Kviz](/DOKUMENTACIJA/IMAGES/Pocetna.png)
+
 
 ## FUNKCIONALNOSTI: 
  - Početna stranica i pregled dostupnih vozila
@@ -16,7 +16,7 @@ Web-aplikacija „Rent a car“ izrađena je kao projekt u sklopu kolegija Progr
  - zaposlenik ima mogućnost pregleda, unošenja, uređivanja i brosanja svih aspekata koji se koriste unutar aplikacije kao što su zahtjevi, ugovori, izrada ugovora, izrada računa, praćenje sutomobila itd.
 
 
- ![Pitanje](/DOKUMENTACIJA/IMAGES/PitanjePrimjer.png)![Kraj](/DOKUMENTACIJA/IMAGES/Kraj.png)
+
 
 
 
@@ -24,7 +24,7 @@ Web-aplikacija „Rent a car“ izrađena je kao projekt u sklopu kolegija Progr
 - VS code
 - React (18.3.1)
 - Node.js
-- Sequelize
+- Sequelize (6.37.3)
 - axios (1.6.8)
 - bcrypt (5.1.1)
 - bootstrap (5.3.3)
